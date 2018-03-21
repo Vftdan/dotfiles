@@ -11,13 +11,20 @@ set listchars=tab:┊\
 set timeoutlen=2500
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
+" Window splitting
 nnoremap <C-W>% :vsp<cr>
 nnoremap <C-W>" :sp<cr>
 nnoremap <C-W>z :res<cr>:vertical res<cr>
 nnoremap <C-W><Esc> <Esc>
+" Displaying space characters
 nnoremap <C-L>n :set listchars=tab:┊\ <cr>
 nnoremap <C-L>s :set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>
 nnoremap <C-L>h :set listchars=<cr>
+" Duplicate for input mode
+inoremap <C-L>n <esc>:set listchars=tab:┊\ <cr>i
+inoremap <C-L>s <esc>:set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>i
+inoremap <C-L>h <esc>:set listchars=<cr>i
+inoremap <C-L><C-L> <C-L>
 " Characters
 inoremap <C-K><space>  
 inoremap <C-K>+- ±
