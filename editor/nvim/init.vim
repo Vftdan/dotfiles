@@ -21,9 +21,9 @@ nnoremap <C-L>n :set listchars=tab:┊\ <cr>
 nnoremap <C-L>s :set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>
 nnoremap <C-L>h :set listchars=<cr>
 " Duplicate for input mode
-inoremap <C-L>n <esc>:set listchars=tab:┊\ <cr>i
-inoremap <C-L>s <esc>:set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>i
-inoremap <C-L>h <esc>:set listchars=<cr>i
+inoremap <C-L>n <esc>:set listchars=tab:┊\ <cr>a
+inoremap <C-L>s <esc>:set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>a
+inoremap <C-L>h <esc>:set listchars=<cr>a
 inoremap <C-L><C-L> <C-L>
 " Characters
 inoremap <C-K><space>  
