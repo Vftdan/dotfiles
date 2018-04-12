@@ -25,6 +25,17 @@ inoremap <C-L>n <esc>:set listchars=tab:┊\ <cr>a
 inoremap <C-L>s <esc>:set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>a
 inoremap <C-L>h <esc>:set listchars=<cr>a
 inoremap <C-L><C-L> <C-L>
+" Toggle mouse
+function! s:togMouse()
+	if &mouse == "a"
+		set mouse=
+	else
+		set mouse=a
+	endif
+endfunction
+command! TogMouse call <SID>togMouse()
+inoremap <C-L>m <esc>:TogMouse<cr>a
+nnoremap <C-L>m :TogMouse<cr>
 " Characters
 inoremap <C-K><space>  
 inoremap <C-K>+- ±
