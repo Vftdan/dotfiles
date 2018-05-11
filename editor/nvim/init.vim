@@ -63,3 +63,9 @@ inoremap <C-K>ssup ⊋
 inoremap <C-K>~> ≳
 inoremap <C-K>~< ≲
 inoremap <C-K>sum ∑
+inoremap <C-K>prod ∏
+inoremap <C-K>setN ℕ
+inoremap <C-K>setZ ℤ
+inoremap <C-K>setQ ℚ
+inoremap <C-K>setR ℝ
+inoremap <C-K>setC ℂ
