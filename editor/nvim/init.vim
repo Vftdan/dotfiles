@@ -36,6 +36,9 @@ endfunction
 command! TogMouse call <SID>togMouse()
 inoremap <C-L>m <esc>:TogMouse<cr>a
 nnoremap <C-L>m :TogMouse<cr>
+" Duplicate line
+nnoremap <C-D> mzyyp`zj
+inoremap <C-D> <esc>mzyyp`zja
 " Characters
 inoremap <C-K><space>  
 inoremap <C-K>+- ±
