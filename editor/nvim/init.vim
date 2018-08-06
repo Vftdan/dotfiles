@@ -39,6 +39,12 @@ nnoremap <C-L>m :TogMouse<cr>
 " Duplicate line
 nnoremap <C-D> mzyyp`zj
 inoremap <C-D> <esc>mzyyp`zja
+" Replace
+nnoremap <A-r> :%s///g<Left><Left><Left>
+" Natural language
+set keymap=russian-jcuken
+set iminsert=0
+set imsearch=0
 " Characters
 inoremap <C-K><space>  
 inoremap <C-K>+- ±
