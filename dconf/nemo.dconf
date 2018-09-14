@@ -1,0 +1,37 @@
+[preferences]
+quick-renames-with-pause-in-between=true
+show-home-icon-toolbar=true
+show-new-folder-icon-toolbar=false
+show-compact-view-icon-toolbar=false
+show-icon-view-icon-toolbar=true
+executable-text-activation='display'
+show-open-in-terminal-toolbar=true
+tooltips-in-icon-view=false
+size-prefixes='base-2'
+context-menus-show-all-actions=true
+show-hidden-files=true
+tooltips-in-list-view=false
+show-computer-icon-toolbar=true
+show-reload-icon-toolbar=true
+show-location-entry=true
+ignore-view-metadata=true
+
+[window-state]
+sidebar-width=420
+start-with-sidebar=true
+geometry='1908x845+0+90'
+maximized=false
+sidebar-bookmark-breakpoint=5
+
+[icon-view]
+default-use-tighter-layout=false
+labels-beside-icons=false
+
+[desktop]
+trash-icon-visible=false
+desktop-layout='true::true'
+font='Noto Sans 14'
+
+[list-view]
+default-visible-columns=['name', 'size', 'type', 'date_modified', 'permissions']
+default-column-order=['name', 'size', 'type', 'date_modified', 'date_accessed', 'detailed_type', 'group', 'where', 'mime_type', 'date_modified_with_time', 'octal_permissions', 'owner', 'permissions']

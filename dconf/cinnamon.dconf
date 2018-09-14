@@ -1,0 +1,168 @@
+[/]
+desktop-effects-unmaximize-transition='easeNone'
+extension-cache-updated=1521113159
+desktop-effects-on-dialogs=true
+desktop-effects-maximize-transition='easeInExpo'
+applet-cache-updated=1521136819
+desktop-effects-map-effect='traditional'
+command-history=['ls', 'firefox', 'bash', 'sudo gimp', 'c bash', 'c', 'c time-sync', 'c paused dusum', 'firefox-new', 'c htop', 'c fish', 'vk', 'gimp', 'c sudo htop', '', 'wineconsole', 'sudo VirtualBox', 'soffice']
+hotcorner-layout=['expo:true:400', 'scale:false:0', 'scale:false:0', 'desktop:false:250']
+desktop-effects-close-effect='traditional'
+workspace-osd-duration=400
+desktop-effects-unmaximize-time=100
+desklet-snap-interval=25
+desktop-effects-map-time=175
+enabled-desklets=@as []
+desktop-effects-minimize-effect='traditional'
+panels-scale-text-icons=['1:true', '2:true']
+desktop-effects=true
+panels-height=['1:33', '2:48']
+enable-vfade=true
+next-applet-id=44
+panel-launchers=['DEPRECATED']
+desktop-effects-map-transition='easeOutQuad'
+desktop-effects-tile-transition='easeInQuad'
+enable-indicators=false
+desktop-effects-unmaximize-effect='none'
+panels-enabled=['1:0:bottom', '2:0:right']
+desktop-effects-maximize-time=100
+looking-glass-history=['ls']
+panels-resizable=['1:true', '2:true']
+desktop-effects-maximize-effect='none'
+desktop-effects-on-menus=true
+enabled-applets=['panel1:right:6:systray@cinnamon.org:0', 'panel1:left:1:menu@cinnamon.org:1', 'panel1:right:14:show-desktop@cinnamon.org:2', 'panel1:left:2:panel-launchers@cinnamon.org:3', 'panel1:right:7:keyboard@cinnamon.org:5', 'panel1:right:5:notifications@cinnamon.org:6', 'panel1:right:8:removable-drives@cinnamon.org:7', 'panel1:right:10:network@cinnamon.org:9', 'panel1:right:9:power@cinnamon.org:11', 'panel1:right:13:calendar@cinnamon.org:12', 'panel1:right:11:sound@cinnamon.org:13', 'panel1:right:1:on-screen-keyboard@cinnamon.org:15', 'panel1:right:2:workspace-switcher@cinnamon.org:17', 'panel1:right:4:betterlock:22', 'panel1:left:3:IcingTaskManager@json:26', 'panel1:right:12:user@cinnamon.org:27', 'panel2:right:8:temperature@fevimu:28:orient', 'panel2:left:0:settings@cinnamon.org:35', 'panel2:right:1:trash@cinnamon.org:36', 'panel2:right:3:color-picker@fmete:38', 'panel2:right:2:brightness-and-gamma-applet@cardsurf:39', 'panel2:right:5:pa-equalizer@jschug.com:40', 'panel2:right:6:ScreenShot+RecordDesktop@tech71:41', 'panel2:right:0:blueberry@cinnamon.org:42', 'panel1:right:3:download-and-upload-speed@cardsurf:43']
+desktop-effects-minimize-time=200
+alttab-switcher-delay=100
+desktop-effects-tile-effect='none'
+desktop-effects-close-transition='easeOutQuad'
+enabled-extensions=['!opacify@anish.org', 'transparent-panels@germanfr', 'WindowOpacity@vftdan']
+desktop-effects-minimize-transition='easeInQuad'
+panel-edit-mode=false
+panels-show-delay=['1:0', '2:50']
+desklet-cache-updated=1521135887
+desktop-effects-close-time=175
+no-adjacent-panel-barriers=true
+panels-hide-delay=['1:0', '2:150']
+workspace-osd-x=50
+workspace-osd-y=50
+desktop-effects-tile-time=100
+panels-autohide=['1:false', '2:true']
+
+[keyboard]
+keyboard-type='tablet'
+
+[desktop/interface]
+text-scaling-factor=1.0
+cursor-size=28
+menus-have-tearoff=false
+first-day-of-week=1
+clock-use-24h=true
+font-name='Noto Sans 13'
+cursor-theme='DMZ-White'
+menubar-accel='<Control>F10'
+clock-show-seconds=false
+cursor-blink-time=1200
+menubar-detachable=false
+toolkit-accessibility=true
+gtk-theme='Mint-Y-Dark'
+clock-show-date=true
+
+
+[desktop/media-handling]
+autorun-x-content-start-app=@as []
+autorun-never=false
+autorun-x-content-ignore=@as []
+autorun-x-content-open-folder=@as []
+
+[desktop/screensaver]
+screensaver-name='xscreensaver@cinnamon.org'
+layout-group=0
+use-custom-format=false
+lock-delay=uint32 3600
+show-album-art=false
+xscreensaver-hack='rocks'
+show-clock=true
+
+[desktop/applications/terminal]
+exec='gnome-terminal'
+
+[desktop/notifications]
+fade-opacity=40
+display-notifications=true
+
+[desktop/session]
+idle-delay=uint32 3600
+
+[desktop/privacy]
+recent-files-max-age=-1
+remember-recent-files=false
+
+[desktop/wm/preferences]
+min-window-opacity=30
+mouse-button-modifier='<Super>'
+mouse-button-zoom-modifier='<Super><Alt>'
+theme='HighContrast'
+titlebar-font='Noto Sans Bold 14'
+
+[desktop/a11y/applications]
+screen-keyboard-enabled=true
+
+[desktop/a11y/keyboard]
+mousekeys-init-delay=300
+mousekeys-max-speed=10
+mousekeys-accel-time=300
+bouncekeys-delay=300
+slowkeys-delay=300
+
+[desktop/a11y/mouse]
+secondary-click-time=1.2
+dwell-time=1.2
+dwell-threshold=10
+
+[desktop/sound]
+event-sounds=false
+
+[desktop/background/slideshow]
+image-source='xml:///usr/share/cinnamon-background-properties/linuxmint.xml'
+delay=15
+
+[muffin]
+button-layout='menu,shade:minimize,maximize,close'
+unredirect-fullscreen-windows=false
+legacy-snap=false
+resize-threshold=24
+workspace-cycle=true
+tile-hud-threshold=25
+
+[theme]
+theme-cache-updated=1522600704
+name='Mint-Y-Dark'
+
+[cinnamon-session]
+prefer-hybrid-sleep=true
+quit-time-delay=60
+
+[settings-daemon/plugins/power]
+button-power='suspend'
+sleep-inactive-ac-timeout=10800
+
+[settings-daemon/peripherals/touchpad]
+motion-threshold=1
+touchpad-enabled=true
+
+[settings-daemon/peripherals/keyboard]
+repeat-interval=uint32 30
+delay=uint32 500
+numlock-state='on'
+
+[settings-daemon/peripherals/mouse]
+drag-threshold=8
+motion-threshold=1
+double-click=400
+locate-pointer=false
+
+[sounds]
+login-enabled=false
+logout-enabled=false
+tile-enabled=false
+switch-enabled=false
