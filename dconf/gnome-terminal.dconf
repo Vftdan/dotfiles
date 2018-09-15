@@ -1,0 +1,12 @@
+[legacy/keybindings]
+full-screen='<Shift>F11'
+zoom-in='<Primary>equal'
+help='<Shift>F1'
+
+[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+allow-bold=true
+use-theme-transparency=false
+rewrap-on-resize=true
+
+[legacy]
+schema-version=uint32 3
