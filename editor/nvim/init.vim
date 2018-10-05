@@ -1,3 +1,6 @@
+" For classic vim
+set encoding=utf-8
+set fileencoding=utf-8
 " Scroll only one line for mouse wheel events to get smooth scrolling on touch screens
 set mouse=a
 map <ScrollWheelUp> <C-Y>
