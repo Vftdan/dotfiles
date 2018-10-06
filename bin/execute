@@ -1,0 +1,10 @@
+#! /data/data/com.termux/files/usr/bin/python
+import sys, os
+def run(cmd, f):
+    return os.system(cmd.format(f))
+cmd, *F = sys.argv[1:]
+for f in F:
+    r = run(cmd, f)
+    if(r != 0):
+        exit(r & 255 or 1)
+
