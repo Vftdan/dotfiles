@@ -1,4 +1,4 @@
-#! /data/data/com.termux/files/usr/bin/python
+#! /usr/bin/env python3
 import sys, os
 def run(cmd, f):
     return os.system(cmd.format(f))
