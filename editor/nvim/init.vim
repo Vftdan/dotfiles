@@ -42,6 +42,8 @@ nnoremap <C-L>m :TogMouse<cr>
 " Duplicate line
 nnoremap <C-D> mzyyp`zj
 inoremap <C-D> <esc>mzyyp`zja
+" Duplicate selection
+vnoremap <C-D> y`>p
 " Replace
 nnoremap <A-r> :%s///g<Left><Left><Left>
 " Natural language
