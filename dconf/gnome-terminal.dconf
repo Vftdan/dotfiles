@@ -8,5 +8,25 @@ allow-bold=true
 use-theme-transparency=false
 rewrap-on-resize=true
 
+[legacy/profiles:/:67124faa-035b-4fe7-a61a-addd5eff3d21]
+foreground-color='rgb(222,222,222)'
+rewrap-on-resize=true
+visible-name='Vftdan-custom'
+palette=['rgb(0,0,66)', 'rgb(189,0,0)', 'rgb(66,189,0)', 'rgb(189,189,66)', 'rgb(66,114,255)', 'rgb(189,0,189)', 'rgb(0,189,189)', 'rgb(189,189,189)', 'rgb(66,66,66)', 'rgb(255,66,0)', 'rgb(66,255,66)', 'rgb(255,255,66)', 'rgb(66,189,255)', 'rgb(255,66,189)', 'rgb(114,223,207)', 'rgb(189,255,255)']
+bold-is-bright=true
+use-theme-colors=false
+use-theme-transparency=false
+allow-bold=true
+background-color='rgb(0,43,54)'
+
+[legacy/profiles:/:6353c4ff-5d98-4228-bbd2-bbc52b012783]
+palette=['rgb(25,22,22)', 'rgb(150,51,48)', 'rgb(52,70,26)', 'rgb(79,48,29)', 'rgb(45,56,141)', 'rgb(117,80,123)', 'rgb(43,108,137)', 'rgb(154,161,161)', 'rgb(64,64,64)', 'rgb(208,132,153)', 'rgb(65,174,56)', 'rgb(177,166,39)', 'rgb(107,138,201)', 'rgb(179,80,188)', 'rgb(219,124,62)', 'rgb(221,221,221)']
+visible-name='Minecraft-wool-old'
+
 [legacy]
 schema-version=uint32 3
+menu-accelerator-enabled=false
+
+[legacy/profiles:]
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '6353c4ff-5d98-4228-bbd2-bbc52b012783', '67124faa-035b-4fe7-a61a-addd5eff3d21']
+default='67124faa-035b-4fe7-a61a-addd5eff3d21'
