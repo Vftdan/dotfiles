@@ -44,8 +44,13 @@ nnoremap <C-D> mzyyp`zj
 inoremap <C-D> <esc>mzyyp`zja
 " Duplicate selection
 vnoremap <C-D> y`>p
+" Find selection
+vnoremap // y/<C-R>"<CR>
+vnoremap /<Right> y/<C-R>"
 " Replace
 nnoremap <A-r> :%s///g<Left><Left><Left>
+" Replace selection
+vnoremap <A-r> y<esc>:%s/<C-R>"//g<Left><Left>
 " Natural language
 set keymap=russian-jcuken
 set iminsert=0
