@@ -124,6 +124,8 @@ alias rerc=". ~/.bashrc"
 alias lla="ls -la"
 alias llt="ls -lt"
 alias jj='java -jar'
+alias __copy="xclip -selection c"
+alias __paste="xclip -selection c -o"
 lnc() {
 	[[ `which $1` == '' ]] && echo "No such executable" && return
 	$@ 2> /dev/null & disown
