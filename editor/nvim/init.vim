@@ -47,6 +47,9 @@ vnoremap <C-D> y`>p
 " Find selection
 vnoremap // y/<C-R>"<CR>
 vnoremap /<Right> y/<C-R>"
+" Copy between Vim and X clipboards
+nnoremap <A-x>p :let @"=@+<CR>
+nnoremap <A-x>y :let @+=@"<CR>
 " Replace
 nnoremap <A-r> :%s///g<Left><Left><Left>
 " Replace selection
