@@ -152,8 +152,8 @@ if [[ ${#MSYSTEM} != 0 ]] ; then
 	_msys=' \[\e[35m\]$MSYSTEM\[\e[0m\] '
 fi
 if [[ ${EUID} == 0 ]] ; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h \[\e[1;42;97m\][$SHLVL]\[\e[0m\]'$_msys'\[\033[01;34m\]\w\n\[\033[01;31m\]\$\[\033[00m\] '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h \[\e[0;1;42;97m\][$SHLVL]\[\e[0m\]'$_msys'\[\033[01;34m\]\w\n\[\033[01;31m\]\$\[\033[00m\] '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h \[\e[1;42;97m\][$SHLVL]\[\e[0m\]'$_msys'\[\033[00m\]\[\033[01;34m\]\w\n\[\033[01;32m\]\$\[\033[00m\] '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h \[\e[0;1;42;97m\][$SHLVL]\[\e[0m\]'$_msys'\[\033[00m\]\[\033[01;34m\]\w\n\[\033[01;32m\]\$\[\033[00m\] '
 fi
 unset _msys

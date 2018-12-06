@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\ConEmu Here]
+@="ConEmu Here"
+"Icon"="D:\\windows_progs\\ConEmu\\ConEmu.exe,0"
+
+[HKEY_CLASSES_ROOT\*\shell\ConEmu Here\command]
+@="\"C:\\Program Files\\ConEmu\\ConEmu.exe\" -here -run \"C:\\Program Files\\Git\\bin\\bash.exe\""
+
+[HKEY_CLASSES_ROOT\*\shell\Vim]
+@="Edit with vim"
+
+[HKEY_CLASSES_ROOT\*\shell\Vim\command]
+@="\"C:\\Program Files\\Git\\usr\\bin\\vim.exe\" -n \"%1\""
+
