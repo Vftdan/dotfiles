@@ -147,6 +147,14 @@ title() {
 	echo -n $@
 	echo -n -e '\007'
 }
+ssh-add-key() {
+	ls ~/.ssh
+	read -p "key: " key
+	pushd ~/.ssh
+	key=$(realpath $key)
+	popd
+	ssh-add $key
+}
 _msys=' '
 if [[ ${#MSYSTEM} != 0 ]] ; then
 	_msys=' \[\e[35m\]$MSYSTEM\[\e[0m\] '
