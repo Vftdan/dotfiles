@@ -54,6 +54,11 @@ nnoremap <A-x>y :let @+=@"<CR>
 nnoremap <A-r> :%s///g<Left><Left><Left>
 " Replace selection
 vnoremap <A-r> y<esc>:%s/<C-R>"//g<Left><Left>
+" Esc alias
+imap <A-;><A-;> <esc>
+imap <A-;><A-o> <esc>o
+vmap <A-;><A-;> <esc>
+vmap <A-;><A-o> <esc>o
 " Natural language
 set keymap=russian-jcuken
 set iminsert=0
