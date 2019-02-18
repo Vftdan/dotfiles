@@ -1,0 +1,8 @@
+#!/bin/bash 
+#Source: https://superuser.com/questions/194374/breadth-first-option-in-the-linux-find-utility#answer-516312
+depth=0
+
+while find -mindepth $depth -maxdepth $depth | grep '.'
+do
+    depth=$((depth + 1))
+done
