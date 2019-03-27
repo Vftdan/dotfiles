@@ -63,6 +63,9 @@ vmap <A-;><A-o> <esc>o
 set keymap=russian-jcuken
 set iminsert=0
 set imsearch=0
+" Color column
+set colorcolumn=81
+hi ColorColumn guibg=DarkGrey ctermbg=DarkGrey
 " Characters
 inoremap <C-K><space>  
 inoremap <C-K>+- ±
