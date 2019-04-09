@@ -65,7 +65,11 @@ set iminsert=0
 set imsearch=0
 " Color column
 set colorcolumn=81
-hi ColorColumn guibg=DarkGrey ctermbg=DarkGrey
+if &t_Co == 8
+	hi ColorColumn guibg=DarkGrey ctermbg=Cyan
+else
+	hi ColorColumn guibg=DarkGrey ctermbg=DarkGrey
+endif
 " Characters
 inoremap <C-K><space>  
 inoremap <C-K>+- ±
