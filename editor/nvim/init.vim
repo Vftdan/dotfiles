@@ -54,6 +54,8 @@ nnoremap <A-x>y :let @+=@"<CR>
 nnoremap <A-r> :%s///g<Left><Left><Left>
 " Replace selection
 vnoremap <A-r> y<esc>:%s/<C-R>"//g<Left><Left>
+" Remove tabulation
+inoremap <S-Tab> <C-D>
 " Esc alias
 imap <A-;><A-;> <esc>
 imap <A-;><A-o> <esc>o
