@@ -56,6 +56,8 @@ nnoremap <A-r> :%s///g<Left><Left><Left>
 vnoremap <A-r> y<esc>:%s/<C-R>"//g<Left><Left>
 " Remove tabulation
 inoremap <S-Tab> <C-D>
+" Make <S-Tab> work in Windows
+set t_kB=[Z
 " Esc alias
 imap <A-;><A-;> <esc>
 imap <A-;><A-o> <esc>o
