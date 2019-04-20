@@ -63,6 +63,8 @@ imap <A-;><A-;> <esc>
 imap <A-;><A-o> <esc>o
 vmap <A-;><A-;> <esc>
 vmap <A-;><A-o> <esc>o
+" Select word
+noremap <A-'><A-'> <2-LeftMouse>
 " Natural language
 set keymap=russian-jcuken
 set iminsert=0
