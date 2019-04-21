@@ -150,9 +150,9 @@ title() {
 ssh-add-key() {
 	ls ~/.ssh
 	read -p "key: " key
-	pushd ~/.ssh
-	key=$(realpath $key)
-	popd
+	pushd ~/.ssh >> /dev/null
+	key=$(realpath $key 2>> /dev/null) || echo && popd >> /dev/null && return
+	popd >> /dev/null
 	ssh-add $key
 }
 _msys=' '
