@@ -111,5 +111,7 @@ inoremap <C-K>setZ ℤ
 inoremap <C-K>setQ ℚ
 inoremap <C-K>setR ℝ
 inoremap <C-K>setC ℂ
+" Fix collisions with digraphs
+inoremap <C-K><C-K> <C-K>
 " C# indentation
 au BufNewFile,BufRead,Bufenter *.cs set ts=4 sw=4 et
