@@ -122,3 +122,5 @@ imap <A-;> <Nop>
 vmap <A-;> <Nop>
 " C# indentation
 au BufNewFile,BufRead,Bufenter *.cs set ts=4 sw=4 et
+" Open help about selection in VimScript
+au BufNewFile,BufRead,Bufenter *.vim vmap <F1> y:help <C-R>"<CR>
