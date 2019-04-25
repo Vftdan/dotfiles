@@ -68,7 +68,9 @@ nnoremap <A-'><A-'> viw
 " Clear search highlight
 nnoremap <A-'>/ :nohlsearch<CR>
 " Natural language
-set keymap=russian-jcuken
+set keymap=russian-jcukenwin
+lmap \| /
+lmap <A-\> \|
 set iminsert=0
 set imsearch=0
 " Color column
