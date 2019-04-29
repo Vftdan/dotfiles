@@ -39,6 +39,8 @@ endfunction
 command! TogMouse call <SID>togMouse()
 inoremap <C-L>m <esc>:TogMouse<cr>a
 nnoremap <C-L>m :TogMouse<cr>
+" Word count
+command! Wc w !wc
 " Duplicate line
 nnoremap <C-D> mzyyp`zj
 inoremap <C-D> <esc>mzyyp`zja
