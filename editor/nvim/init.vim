@@ -41,6 +41,12 @@ inoremap <C-L>m <esc>:TogMouse<cr>a
 nnoremap <C-L>m :TogMouse<cr>
 " Word count
 command! Wc w !wc
+" New column
+function! s:newcol()
+	new
+	wincmd L
+endfunction
+command! Newcol call <SID>newcol()
 " Duplicate line
 nnoremap <C-D> mzyyp`zj
 inoremap <C-D> <esc>mzyyp`zja
