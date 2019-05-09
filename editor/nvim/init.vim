@@ -1,6 +1,15 @@
 " For classic vim
 set encoding=utf-8
 set fileencoding=utf-8
+" For gvim
+if has("gui_running")
+	colorscheme desert
+	if has("win32")
+		set guifont=Courier_New:h18:cANSI:qDRAFT
+	else
+		set guifont=Nimbus\ Mono\ L\ Bold\ 18
+	endif
+endif
 " Scroll only one line for mouse wheel events to get smooth scrolling on touch screens
 set mouse=a
 map <ScrollWheelUp> <C-Y>
