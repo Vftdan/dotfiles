@@ -84,6 +84,9 @@ vmap <A-;><A-o> <esc>o
 nnoremap <A-'><A-'> viw
 " Clear search highlight
 nnoremap <A-'>/ :nohlsearch<CR>
+" Select line without <EOL>
+onoremap il :<C-U>normal! 0v$h<CR>
+vnoremap il 0o$h
 " Natural language
 set keymap=russian-jcukenwin
 lmap \| /
