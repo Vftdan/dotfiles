@@ -5,6 +5,7 @@ set fileencoding=utf-8
 if has("gui_running")
 	colorscheme desert
 	if has("win32")
+		set bo=all
 		set guifont=Courier_New:h18:cANSI:qDRAFT
 	else
 		set guifont=Nimbus\ Mono\ L\ Bold\ 18
