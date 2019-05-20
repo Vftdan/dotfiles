@@ -58,6 +58,12 @@ function! s:newcol()
 	wincmd L
 endfunction
 command! Newcol call <SID>newcol()
+" Force syntax
+function! s:forceSyntax(lang)
+	unlet! b:current_syntax
+	execute "runtime syntax/" . a:lang . ".vim"
+endfunction
+command! -nargs=1 ForceSyntax call <SID>forceSyntax("<args>")
 " Duplicate line
 nnoremap <C-D> mzyyp`zj
 inoremap <C-D> <esc>mzyyp`zja
