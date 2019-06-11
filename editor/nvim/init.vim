@@ -152,3 +152,7 @@ vmap <A-;> <Nop>
 au BufNewFile,BufRead,Bufenter *.cs set ts=4 sw=4 et
 " Open help about selection in VimScript
 au BufNewFile,BufRead,Bufenter *.vim vmap <F1> y:help <C-R>"<CR>
+" Fix vulnerability
+if !has("patch-8.1.1365")
+	set nomodeline
+endif
