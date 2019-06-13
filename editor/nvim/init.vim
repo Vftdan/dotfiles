@@ -64,6 +64,8 @@ function! s:forceSyntax(lang)
 	execute "runtime syntax/" . a:lang . ".vim"
 endfunction
 command! -nargs=1 ForceSyntax call <SID>forceSyntax("<args>")
+" Snippets key
+let g:snippetsEmu_key = "<A-space>"
 " Duplicate line
 nnoremap <C-D> mzyyp`zj
 inoremap <C-D> <esc>mzyyp`zja
