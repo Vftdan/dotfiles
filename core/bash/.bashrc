@@ -118,6 +118,7 @@ fi
 
 #User-defined
 shopt -s expand_aliases
+set -o vi
 alias upgrade="apt install --only-upgrade"
 alias edrc='nvim ~/.bashrc'
 alias rerc=". ~/.bashrc"
@@ -128,7 +129,7 @@ alias __copy="xclip -selection c"
 alias __paste="xclip -selection c -o"
 lnc() {
 	[[ `which $1` == '' ]] && echo "No such executable" && return
-	$@ 2> /dev/null & disown
+	$@ 2> /dev/null & disown %%
 }
 lth() {
 	ls -t $@ | head
