@@ -1,0 +1,46 @@
+xkb_keymap {
+	xkb_keycodes  { include "evdev+aliases(qwerty)"	};
+	xkb_types     {
+		include "complete"
+		type "PC_ALT_LEVEL3" {
+			modifiers = Shift+Alt;
+			map[None] = Level1;
+			map[Shift] = Level2;
+			map[Alt] = Level3;
+			map[Shift+Alt] = Level4;
+			level_name[Level1] = "Base";
+			level_name[Level2] = "Shift";
+			level_name[Level3] = "Alt Base";
+			level_name[Level4] = "Shift Alt";
+		};
+		type "PC_SUPER_LEVEL3" {
+			modifiers = Shift+Mod4;
+			map[None] = Level1;
+			map[Shift] = Level2;
+			map[Mod4] = Level3;
+			map[Shift+Mod4] = Level4;
+			level_name[Level1] = "Base";
+			level_name[Level2] = "Shift";
+			level_name[Level3] = "Super Base";
+			level_name[Level4] = "Shift Super";
+		};
+	};
+	xkb_compat    { include "complete+ledscroll(group_lock)"	};
+	xkb_symbols "my" {
+		include "pc+us+ru:2+inet(evdev)"
+		key <AC02> {	[	  s,	S, ssharp, ssharp	]	};
+		key <AC06> {	[	  h,	H, Left, Left	]	};
+		key <AC07> {	[	  j,	J, Down, Down	]	};
+		key <AC08> {	[	  k,	K, Up, Up	]	};
+		key <AC09> {	[	  l,	L, Right, Right	]	};
+		key <CAPS> {
+			type="PC_ALT_LEVEL3",
+			symbols[Group1] = [ ISO_Level3_Latch, Caps_Lock, ISO_Next_Group, ISO_Prev_Group ]
+		};
+		key <MENU> {
+			type="PC_SUPER_LEVEL3",
+			symbols[Group1] = [ Menu, Menu, ISO_Next_Group, ISO_Prev_Group ]
+		};
+	};
+	xkb_geometry  { include "pc(pc105)"	};
+};
