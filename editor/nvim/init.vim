@@ -74,6 +74,9 @@ vnoremap <C-D> y`>p
 " Find selection
 vnoremap // y/\V<C-R>"<CR>
 vnoremap /<Right> y/\V<C-R>"
+" Same for very magic
+vnoremap /v/ y/\v<C-R>"<CR>
+vnoremap /v<Right> y/\v<C-R>"
 " Atomatic very magic
 nnoremap / /\v
 " Copy between Vim and X clipboards
