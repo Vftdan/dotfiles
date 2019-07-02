@@ -72,8 +72,10 @@ inoremap <C-D> <esc>mzyyp`zja
 " Duplicate selection
 vnoremap <C-D> y`>p
 " Find selection
-vnoremap // y/<C-R>"<CR>
-vnoremap /<Right> y/<C-R>"
+vnoremap // y/\V<C-R>"<CR>
+vnoremap /<Right> y/\V<C-R>"
+" Atomatic very magic
+nnoremap / /\v
 " Copy between Vim and X clipboards
 nnoremap <A-x>p :let @"=@+<CR>
 nnoremap <A-x>y :let @+=@"<CR>
