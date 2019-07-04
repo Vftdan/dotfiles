@@ -1,0 +1,5 @@
+#! /bin/bash
+xclip -o -selection clipboard -t TARGETS | grep image/png >> /dev/null || exit
+text=$(xclip -o -selection clipboard -t image/png | pngtopnm -alpha | gocr -i - | tr -d '\n')
+[ -z $text ] && notify-send "No text recognized" && exit
+echo $text | xclip -i -selection clipboard

@@ -1,0 +1,10 @@
+#! /usr/bin/env python3
+from os import system
+txt = list(input())
+l = len(txt)
+for i in range(l):
+    if txt[i] in '\\\'\"':
+        txt[i] = '\\' + txt[i]
+w = l * 13 + 20
+cmd = 'convert -size {0}x32 xc:transparent -font Noto-Sans-Regular -pointsize 24 -fill black -gravity center -draw "text 0,0 \'{1}\'" png:- | xclip -i -selection clipboard -t image/png'.format(w, ''.join(txt))
+system(cmd)

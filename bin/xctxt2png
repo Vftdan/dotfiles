@@ -1,0 +1,4 @@
+#! /bin/sh
+data=$(xclip -o -selection clipboard -t UTF8_STRING)
+echo $data | xintxt2png
+notify-send "Converted" "$data"
