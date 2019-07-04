@@ -3,22 +3,37 @@ binding=['<Super>g']
 command='gnome-terminal -x bash --rcfile ~/bin/git-preload'
 name='Git terminal'
 
+[custom-keybindings/custom5]
+binding=['<Shift><Super>question']
+command='toggleMicWithIcon.sh'
+name='Toggle mic'
+
 [custom-keybindings/custom1]
 binding=['<Super>apostrophe']
 command='gnome-terminal -x nvim'
 name='Neovim'
+
+[custom-keybindings/custom4]
+binding=['<Alt><Super>bracketleft']
+command='xrandr -o normal'
+name='Screen horizontal'
 
 [custom-keybindings/custom0]
 binding=['<Primary><Shift>Escape']
 command='gnome-system-monitor'
 name='System monitor'
 
+[custom-keybindings/custom3]
+binding=['<Alt><Super>bracketright']
+command='xrandr -o left'
+name='Screen vertical'
+
 [/]
 looking-glass-keybinding=['Help']
-custom-list=['custom0', 'custom1', 'custom2']
+custom-list=['custom0', 'custom1', 'custom2', 'custom3', 'custom4', 'custom5']
 
 [media-keys]
-next=['XF86AudioNext', '<Shift><Super>Right']
+next=['XF86AudioNext', '<Shift><Super>Down']
 screen-brightness-down=['XF86MonBrightnessDown', '<Primary><Alt>minus']
 play=['XF86AudioPlay', '<Shift><Super>KP_Enter']
 volume-up=['XF86AudioRaiseVolume', '<Shift><Super>KP_Add']
@@ -34,13 +49,14 @@ search=['XF86Search', '<Super>q']
 screensaver=['<Super>l', 'XF86ScreenSaver']
 pause=['XF86AudioPause', '<Shift><Super>KP_Delete']
 eject=['XF86Eject']
-previous=['XF86AudioPrev', '<Shift><Super>Left']
+previous=['XF86AudioPrev', '<Shift><Super>Up']
 volume-mute=['XF86AudioMute', '<Shift><Super>KP_Insert']
 
 [wm]
-maximize=['<Shift><Alt>F5']
+maximize=['<Alt>F5']
 toggle-fullscreen=['<Alt>F11']
 switch-to-workspace-right=['<Alt><Super>Right', '<Primary><Alt><Super>Tab']
+unmaximize=['<Shift><Alt>F5']
 toggle-maximized=['<Alt>F10', '<Super>Return']
 toggle-shaded=['<Alt>F12']
 toggle-above=['<Primary><Super>Return']
@@ -61,5 +77,5 @@ switch-to-workspace-8=@as []
 switch-to-workspace-5=['<Shift><Alt><Super>percent']
 switch-to-workspace-left=['<Alt><Super>Left', '<Primary><Shift><Alt><Super>Tab']
 switch-to-workspace-7=['<Shift><Alt><Super>ampersand']
-switch-to-workspace-down=['<Primary><Alt>Down']
+switch-to-workspace-down=['<Alt><Super>Down']
 minimize=['<Alt>F6']

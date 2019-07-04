@@ -9,6 +9,7 @@ show-open-in-terminal-toolbar=true
 tooltips-in-icon-view=false
 size-prefixes='base-2'
 context-menus-show-all-actions=true
+date-format='iso'
 show-hidden-files=true
 tooltips-in-list-view=false
 show-computer-icon-toolbar=true
@@ -30,7 +31,7 @@ labels-beside-icons=false
 [desktop]
 trash-icon-visible=false
 desktop-layout='true::true'
-font='Noto Sans 14'
+font='Noto Sans 18'
 
 [list-view]
 default-visible-columns=['name', 'size', 'type', 'date_modified', 'permissions']

@@ -57,7 +57,7 @@ cursor-size=28
 menus-have-tearoff=false
 first-day-of-week=1
 clock-use-24h=true
-font-name='Noto Sans 13'
+font-name='Noto Sans 16'
 cursor-theme='DMZ-White'
 menubar-accel='<Control>F10'
 clock-show-seconds=false
@@ -102,7 +102,7 @@ min-window-opacity=30
 mouse-button-modifier='<Super>'
 mouse-button-zoom-modifier='<Super><Alt>'
 theme='HighContrast'
-titlebar-font='Noto Sans Bold 14'
+titlebar-font='Noto Sans Bold 16'
 
 [desktop/a11y/applications]
 screen-keyboard-enabled=true
