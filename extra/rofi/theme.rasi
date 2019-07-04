@@ -1,0 +1,64 @@
+* {
+	var-top-bg:	rgba(56, 56, 56, 100%);
+	var-prompt-fg:	rgba(66, 255, 66, 1);
+	var-bg:	rgba(0, 43, 54, 0.9);
+	var-fg:	rgba(222, 222, 222, 1);
+	var-sel-bg:	rgba(66, 189, 0, 1);
+	var-sel-fg:	rgba(189, 255, 255, 1);
+	var-alt-bg:	rgba(0, 0, 66, 0.2);
+	var-border:	rgba(189, 189, 189, 1);
+	var-font:	"Noto Sans 16";
+	font:	@var-font;
+}
+window {
+	border:	2px;
+	border-color:	@var-border;
+}
+window, mainbox {
+	background-color:	transparent;
+	spacing:	0px;
+}
+entry, case-indicator, textbox {
+	background-color:	transparent;
+	text-color:@var-fg;
+}
+prompt {
+	background-color:	transparent;
+	text-color:	@var-prompt-fg;
+	margin:	0px 8px 0px 0px;
+}
+inputbar, message, sidebar {
+	background-color:	@var-top-bg;
+	padding:	6px 4px;
+}
+sidebar {
+	spacing:	4px;
+}
+button {
+	border-radius:	2px;
+}
+listview {
+	background-color:	@var-bg;
+	scrollbar:	true;
+	scrollbar-width:	4px;
+}
+scrollbar {
+	background-color:	@var-top-bg;
+	handle-color:	@var-border;
+}
+element normal.normal {
+	background-color:	transparent;
+	text-color:	@var-fg;
+}
+element {
+	padding:	2px 4px;
+	margin:	0px -2px 0px 0px;
+}
+element alternate.normal, button {
+	background-color:	@var-alt-bg;
+	text-color:	@var-fg;
+}
+element selected {
+	background-color:	@var-sel-bg;
+	text-color:	@var-sel-fg;
+}

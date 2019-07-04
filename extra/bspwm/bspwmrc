@@ -1,0 +1,45 @@
+#! /bin/sh
+
+export WINEPREFIX=$HOME/.wine32
+dunst &
+sxhkd &
+tint2 &
+compton --invert-color-include '_COMPTON_INVERT:8c > 0' &
+xscreensaver -no-splash &
+xfce4-power-manager &
+lxpolkit &
+feh --bg-scale /usr/share/backgrounds/linuxmint/bookwood_linuxmint.jpg
+xkbcomp $HOME/.config/xkb/my $DISPLAY
+xdotool key Num_Lock
+
+run_desktop=pcmanfm
+for i in ~/.config/autostart/*.desktop
+do
+	$run_desktop $i
+done
+
+# Fix swing applications
+which wmname >> /dev/null && wmname LG3D
+
+bspc monitor -d I II III IV V VI VII VIII
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config normal_border_color  \#424242
+bspc config focused_border_color \#42BD00
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config initial_polarity     second_child
+
+bspc config pointer_modifier     mod4
+bspc config pointer_action1      resize_side
+bspc config pointer_action2      move
+bspc config pointer_action3      resize_corner
+bspc config click_to_focus       button1
+bspc config swallow_first_click  true
+
+bspc rule -a Gnome-calculator state=floating
+bspc rule -a Onboard state=floating
