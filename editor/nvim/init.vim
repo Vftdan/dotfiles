@@ -12,6 +12,10 @@ if has("gui_running")
 		set guifont=Nimbus\ Mono\ L\ Bold\ 18
 	endif
 endif
+" Settings for diff mode
+if &diff
+	colorscheme desert
+endif
 " Scroll only one line for mouse wheel events to get smooth scrolling on touch screens
 set mouse=a
 map <ScrollWheelUp> <C-Y>
