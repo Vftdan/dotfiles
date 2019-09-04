@@ -33,6 +33,9 @@ inoremap <cr> <space><bs><cr>
 nnoremap <C-W>% :vsp<cr>
 nnoremap <C-W>" :sp<cr>
 nnoremap <C-W>z :res<cr>:vertical res<cr>
+" Tabs
+nnoremap <C-W><C-T> :tabnew<cr>
+nnoremap <C-W>gt :sp<cr><C-W>T
 nnoremap <C-W><Esc> <Esc>
 " Displaying space characters
 nnoremap <C-L>n :set listchars=tab:┊\ <cr>
