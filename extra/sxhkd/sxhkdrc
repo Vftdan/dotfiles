@@ -22,6 +22,9 @@ super + apostrophe
 super + {_, alt + }@space
 	SHLVL=0 rofi -show {drun,run}
 
+alt + F2
+	SHLVL=0 rofi -show run
+
 # program launcher (root)
 ctrl + super + {_, alt + }@space
 	SHLVL=0 tmux -c 'rofi -dmenu -p "password for $USER: " -password -lines 0 | sudo -S rofi -show {drun,run} & disown'
