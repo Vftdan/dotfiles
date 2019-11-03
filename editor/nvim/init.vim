@@ -15,6 +15,7 @@ endif
 " Settings for diff mode
 if &diff
 	colorscheme desert
+	set diffopt+=iwhiteeol
 endif
 " Scroll only one line for mouse wheel events to get smooth scrolling on touch screens
 set mouse=a
