@@ -1,6 +1,11 @@
 " For classic vim
 set encoding=utf-8
 set fileencoding=utf-8
+set number
+set autoindent
+set incsearch
+set laststatus=2
+set ruler
 " For gvim
 if has("gui_running")
 	colorscheme desert
