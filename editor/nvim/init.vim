@@ -123,6 +123,8 @@ if &t_Co == 8
 else
 	hi ColorColumn guibg=DarkGrey ctermbg=DarkGrey
 endif
+" Shortcut for make
+nmap <F10> :w \| make<CR>
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
 " Characters
