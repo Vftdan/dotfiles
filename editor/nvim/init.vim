@@ -171,6 +171,16 @@ vmap <A-;> <Nop>
 au BufNewFile,BufRead,Bufenter *.cs set ts=4 sw=4 et
 " Open help about selection in VimScript
 au BufNewFile,BufRead,Bufenter *.vim vmap <F1> y:help <C-R>"<CR>
+" (La)TeX shortcuts
+au BufNewFile,BufRead,Bufenter *.tex vnoremap <A-l>tt <esc>`>a}<esc>`<i\texttt{<esc>
+au BufNewFile,BufRead,Bufenter *.tex vnoremap <A-l>bf <esc>`>a}<esc>`<i\textbf{<esc>
+au BufNewFile,BufRead,Bufenter *.tex vnoremap <A-l>sl <esc>`>a}<esc>`<i\textsl{<esc>
+au BufNewFile,BufRead,Bufenter *.tex vnoremap <A-l>sc <esc>`>a}<esc>`<i\textsc{<esc>
+au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>#<space> \section{}<Left>
+au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>##<space> \subsection{}<Left>
+au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>###<space> \subsubsection{}<Left>
+au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>ul<space> \begin{enumerate}<CR>\end{enumerate}<esc>O
+au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>li<space> \item<space>
 " Fix vulnerability
 if !has("patch-8.1.1365")
 	set nomodeline
