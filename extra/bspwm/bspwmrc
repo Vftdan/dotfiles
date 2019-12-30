@@ -22,7 +22,7 @@ done
 # Fix swing applications
 which wmname >> /dev/null && wmname LG3D
 
-bspc monitor -d I II III IV V VI VII VIII
+bspc monitor -d "ctl(1)" "web(2)" "msg(3)" "mus(4)" "cal(5)" "gp1(6)" "gp2(7)" "emu(8)"
 
 bspc config border_width         2
 bspc config window_gap          12
