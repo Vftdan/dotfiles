@@ -126,7 +126,9 @@ alt + {F5,shift + F5,shift + F11,F11}
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 alt + F6
-	bspc node -t tiled; \
+	bspc node -t tiled \
+	|| [ $(bspc query -T -d | jq -r '.layout') = tiled ] \
+	&& bspc node -s older.local.!floating; \
 	bspc node older.local.!floating -f
 alt + shift + F6
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
