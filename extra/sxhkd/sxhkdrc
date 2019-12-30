@@ -221,6 +221,10 @@ super + ctrl + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+#change parent ratio
+super + alt + {equal,minus}
+	bspc node @parent -r {+,-}0.0588
+
 #swap size with brother
 super + z
 	bspc node @parent -R 180; \
