@@ -46,3 +46,5 @@ bspc config swallow_first_click  true
 
 bspc rule -a Gnome-calculator state=floating
 bspc rule -a Onboard state=floating
+# For media viewer overlay:
+bspc rule -a TelegramDesktop state=floating
