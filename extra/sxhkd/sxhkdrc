@@ -236,6 +236,10 @@ super + z
 	bspc node @brother -R 180; \
 	bspc node -R 180
 
+# rotate parent
+super {_,+ shift} + a
+	bspc node @parent -R {180,80}
+
 #
 # compton keys
 #
