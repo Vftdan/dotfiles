@@ -237,7 +237,7 @@ super + z
 	bspc node -R 180
 
 # rotate parent
-super {_,+ shift} + a
+super {_,+ shift} + f
 	bspc node @parent -R {180,90}
 
 #
