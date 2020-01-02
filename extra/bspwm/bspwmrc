@@ -8,6 +8,7 @@ compton --invert-color-include '_COMPTON_INVERT:8c > 0' &
 xscreensaver -no-splash &
 xscreensaver-dunst-fix.sh &
 bspwm-ignore-new-windows.sh &
+bspwm-sfml-fix.sh &
 xfce4-power-manager &
 lxpolkit &
 feh --bg-scale /usr/share/backgrounds/linuxmint/bookwood_linuxmint.jpg
