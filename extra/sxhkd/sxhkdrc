@@ -238,7 +238,7 @@ super + z
 
 # rotate parent
 super {_,+ shift} + a
-	bspc node @parent -R {180,80}
+	bspc node @parent -R {180,90}
 
 #
 # compton keys
