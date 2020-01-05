@@ -1,0 +1,23 @@
+<scheme name="DarculaSolarizedBg" version="142" parent_scheme="Darcula">
+  <metaInfo>
+    <property name="created">2019-12-09T21:34:53</property>
+    <property name="ide">idea</property>
+    <property name="ideVersion">2019.2.1.0.0</property>
+    <property name="modified">2019-12-09T21:47:26</property>
+    <property name="originalScheme">DarculaSolari</property>
+  </metaInfo>
+  <colors>
+    <option name="CARET_ROW_COLOR" value="364b51" />
+    <option name="CONSOLE_BACKGROUND_KEY" value="2b36" />
+    <option name="SELECTION_BACKGROUND" value="6c6c6c" />
+  </colors>
+  <attributes>
+    <option name="TEXT">
+      <value>
+        <option name="FOREGROUND" value="a9b7c6" />
+        <option name="BACKGROUND" value="2b36" />
+        <option name="EFFECT_TYPE" value="5" />
+      </value>
+    </option>
+  </attributes>
+</scheme>
