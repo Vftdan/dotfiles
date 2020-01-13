@@ -59,12 +59,15 @@ super + alt + l
 
 # audio
 super + shift + KP_{Add,Subtract}
-	s=$(amixer -D pulse get Master | grep "\(Mono\:\|Front Left\:\) Playback" | sed -e 's/^.*\[\(.*\)%\].*$/\1/'); \
+	values=$(amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*\)%\].*$/\1/'); \
+	s=$(echo "$values" | sort -rn | head -n 1); \
 	ns=$((s {+,-} 5)); \
-	(($ns > 200)) && ns=200; \
-	(($ns < 0)) && ns=0; \
-	pactl -- set-sink-volume @DEFAULT_SINK@ $ns%; \
-	(rofi -e $ns% -width 4 & (sleep .2; kill $!) &)
+	[ "$ns" -gt 120 ] && ns=120; \
+	[ "$ns" -lt 0 ] && ns=0; \
+	nvalues=$(for i in $values; do [ "$s" -gt 0 ] \
+		&& echo $(( $i * $ns / $s ))% || echo $ns%; done); \
+	pactl -- set-sink-volume @DEFAULT_SINK@ $nvalues; \
+	(rofi -e "$nvalues" -width 4 & (sleep .2; kill $!) &)
 
 # play/pause
 super + shift + KP_Enter
