@@ -24,15 +24,92 @@ xkb_keymap {
 			level_name[Level3] = "Super Base";
 			level_name[Level4] = "Shift Super";
 		};
+		type "PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC" {
+			modifiers = Shift+Lock+LevelThree+LevelFive+Control;
+			// From EIGHT_LEVEL_ALPHABETIC
+			map[None] = Level1;
+			map[Shift] = Level2;
+			map[Lock]  = Level2;
+			map[LevelThree] = Level3;
+			map[Shift+LevelThree] = Level4;
+			map[Lock+LevelThree] =  Level4;
+			map[Lock+Shift+LevelThree] = Level3;
+			// End
+
+			map[LevelThree+Control] = Level7;
+			map[Shift+LevelThree+Control] = Level8;
+			map[Lock+LevelThree+Control] = Level8;
+
+			// From EIGHT_LEVEL_ALPHABETIC
+			map[LevelFive] = Level5;
+			map[Shift+LevelFive] = Level6;
+			map[Lock+LevelFive]  = Level6;
+			map[LevelThree+LevelFive] = Level7;
+			map[Shift+LevelThree+LevelFive] = Level8;
+			map[Lock+LevelThree+LevelFive] =  Level8;
+			map[Lock+Shift+LevelThree+LevelFive] = Level7;
+
+			level_name[Level1] = "Base";
+			level_name[Level2] = "Shift";
+			level_name[Level3] = "Alt Base";
+			level_name[Level4] = "Shift Alt";
+			level_name[Level5] = "X";
+			level_name[Level6] = "X Shift";
+			// End
+			level_name[Level7] = "Ctrl+Alt Base";
+			level_name[Level8] = "Shift Ctrl+Alt";
+		};
 	};
 	xkb_compat    { include "complete+ledscroll(group_lock)"	};
 	xkb_symbols "my" {
 		include "pc+us+ru:2+inet(evdev)"
 		key <AC02> {	[	  s,	S, ssharp, ssharp	]	};
-		key <AC06> {	[	  h,	H, Left, Left	]	};
-		key <AC07> {	[	  j,	J, Down, Down	]	};
-		key <AC08> {	[	  k,	K, Up, Up	]	};
-		key <AC09> {	[	  l,	L, Right, Right	]	};
+		key <AC06> {	
+			type="PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC",
+			actions[Group1] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree),
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<BKSP>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<BKSP>, clearmodifiers=Control+LevelThree) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree),
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<BKSP>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<BKSP>, clearmodifiers=Control+LevelThree) ]
+		};
+		key <AC07> {	
+			type="PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC",
+			actions[Group1] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<DOWN>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<DOWN>, clearmodifiers=LevelThree),
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<RTRN>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<RTRN>, clearmodifiers=Control+LevelThree) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<DOWN>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<DOWN>, clearmodifiers=LevelThree),
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<RTRN>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<RTRN>, clearmodifiers=Control+LevelThree) ]
+		};
+		key <AC08> {	
+			actions[Group1] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<UP>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<UP>, clearmodifiers=LevelThree) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<UP>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<UP>, clearmodifiers=LevelThree) ]
+		};
+		key <AC09> {	
+			actions[Group1] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree) ]
+		};
 		key <CAPS> {
 			type="PC_ALT_LEVEL3",
 			symbols[Group1] = [ ISO_Level3_Latch, Caps_Lock, ISO_Next_Group, ISO_Prev_Group ]
