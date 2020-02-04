@@ -9,6 +9,7 @@ xscreensaver -no-splash &
 xscreensaver-dunst-fix.sh &
 bspwm-ignore-new-windows.sh &
 bspwm-sfml-fix.sh &
+bspwm-new-floating-above.sh &
 xfce4-power-manager &
 lxpolkit &
 feh --bg-scale /usr/share/backgrounds/linuxmint/bookwood_linuxmint.jpg
