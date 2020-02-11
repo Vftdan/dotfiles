@@ -107,6 +107,23 @@ xkb_keymap {
 			overlay1=<MBT1>
 		};
 
+		key <AD03> {
+			actions[Group1] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control),
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control),
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control) ]
+		};
+		key <AB05> {
+			actions[Group1] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control),
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control),
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control) ]
+		};
+
 		key <AC06> {	
 			type="PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC",
 			overlay1=<MLFT>,
