@@ -140,6 +140,29 @@ alt + F6
 alt + shift + F6
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
+# send to background
+super + F6
+	bspc node focused.local.!below.tiled -t fullscreen; \
+	bspc node focused.local.!below -l below; \
+	bspc node -f last.local.!below
+super + shift + F6
+	w=$(bspc query -N -n last.local.below); \
+	bspc node last.local.below.fullscreen -t tiled; \
+	bspc node last.local.below -l normal; \
+	bspc node -f "$w"
+
+# hide background windows
+super + F7
+	for i in $(bspc query -N -n .below.local); do \
+		bspc node "$i" -g hidden=on; \
+	done
+
+# show hidden windows
+super + shift + F7
+	for i in $(bspc query -N -n .hidden.local); do \
+		bspc node "$i" -g hidden=off; \
+	done
+
 #
 # focus/swap
 #
