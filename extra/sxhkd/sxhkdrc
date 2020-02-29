@@ -140,16 +140,25 @@ alt + F6
 alt + shift + F6
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# send to background
+# send to background & hide
 super + F6
-	bspc node focused.local.!below.tiled -t fullscreen; \
-	bspc node focused.local.!below -l below; \
-	bspc node -f last.local.!below
-super + shift + F6
-	w=$(bspc query -N -n last.local.below); \
-	bspc node last.local.below.fullscreen -t tiled; \
-	bspc node last.local.below -l normal; \
-	bspc node -f "$w"
+	w=$(bspc query -N -n focused.local.!below); \
+	if [ -n "$w" ]; then \
+		bspc node $w.tiled -t fullscreen; \
+		bspc node $w -l below; \
+		bspc node $w -g hidden=on; \
+	fi
+super + {_,ctrl + }shift + F6
+	w=$(bspc query -N -n .hidden.local.below | while read i; \ 
+		do echo $i $(xprop -id $i | fgrep NET_WM_NAME | \
+		sed 's/^[^=]* = //'); done | {head -n 1,rofi -dmenu}); \
+	if [ -n "$w" ]; then \
+		w=$(echo $w | cut -d ' ' -s -f 1); \
+		bspc node "$w" -g hidden=off; \
+		bspc node $w.fullscreen -t tiled; \
+		bspc node $w -l normal; \
+		bspc node -f $w; \
+	fi
 
 # hide background windows
 super + F7
