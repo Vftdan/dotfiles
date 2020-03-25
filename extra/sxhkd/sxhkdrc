@@ -109,6 +109,10 @@ alt + {_,shift + }F4
 super + Return
 	bspc desktop -l next
 
+# toggle focus following mouse
+super + ctrl + f
+	bspc config focus_follows_pointer {true,false}
+
 # send the current node to the preselected last node
 super + F10
 	bspc node -n last.!automatic.local
