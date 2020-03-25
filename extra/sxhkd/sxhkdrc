@@ -176,6 +176,11 @@ super + shift + F7
 		bspc node "$i" -g hidden=off; \
 	done
 
+# toggle above
+super + F5
+	bspc node focused.normal -l above || \
+	bspc node focused.above -l normal
+
 #
 # focus/swap
 #
