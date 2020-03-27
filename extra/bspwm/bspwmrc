@@ -14,6 +14,7 @@ bspwm-unminimize-event.sh &
 xfce4-power-manager &
 lxpolkit &
 feh --bg-scale /usr/share/backgrounds/linuxmint/bookwood_linuxmint.jpg
+setxkbmap -layout us,ru
 xkbcomp $HOME/.config/xkb/my $DISPLAY
 xdotool key Num_Lock
 
