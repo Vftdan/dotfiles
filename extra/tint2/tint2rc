@@ -236,8 +236,8 @@ execp_icon_h = 0
 #-------------------------------------
 # Executor 2
 execp = new
-execp_command = xkb-switch
-execp_interval = 2
+execp_command = xkb-switch; xkb-switch -w -p
+execp_interval = 1
 execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 1
