@@ -72,7 +72,7 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = PLTSC
+panel_items = PLTEESC
 panel_size = 100% 40
 panel_margin = 0 0
 panel_padding = 6 2 2
@@ -206,6 +206,54 @@ battery_uwheel_command =
 battery_dwheel_command = 
 ac_connected_cmd = 
 ac_disconnected_cmd = 
+
+#-------------------------------------
+# Executor 1
+execp = new
+execp_command = amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*%\)\].*$/\1/' | sort -rn | head -n 1
+execp_interval = 2
+execp_has_icon = 0
+execp_cache_icon = 1
+execp_continuous = 0
+execp_markup = 0
+execp_tooltip = Volume
+execp_lclick_command = 
+execp_rclick_command = 
+execp_mclick_command = 
+execp_uwheel_command = values=$(amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*\)%\].*$/\1/'); s=$(echo "$values" | sort -rn | head -n 1); ns=$((s + 5)); [ "$ns" -gt 150 ] && ns=150; [ "$ns" -lt 0 ] && ns=0; nvalues=$(for i in $values; do [ "$s" -gt 0 ] && echo $(( $i * $ns / $s ))% || echo $ns%; done); pactl -- set-sink-volume @DEFAULT_SINK@ $nvalues
+
+execp_dwheel_command = values=$(amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*\)%\].*$/\1/'); s=$(echo "$values" | sort -rn | head -n 1); ns=$((s - 5)); [ "$ns" -gt 150 ] && ns=150; [ "$ns" -lt 0 ] && ns=0; nvalues=$(for i in $values; do [ "$s" -gt 0 ] && echo $(( $i * $ns / $s ))% || echo $ns%; done); pactl -- set-sink-volume @DEFAULT_SINK@ $nvalues
+
+execp_font = Noto Sans Bold 16
+execp_font_color = #ffffff 100
+execp_padding = 4 2
+execp_background_id = 0
+execp_centered = 0
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 2
+execp = new
+execp_command = xkb-switch
+execp_interval = 2
+execp_has_icon = 0
+execp_cache_icon = 1
+execp_continuous = 1
+execp_markup = 0
+execp_tooltip = Language
+execp_lclick_command = xkb-switch -n
+execp_rclick_command = 
+execp_mclick_command = 
+execp_uwheel_command = xkb-switch -n
+execp_dwheel_command = xkb-switch -n
+execp_font = Noto Sans Bold 16
+execp_font_color = #ffffff 100
+execp_padding = 4 2
+execp_background_id = 0
+execp_centered = 0
+execp_icon_w = 0
+execp_icon_h = 0
 
 #-------------------------------------
 # Button 1
