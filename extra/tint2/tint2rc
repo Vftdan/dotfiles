@@ -132,6 +132,7 @@ task_tooltip = 1
 task_thumbnail = 0
 task_thumbnail_size = 230
 task_font_color = #ffffff 100
+task_iconified_font_color = #777777 100
 task_background_id = 2
 task_active_background_id = 3
 task_urgent_background_id = 4
