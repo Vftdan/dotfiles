@@ -219,7 +219,7 @@ execp_continuous = 0
 execp_markup = 0
 execp_tooltip = Volume
 execp_lclick_command = 
-execp_rclick_command = 
+execp_rclick_command = cinnamon-settings sound
 execp_mclick_command = 
 execp_uwheel_command = values=$(amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*\)%\].*$/\1/'); s=$(echo "$values" | sort -rn | head -n 1); ns=$((s + 5)); [ "$ns" -gt 150 ] && ns=150; [ "$ns" -lt 0 ] && ns=0; nvalues=$(for i in $values; do [ "$s" -gt 0 ] && echo $(( $i * $ns / $s ))% || echo $ns%; done); pactl -- set-sink-volume @DEFAULT_SINK@ $nvalues
 
