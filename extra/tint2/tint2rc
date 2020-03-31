@@ -211,7 +211,7 @@ ac_disconnected_cmd =
 #-------------------------------------
 # Executor 1
 execp = new
-execp_command = amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*%\)\].*$/\1/' | sort -rn | head -n 1
+execp_command = echo 🔉$(amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*%\)\].*$/\1/' | sort -rn | head -n 1)
 execp_interval = 2
 execp_has_icon = 0
 execp_cache_icon = 1
