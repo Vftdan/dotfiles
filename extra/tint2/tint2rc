@@ -72,7 +72,7 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = PLTEESC
+panel_items = PLTEEESC
 panel_size = 100% 40
 panel_margin = 0 0
 panel_padding = 6 2 2
@@ -211,6 +211,28 @@ ac_disconnected_cmd =
 #-------------------------------------
 # Executor 1
 execp = new
+execp_command = echo 🎤$(amixer -D pulse get Capture | gawk 'match($0, /(Front Left|Mono).*\[(.*)\]/, a) {print a[2]}')
+execp_interval = 2
+execp_has_icon = 0
+execp_cache_icon = 1
+execp_continuous = 0
+execp_markup = 1
+execp_lclick_command = toggleMicWithIcon.sh
+execp_rclick_command = 
+execp_mclick_command = 
+execp_uwheel_command = 
+execp_dwheel_command = 
+execp_font = Noto Sans Bold 16
+execp_font_color = #ffffff 100
+execp_padding = 0 0
+execp_background_id = -1
+execp_centered = 0
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 2
+execp = new
 execp_command = echo 🔉$(amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*%\)\].*$/\1/' | sort -rn | head -n 1)
 execp_interval = 2
 execp_has_icon = 0
@@ -234,7 +256,7 @@ execp_icon_w = 0
 execp_icon_h = 0
 
 #-------------------------------------
-# Executor 2
+# Executor 3
 execp = new
 execp_command = xkb-switch; xkb-switch -w -p
 execp_interval = 1
