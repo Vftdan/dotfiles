@@ -18,7 +18,7 @@ bspc subscribe node | egrep --line-buffered '^node_(manage|add|presel)' | while 
 		if [ \! \( \( $(( $(date +%s%N) - $last_presel_ns )) -lt 20000000 \) \
 			-a \( "$old" = "$last_presel" \) \) ]; then \
 			bspc node $new -s $old
-			[ -z "$(xdetectgrab -knd 1 1)" ] && bspc node $old -f
+			[ -z "$(xdetectgrab -knd 1 1)" ] && bspc node $old -a
 		fi
 	fi
 done
