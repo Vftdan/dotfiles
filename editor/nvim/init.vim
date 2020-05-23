@@ -138,6 +138,9 @@ endif
 nmap <F10> :w \| make<CR>
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
+" Execute macro
+nmap <A-.> @q
+imap <A-.> <esc>@q
 " Characters
 dig ~= 8776
 dig jS 690
