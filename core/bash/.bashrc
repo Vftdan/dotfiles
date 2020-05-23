@@ -124,7 +124,10 @@ alias edrc='nvim ~/.bashrc'
 alias rerc=". ~/.bashrc"
 alias lla="ls -la"
 alias llt="ls -lt"
+(which exa > /dev/null) && alias lg="exa -lTa --git"
 alias jj='java -jar'
+alias gs='git status'
+alias ta='tmux attach'
 alias __copy="xclip -selection c"
 alias __paste="xclip -selection c -o"
 lnc() {
