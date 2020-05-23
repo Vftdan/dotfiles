@@ -160,6 +160,11 @@ ssh-add-key() {
 	popd >> /dev/null
 	ssh-add $key
 }
+__copyfile() {
+	for i in "$@"; do \
+		echo file://$(realpath "$i")
+	done | xclip -selection clipboard -i -t text/uri-list
+}
 _msys=' '
 if [[ ${#MSYSTEM} != 0 ]] ; then
 	_msys=' \[\e[35m\]$MSYSTEM\[\e[0m\] '
