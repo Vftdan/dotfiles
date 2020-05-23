@@ -199,6 +199,9 @@ au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>##<space> \subsection{}<Left>
 au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>###<space> \subsubsection{}<Left>
 au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>ul<space> \begin{enumerate}<CR>\end{enumerate}<esc>O
 au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>li<space> \item<space>
+
+map [n :cn<CR>
+map [N :cN<CR>
 " Fix vulnerability
 if !has("patch-8.1.1365")
 	set nomodeline
