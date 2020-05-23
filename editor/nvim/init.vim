@@ -200,6 +200,7 @@ au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>###<space> \subsubsection{}<L
 au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>ul<space> \begin{enumerate}<CR>\end{enumerate}<esc>O
 au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>li<space> \item<space>
 
+au BufNewFile,BufRead,Bufenter *.hs set ts=4 sw=4 et makeprg=stack\ build
 map [n :cn<CR>
 map [N :cN<CR>
 " Fix vulnerability
