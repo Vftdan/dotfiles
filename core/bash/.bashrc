@@ -165,6 +165,9 @@ __copyfile() {
 		echo file://$(realpath "$i")
 	done | xclip -selection clipboard -i -t text/uri-list
 }
+Man() {
+	nvim "man://man" "++Man $*"
+}
 _msys=' '
 if [[ ${#MSYSTEM} != 0 ]] ; then
 	_msys=' \[\e[35m\]$MSYSTEM\[\e[0m\] '
