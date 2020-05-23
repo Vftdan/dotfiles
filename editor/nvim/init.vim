@@ -6,6 +6,8 @@ set autoindent
 set incsearch
 set laststatus=2
 set ruler
+" Force recompilation
+set makeprg=make\ -B
 " For gvim
 if has("gui_running")
 	colorscheme desert
