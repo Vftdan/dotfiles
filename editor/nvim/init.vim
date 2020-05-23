@@ -117,6 +117,10 @@ nnoremap <A-'>/ :nohlsearch<CR>
 " Select line without <EOL>
 onoremap il :<C-U>normal! 0v$h<CR>
 vnoremap il 0o$h
+" Delete line without <EOL>
+nnoremap dD d:<C-U>normal! 0v$h<CR>
+" Delete till <EOL>
+nnoremap D d$
 " Natural language
 set keymap=russian-jcukenwin
 lmap \| /
