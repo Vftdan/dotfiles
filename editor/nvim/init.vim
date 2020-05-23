@@ -139,6 +139,10 @@ nmap <F10> :w \| make<CR>
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
 " Characters
+dig ~= 8776
+dig jS 690
+dig `: 776
+dig sH 643
 inoremap <C-K><space>  
 inoremap <C-K>+- ±
 inoremap <C-K>-+ ∓
