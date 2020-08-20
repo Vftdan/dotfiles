@@ -94,6 +94,8 @@ vnoremap /v/ y/\v<C-R>"<CR>
 vnoremap /v<Right> y/\v<C-R>"
 " Atomatic very magic
 nnoremap / /\v
+" Make line erasing undoable even during current insert
+inoremap <C-U> <C-G>u<C-U>
 " Copy between Vim and X clipboards
 nnoremap <A-x>p :let @"=@+<CR>
 nnoremap <A-x>y :let @+=@"<CR>
