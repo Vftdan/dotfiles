@@ -133,6 +133,8 @@ alias tn='tmux new -s'
 alias tna='tmux new -As'
 alias __copy="xclip -selection c"
 alias __paste="xclip -selection c -o"
+alias mv="mv -i"
+alias cp="cp -i"
 lnc() {
 	[[ `which $1` == '' ]] && echo "No such executable" && return
 	$@ 2> /dev/null & disown %%
