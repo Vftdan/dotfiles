@@ -127,6 +127,7 @@ alias llt="ls -lt"
 (which exa > /dev/null) && alias lg="exa -lTa --git"
 alias jj='java -jar'
 alias gs='git status'
+alias glg="git log --graph --decorate --oneline"
 alias ta='tmux attach'
 alias tn='tmux new -s'
 alias tna='tmux new -As'
