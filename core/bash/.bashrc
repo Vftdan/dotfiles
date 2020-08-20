@@ -137,7 +137,7 @@ alias mv="mv -i"
 alias cp="cp -i"
 lnc() {
 	[[ `which $1` == '' ]] && echo "No such executable" && return
-	$@ 2> /dev/null & disown %%
+	$@ 2> /dev/null & disown $!
 }
 lth() {
 	ls -t $@ | head
