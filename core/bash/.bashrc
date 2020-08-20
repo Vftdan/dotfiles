@@ -128,6 +128,8 @@ alias llt="ls -lt"
 alias jj='java -jar'
 alias gs='git status'
 alias ta='tmux attach'
+alias tn='tmux new -s'
+alias tna='tmux new -As'
 alias __copy="xclip -selection c"
 alias __paste="xclip -selection c -o"
 lnc() {
