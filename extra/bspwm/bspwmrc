@@ -17,6 +17,7 @@ feh --bg-scale /usr/share/backgrounds/linuxmint/bookwood_linuxmint.jpg
 setxkbmap -layout us,ru
 xkbcomp $HOME/.config/xkb/my $DISPLAY
 xdotool key Num_Lock
+xsetroot -cursor_name left_ptr
 
 run_desktop=pcmanfm
 for i in ~/.config/autostart/*.desktop
