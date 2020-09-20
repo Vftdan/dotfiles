@@ -168,6 +168,7 @@ lmap \| /
 lmap <A-\> \|
 set iminsert=0
 set imsearch=0
+set spelllang=en,ru
 " Color column
 set colorcolumn=81
 if &t_Co == 8
@@ -181,6 +182,7 @@ map <S-F10> <F22>
 nmap <silent> <F22> :w \| wincmd z \| noswapfile bo new \| set previewwindow \| term make run<CR>
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
+set commentstring=//%s
 " Execute macro
 nmap <A-.> @q
 imap <A-.> <esc>@q
