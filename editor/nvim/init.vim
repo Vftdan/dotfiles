@@ -24,6 +24,32 @@ if &diff
 	colorscheme desert
 	set diffopt+=iwhiteeol
 endif
+
+" Plug
+" Run only if installed
+runtime autoload/plug.vim
+if g:loaded_plug
+	call plug#begin()
+		Plug 'idris-hackers/idris-vim', { 'for': 'idris' } 
+		Plug 'tpope/vim-fugitive'
+		Plug 'tpope/vim-commentary'
+		Plug 'tpope/vim-surround'
+		Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+		Plug 'vim-scripts/synmark.vim'
+		Plug 'vim-scripts/browser.vim'
+		Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh' }
+		Plug 'roxma/nvim-yarp'
+		Plug 'ncm2/ncm2'
+		Plug 'ionide/Ionide-vim', { 'for': 'fsharp', 'do': 'make' }
+		Plug 'easymotion/vim-easymotion'
+		Plug 'mattn/calendar-vim', { 'for': 'org' }
+		Plug 'jceb/vim-orgmode', { 'for': 'org' }
+		Plug 'suliveevil/utl.vim'
+		Plug 'Vftdan/vim-translator'
+	call plug#end()
+endif
+" END
+
 " Scroll only one line for mouse wheel events to get smooth scrolling on touch screens
 set mouse=a
 map <ScrollWheelUp> <C-Y>
