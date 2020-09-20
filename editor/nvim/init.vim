@@ -177,6 +177,8 @@ else
 endif
 " Shortcut for make
 nmap <F10> :w \| make<CR>
+map <S-F10> <F22>
+nmap <silent> <F22> :w \| wincmd z \| noswapfile bo new \| set previewwindow \| term make run<CR>
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
 " Execute macro
