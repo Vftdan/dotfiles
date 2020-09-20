@@ -74,6 +74,9 @@ set title
 set list
 set listchars=tab:┊\ 
 set timeoutlen=2500
+if !empty(globpath(&rtp, 'autoload/fugitive.vim'))
+	set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+endif
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
 " Window splitting
@@ -120,6 +123,25 @@ endfunction
 command! -nargs=1 ForceSyntax call <SID>forceSyntax("<args>")
 " Snippets key
 let g:snippetsEmu_key = "<A-space>"
+" Translator
+if !empty(globpath(&rtp, 'autoload/translator.vim'))
+	let g:translator_target_lang = "ru"
+	let g:translator_history_enable = v:true
+	let g:translator_window_type = "preview"
+	nnoremap <A-t> <C-w>z:TranslateW<CR>
+	vnoremap <A-t> <Esc><C-w>z:'<,'>TranslateW<CR>
+endif
+" Surround
+if !empty(globpath(&rtp, 'plugin/surround.vim'))
+	nmap <A-u> viwS_
+endif
+" EasyMotion
+if !empty(globpath(&rtp, 'autoload/EasyMotion.vim'))
+	let g:EasyMotion_use_upper = 1
+	let g:EasyMotion_keys = 'ASDFGHJKL;ZXCVBNQWERTYUIOP'
+	map '; <Plug>(easymotion-prefix)
+	map ';; <Plug>(easymotion-next)
+endif
 " Duplicate line
 nnoremap <C-D> mzyyp`zj
 inoremap <C-D> <esc>mzyyp`zja
@@ -184,6 +206,13 @@ map <S-F10> <F22>
 nmap <silent> <F22> :w \| wincmd z \| noswapfile bo new \| set previewwindow \| term make run<CR>
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
+" Commentary
+if !empty(globpath(&rtp, 'plugin/commentary.vim'))
+	xmap <C-_>  <Plug>Commentary
+	nmap <C-_>  <Plug>Commentary
+	omap <C-_>  <Plug>Commentary
+	nmap <C-_>u <Plug>Commentary<Plug>Commentary
+endif
 set commentstring=//%s
 " Execute macro
 nmap <A-.> @q
