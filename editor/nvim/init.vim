@@ -33,6 +33,10 @@ endif
 runtime autoload/plug.vim
 if g:loaded_plug
 	call plug#begin()
+		if !has('nvim')
+			Plug 'roxma/vim-hug-neovim-rpc'
+		endif
+
 		Plug 'idris-hackers/idris-vim', { 'for': 'idris' } 
 		Plug 'tpope/vim-fugitive'
 		Plug 'tpope/vim-commentary'
