@@ -48,6 +48,9 @@ if g:loaded_plug
 		Plug 'jceb/vim-orgmode', { 'for': 'org' }
 		Plug 'suliveevil/utl.vim'
 		Plug 'Vftdan/vim-translator'
+
+		" For doc
+		Plug 'junegunn/vim-plug'
 	call plug#end()
 endif
 " END
