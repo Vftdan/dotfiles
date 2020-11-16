@@ -72,6 +72,23 @@ if g:loaded_plug
 		Plug 'junegunn/fzf.vim'
 		let g:fzf_layout = { 'window': 'tabnew' }
 
+		Plug 'Shougo/denite.nvim'
+		Plug 'Vftdan/denite-command-args'
+		Plug 'neoclide/denite-git'
+		Plug 'Shougo/neoyank.vim'
+		Plug 'delphinus/vim-denite-window'
+		Plug 'w1mvy/vim-denite-tab'
+		Plug 'iamcco/file-manager.vim'
+		Plug 'N0nki/denite-markdown'
+		Plug 'deresmos/denite-gitdiff'
+		Plug 'eikendev/denite-man'
+		Plug 'iamcco/gitignore.vim'
+		Plug 'hsawaji/denite-ctags'
+		Plug 'Vftdan/denite-fzf'
+		Plug 'igrep/denite-mapping'
+		Plug 'Dridus/denite-hoogle.nvim'
+		Plug 'iamcco/fzf-source.vim'
+
 		" For doc
 		Plug 'junegunn/vim-plug'
 	call plug#end()
@@ -257,6 +274,50 @@ endif
 " Easy Align
 if !empty(globpath(&rtp, 'autoload/easy_align.vim'))
 	xmap g=a <Plug>(EasyAlign)
+endif
+" Denite
+if !empty(globpath(&rtp, 'autoload/denite.vim'))
+	nnoremap <A-x><A-x> :Denite source<cr>
+	cmap <A-x> <Plug>(denite-command-args to-denite)
+	autocmd FileType denite nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+	autocmd FileType denite nnoremap <silent><buffer><expr> l denite#do_map('do_action', 'narrow')
+	autocmd FileType denite nnoremap <silent><buffer><expr> e denite#do_map('do_action', 'edit')
+	autocmd FileType denite nnoremap <silent><buffer><expr> <Right> denite#do_map('do_action', 'narrow')
+	autocmd FileType denite nnoremap <silent><buffer><expr> <Tab> denite#do_map('toggle_select') . 'j'
+	autocmd FileType denite nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+	autocmd FileType denite nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+	autocmd FileType denite-filter imap <silent><buffer><expr> <C-l> denite#do_map('do_action', 'narrow')
+	autocmd FileType denite-filter imap <silent><buffer><expr> <C-right> denite#do_map('do_action', 'narrow')
+	autocmd FileType denite-filter imap <silent><buffer><expr> <C-e> denite#do_map('do_action', 'edit')
+	autocmd FileType denite-filter imap <silent><buffer> <C-c> <C-u><esc><Plug>(denite_filter_quit)
+	autocmd FileType denite-filter imap <silent><buffer><expr> <Tab> denite#do_map('toggle_select') . '<Down>'
+	autocmd FileType denite-filter nnoremap <silent><buffer> j :call denite#move_to_parent()<cr>:try<bar>+<bar>catch<bar>endtry<cr>:call denite#move_to_filter()<cr>
+	autocmd FileType denite-filter nnoremap <silent><buffer> k :call denite#move_to_parent()<cr>:try<bar>-<bar>catch<bar>endtry<cr>:call denite#move_to_filter()<cr>
+
+	autocmd FileType denite-filter nmap <silent><buffer> <Down> j
+	autocmd FileType denite-filter nmap <silent><buffer> <Up>   k
+	autocmd FileType denite-filter imap <silent><buffer> <Down> <Esc>jgi
+	autocmd FileType denite-filter imap <silent><buffer> <Up>   <Esc>kgi
+	autocmd FileType denite-filter imap <silent><buffer> <ScrollWheelDown> <Esc>jgi
+	autocmd FileType denite-filter imap <silent><buffer> <ScrollWheelUp>   <Esc>kgi
+	autocmd FileType denite-filter imap <silent><buffer><nowait> <C-j> <Esc>jgi
+	autocmd FileType denite-filter imap <silent><buffer><nowait> <C-k> <Esc>kgi
+	call denite#custom#option('_', {
+	      \ 'start_filter': 1,
+	      \ 'match_highlight': 1,
+	      \ 'smartcase': 1,
+	      \ 'auto_resize': 1,
+	      \ })
+	call denite#custom#source('_', 'matchers', ['matcher/fzf'])
+	call denite#custom#source('_', 'sorters', ['sorter/fzf'])
+	if system('which rg') != ''
+		call denite#custom#var('grep', 'command', ['rg'])
+		call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep', '--no-heading'])
+		call denite#custom#var('grep', 'recursive_opts', [])
+		call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+		call denite#custom#var('grep', 'separator', ['--'])
+		call denite#custom#var('grep', 'final_opts', [])
+	endif
 endif
 " Make line erasing undoable even during current insert
 inoremap <C-U> <C-G>u<C-U>
