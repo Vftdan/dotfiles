@@ -66,6 +66,7 @@ if g:loaded_plug
 		Plug 'saaguero/vim-textobj-pastedtext'
 		Plug 'machakann/vim-textobj-delimited'
 		Plug 'mattn/vim-textobj-url'
+		Plug 'junegunn/vim-easy-align'
 		Plug 'kana/vim-submode'
 
 		" For doc
@@ -245,6 +246,10 @@ vnoremap /v/ y/\v<C-R>"<CR>
 vnoremap /v<Right> y/\v<C-R>"
 " Atomatic very magic
 nnoremap / /\v
+" Easy Align
+if !empty(globpath(&rtp, 'autoload/easy_align.vim'))
+	xmap g=a <Plug>(EasyAlign)
+endif
 " Make line erasing undoable even during current insert
 inoremap <C-U> <C-G>u<C-U>
 " Copy between Vim and X clipboards
