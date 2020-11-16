@@ -77,6 +77,25 @@ set timeoutlen=2500
 if !empty(globpath(&rtp, 'autoload/fugitive.vim'))
 	set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 endif
+" Command mode aliases
+function! SetupCommandAlias(from, to)
+	exec 'cnoreabbrev <expr> ' . a:from
+	\ . ' ((getcmdtype() is# ":" && getcmdline() is# "' . a:from . '")'
+	\ . '? ("' . a:to . '") : ("' . a:from . '"))'
+endfunction
+command! -nargs=* Calias call SetupCommandAlias([<f-args>][0], join([<f-args>][1:]))
+Calias calias Calias
+Calias nvim visual
+Calias W! w!
+Calias Q! q!
+Calias Qall! qall!
+Calias Wq wq
+Calias Wa wa
+Calias wQ wq
+Calias WQ wq
+Calias W w
+Calias Q q
+Calias Qall qall
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
 " Window splitting
