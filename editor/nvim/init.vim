@@ -280,6 +280,6 @@ au BufNewFile,BufRead,Bufenter *.hs set ts=4 sw=4 et makeprg=stack\ build
 map [n :cn<CR>
 map [N :cN<CR>
 " Fix vulnerability
-if !has("patch-8.1.1365")
+if !has("patch-8.1.1365") && !has("patch8.1.1365")
 	set nomodeline
 endif
