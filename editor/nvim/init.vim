@@ -111,10 +111,12 @@ nnoremap <C-L>n :set listchars=tab:┊\ <cr>
 nnoremap <C-L>s :set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>
 nnoremap <C-L>h :set listchars=<cr>
 " Duplicate for input mode
-inoremap <C-L>n <esc>:set listchars=tab:┊\ <cr>a
-inoremap <C-L>s <esc>:set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>a
-inoremap <C-L>h <esc>:set listchars=<cr>a
-inoremap <C-L><C-L> <C-L>
+imap <expr> <C-L> pumvisible() ? '<C-L>' : '<Plug>(ctrl-l-prefix)'
+inoremap <Plug>(ctrl-l-prefix) <C-L>
+inoremap <Plug>(ctrl-l-prefix)n <esc>:set listchars=tab:┊\ <cr>a
+inoremap <Plug>(ctrl-l-prefix)s <esc>:set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>a
+inoremap <Plug>(ctrl-l-prefix)h <esc>:set listchars=<cr>a
+inoremap <Plug>(ctrl-l-prefix)<C-L> <C-L>
 " Toggle mouse
 function! s:togMouse()
 	if &mouse == "a"
@@ -124,7 +126,7 @@ function! s:togMouse()
 	endif
 endfunction
 command! TogMouse call <SID>togMouse()
-inoremap <C-L>m <esc>:TogMouse<cr>a
+inoremap <Plug>(ctrl-l-prefix)m <esc>:TogMouse<cr>a
 nnoremap <C-L>m :TogMouse<cr>
 " Word count
 command! Wc w !wc
