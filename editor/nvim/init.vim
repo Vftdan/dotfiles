@@ -39,7 +39,6 @@ if g:loaded_plug
 		Plug 'tpope/vim-surround'
 		Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 		Plug 'vim-scripts/synmark.vim'
-		Plug 'vim-scripts/browser.vim'
 		Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh' }
 		Plug 'roxma/nvim-yarp'
 		Plug 'ncm2/ncm2'
