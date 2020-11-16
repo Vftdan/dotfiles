@@ -72,9 +72,21 @@ if g:loaded_plug
 		Plug 'mattn/vim-textobj-url'
 		Plug 'junegunn/vim-easy-align'
 		Plug 'kana/vim-submode'
+		Plug 'dyng/ctrlsf.vim'
+		Plug 'rgrinberg/vim-operator-gsearch'
+		Plug 'mg979/vim-visual-multi'
+		Plug 'mbbill/undotree'
+		let g:undotree_DiffpanelHeight = min([10, &lines / 2 - 2])
+		let g:undotree_SplitWidth = min([30, float2nr(round(0.27 * &columns))])
+		Plug 'tomtom/quickfixsigns_vim'
 		Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 		Plug 'junegunn/fzf.vim'
 		let g:fzf_layout = { 'window': 'tabnew' }
+		Plug 'junegunn/gv.vim'
+		Plug 'airblade/vim-gitgutter'
+		Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+		Plug 'Xuyuanp/nerdtree-git-plugin'
+		Plug 'neoclide/vim-easygit'
 
 		Plug 'Shougo/denite.nvim'
 		Plug 'Vftdan/denite-command-args'
