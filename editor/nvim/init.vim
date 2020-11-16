@@ -66,6 +66,7 @@ if g:loaded_plug
 		Plug 'saaguero/vim-textobj-pastedtext'
 		Plug 'machakann/vim-textobj-delimited'
 		Plug 'mattn/vim-textobj-url'
+		Plug 'kana/vim-submode'
 
 		" For doc
 		Plug 'junegunn/vim-plug'
@@ -128,6 +129,38 @@ nmap     <C-W>GD :wincmd z \| sp \| set previewwindow<cr>gd
 nnoremap <C-W><C-T> :tabnew<cr>
 nnoremap <C-W>gt :sp<cr><C-W>T
 nnoremap <C-W><Esc> <Esc>
+" Submode
+if !empty(globpath(&rtp, 'autoload/submode.vim'))
+	call submode#enter_with('WINDOW', 'n', '', '<C-w>+', '<C-w>+')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w>-', '<C-w>-')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w><lt>', '<C-w><lt>')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w>>', '<C-w>>')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w>h', '<C-w>h')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w>j', '<C-w>j')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w>k', '<C-w>k')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w>l', '<C-w>l')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w><left>', '<C-w>h')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w><down>', '<C-w>j')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w><up>', '<C-w>k')
+	call submode#enter_with('WINDOW', 'n', '', '<C-w><right>', '<C-w>l')
+	call submode#leave_with('WINDOW', 'n', '', '<Esc>')
+	call submode#map('WINDOW', 'n', '', '+', '<C-w>+')
+	call submode#map('WINDOW', 'n', '', '-', '<C-w>-')
+	call submode#map('WINDOW', 'n', '', '<lt>', '<C-w><lt>')
+	call submode#map('WINDOW', 'n', '', '>', '<C-w>>')
+	call submode#map('WINDOW', 'n', '', 'h', '<C-w>h')
+	call submode#map('WINDOW', 'n', '', 'j', '<C-w>j')
+	call submode#map('WINDOW', 'n', '', 'k', '<C-w>k')
+	call submode#map('WINDOW', 'n', '', 'l', '<C-w>l')
+	call submode#map('WINDOW', 'n', '', '<left>', '<C-w>h')
+	call submode#map('WINDOW', 'n', '', '<down>', '<C-w>j')
+	call submode#map('WINDOW', 'n', '', '<up>', '<C-w>k')
+	call submode#map('WINDOW', 'n', '', '<right>', '<C-w>l')
+	call submode#map('WINDOW', 'n', 'x', '<bar>', '<C-w><bar>')
+	call submode#map('WINDOW', 'n', 'x', '_', '<C-w>_')
+	call submode#map('WINDOW', 'n', 'x', 'z', '<C-w>_<C-w><bar>')
+	let g:submode_timeoutlen=10000
+endif
 " Displaying space characters
 nnoremap <C-L>n :set listchars=tab:┊\ <cr>
 nnoremap <C-L>s :set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>
