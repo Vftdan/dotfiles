@@ -146,6 +146,20 @@ endfunction
 command! -nargs=1 ForceSyntax call <SID>forceSyntax("<args>")
 " Snippets key
 let g:snippetsEmu_key = "<A-space>"
+" Language client and ncm2
+set completeopt=menuone,noselect
+inoremap <expr> <C-N> pumvisible() ? "\<C-N>" : "\<C-N>\<C-N>"
+imap <expr> <C-space> pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
+if !empty(globpath(&rtp, 'autoload/LanguageClient.vim'))
+	let g:LanguageClient_serverCommands = {
+		\ 'c': ['clangd'],
+		\ 'cpp': ['clangd'],
+		\ 'python': ['pyls'],
+	\ }
+	nnoremap <expr> gd LanguageClient_isServerRunning() ? ':call LanguageClient_textDocument_definition()<CR>' : 'gd'
+	nnoremap <A-u>f :call LanguageClient_textDocument_references()<CR>
+	nnoremap <F2> :call LanguageClient_textDocument_rename()<CR>
+endif
 " Translator
 if !empty(globpath(&rtp, 'autoload/translator.vim'))
 	let g:translator_target_lang = "ru"
