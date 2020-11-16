@@ -136,6 +136,8 @@ alias __paste="xclip -selection c -o"
 alias mv="mv -i"
 alias cp="cp -i"
 alias md-read="nvim +'set notgc' +'term python3 -m rich.markdown -c % ; sleep infinity'"
+alias sag='eval $(ssh-agent)'
+alias sa="ssh-add"
 lnc() {
 	[[ `which $1` == '' ]] && echo "No such executable" && return
 	$@ 2> /dev/null & disown $!
