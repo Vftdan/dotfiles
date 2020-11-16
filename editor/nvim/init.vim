@@ -102,6 +102,8 @@ inoremap <cr> <space><bs><cr>
 nnoremap <C-W>% :vsp<cr>
 nnoremap <C-W>" :sp<cr>
 nnoremap <C-W>z :res<cr>:vertical res<cr>
+nmap     <C-W>gd :sp<cr>gd
+nmap     <C-W>GD :wincmd z \| sp \| set previewwindow<cr>gd
 " Tabs
 nnoremap <C-W><C-T> :tabnew<cr>
 nnoremap <C-W>gt :sp<cr><C-W>T
