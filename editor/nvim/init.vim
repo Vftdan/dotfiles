@@ -68,6 +68,9 @@ if g:loaded_plug
 		Plug 'mattn/vim-textobj-url'
 		Plug 'junegunn/vim-easy-align'
 		Plug 'kana/vim-submode'
+		Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+		Plug 'junegunn/fzf.vim'
+		let g:fzf_layout = { 'window': 'tabnew' }
 
 		" For doc
 		Plug 'junegunn/vim-plug'
@@ -246,6 +249,11 @@ vnoremap /v/ y/\v<C-R>"<CR>
 vnoremap /v<Right> y/\v<C-R>"
 " Atomatic very magic
 nnoremap / /\v
+" FZF
+if !empty(globpath(&rtp, 'autoload/fzf/vim.vim'))
+	nmap <silent> <A-/><A-/> :call ColoredBLines({'options': '+s -e'})<CR>
+	nmap <silent> <A-/><A-q> :call ColoredBLines({'options': '+s -e -m', 'after': {-> setqflist([{'bufnr': bufnr(), 'lnum': getcurpos()[1]}], 'a')}})<CR>
+endif
 " Easy Align
 if !empty(globpath(&rtp, 'autoload/easy_align.vim'))
 	xmap g=a <Plug>(EasyAlign)
