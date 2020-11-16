@@ -49,6 +49,8 @@ if g:loaded_plug
 		Plug 'suliveevil/utl.vim'
 		Plug 'Vftdan/vim-translator'
 
+		Plug 'https://gitlab.com/HiPhish/info.vim'
+
 		" For doc
 		Plug 'junegunn/vim-plug'
 	call plug#end()
