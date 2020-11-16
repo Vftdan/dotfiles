@@ -51,6 +51,22 @@ if g:loaded_plug
 
 		Plug 'https://gitlab.com/HiPhish/info.vim'
 
+		Plug 'kana/vim-textobj-user'
+		Plug 'kana/vim-operator-user'
+		Plug 'kana/vim-textobj-entire'
+		Plug 'coderifous/textobj-word-column.vim'
+		Plug 'Julian/vim-textobj-variable-segment'
+		Plug 'lucapette/vim-textobj-underscore'
+		Plug 'kana/vim-textobj-indent'
+		Plug 'sgur/vim-textobj-parameter'
+		Plug 'johntyree/vim-textobj-comment'
+		Plug 'kana/vim-textobj-fold'
+		Plug 'thinca/vim-textobj-between'
+		Plug 'gilligan/vim-textobj-haskell', { 'for': 'haskell' }
+		Plug 'saaguero/vim-textobj-pastedtext'
+		Plug 'machakann/vim-textobj-delimited'
+		Plug 'mattn/vim-textobj-url'
+
 		" For doc
 		Plug 'junegunn/vim-plug'
 	call plug#end()
@@ -255,6 +271,15 @@ if !empty(globpath(&rtp, 'plugin/commentary.vim'))
 	nmap <C-_>u <Plug>Commentary<Plug>Commentary
 endif
 set commentstring=//%s
+" Text objects
+if !empty(globpath(&rtp, 'autoload/textobj/comment.vim'))
+	let g:textobj_comment_no_default_key_mappings = 1
+	xmap a<C-_> <Plug>(textobj-comment-a)
+	omap a<C-_> <Plug>(textobj-comment-a)
+endif
+if !empty(globpath(&rtp, 'autoload/textobj/pastedtext.vim'))
+	let g:pastedtext_select_key = 'iP'
+endif
 " Execute macro
 nmap <A-.> @q
 imap <A-.> <esc>@q
