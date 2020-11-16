@@ -94,7 +94,7 @@ if g:loaded_plug
 		Plug 'Shougo/neoyank.vim'
 		Plug 'delphinus/vim-denite-window'
 		Plug 'w1mvy/vim-denite-tab'
-		Plug 'iamcco/file-manager.vim'
+		Plug 'iamcco/file-manager.vim', { 'do': 'sed -i s/file_rec/file.rec/ rplugin/python3/denite/source/file_manager.py' }
 		Plug 'N0nki/denite-markdown'
 		Plug 'deresmos/denite-gitdiff'
 		Plug 'eikendev/denite-man'
