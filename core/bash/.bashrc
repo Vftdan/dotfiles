@@ -142,6 +142,10 @@ alias ytdlapl='youtube-dl -f 140 -o "%(playlist_index)s. %(title)s.%(ext)s"'
 alias md-read="nvim +'set notgc' +'term python3 -m rich.markdown -c % ; sleep infinity'"
 alias sag='eval $(ssh-agent)'
 alias sa="ssh-add"
+_tna() {
+	[[ "$COMP_CWORD" -eq 1 ]] && COMPREPLY=($( compgen -W "$(tmux start\; list-sessions | cut -d: -f1)" -- "${COMP_WORDS[1]}" ))
+}
+complete -F _tna tna
 lnc() {
 	[[ `which $1` == '' ]] && echo "No such executable" && return
 	$@ 2> /dev/null & disown $!
