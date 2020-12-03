@@ -10,7 +10,6 @@ set ruler
 " set makeprg=make\ -B
 " For gvim
 if has("gui_running")
-	colorscheme desert
 	if has("win32")
 		lang en
 		set bo=all
@@ -22,6 +21,11 @@ endif
 " Enable 16M colors
 if $TERM =~ '-256color'
 	set tgc
+endif
+colorscheme vftdan_colors
+" Tmux doesn't show all 16Mi colors
+if $TERM =~ 'tmux'
+	hi Normal guibg=cleared
 endif
 " Settings for diff mode
 if &diff
@@ -111,16 +115,9 @@ if g:loaded_plug
 endif
 " END
 
-hi Comment ctermfg=4 guifg=#21bdde
 " Highlight current line
 set cursorline
-hi CursorLine cterm=NONE ctermbg=239 guibg=#364b51
 
-hi NonText guifg=#42bdff
-hi TabLine cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=Grey42
-hi Visual ctermbg=242 guibg=Grey42
-hi CursorColumn ctermbg=0 guibg=#1b3b43
-hi Constant ctermfg=13 guifg=#ff42bd
 " Scroll only one line for mouse wheel events to get smooth scrolling on touch screens
 set mouse=a
 map <ScrollWheelUp> <C-Y>
@@ -377,8 +374,6 @@ set spelllang=en,ru
 set colorcolumn=81
 if &t_Co == 8
 	hi ColorColumn guibg=Grey42 ctermbg=Cyan
-else
-	hi ColorColumn guibg=Grey42 ctermbg=DarkGrey
 endif
 " Shortcut for make
 nmap <F10> :w \| make<CR>
