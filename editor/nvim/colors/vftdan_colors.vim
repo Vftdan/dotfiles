@@ -12,6 +12,7 @@ hi Comment      ctermfg=4 guifg=#21bdde
 hi Identifier   cterm=bold ctermfg=14 guifg=#72dfcf
 hi Type         ctermfg=77 gui=bold guifg=#42de21
 hi Constant     ctermfg=13 guifg=#ff42bd
+hi String       ctermfg=211 guifg=#fa80aa
 hi Special      ctermfg=215 guifg=#ffa021
 hi Statement    ctermfg=11 gui=bold guifg=#ffff42
 hi PreProc      ctermfg=163 guifg=#de21bd
@@ -59,3 +60,5 @@ hi WarningMsg   cterm=bold gui=bold ctermfg=208 guifg=#ef8842
 hi MoreMsg      ctermfg=77 gui=bold guifg=#64ef68
 hi Question     ctermfg=83 gui=bold guifg=#53ff55
 hi ModeMsg      cterm=bold gui=bold ctermfg=15 guifg=#deffff
+
+hi Noise        ctermfg=109 guifg=#859794
