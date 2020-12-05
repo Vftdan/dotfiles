@@ -23,10 +23,6 @@ if $TERM =~ '-256color'
 	set tgc
 endif
 colorscheme vftdan_colors
-" Tmux doesn't show all 16Mi colors
-if $TERM =~ 'tmux'
-	hi Normal guibg=cleared
-endif
 " Settings for diff mode
 if &diff
 	set diffopt+=iwhiteeol
