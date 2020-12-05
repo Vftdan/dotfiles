@@ -6,6 +6,7 @@ set autoindent
 set incsearch
 set laststatus=2
 set ruler
+set switchbuf=useopen,usetab,vsplit
 " Force recompilation
 " set makeprg=make\ -B
 " For gvim
@@ -147,18 +148,39 @@ Calias WQ wq
 Calias W w
 Calias Q q
 Calias Qall qall
+Calias tsp tab sp
+Calias tsplit tab split
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
+" Buffers
+nnoremap g<C-I>   @=":setlocal bl <bar> bn\r"<cr>
+nnoremap g<C-O>   @=":setlocal bl <bar> bp\r"<cr>
+nnoremap g<S-TAB> @=":setlocal bl <bar> bp\r"<cr>
 " Window splitting
 nnoremap <C-W>% :vsp<cr>
 nnoremap <C-W>" :sp<cr>
 nnoremap <C-W>z :res<cr>:vertical res<cr>
-nmap     <C-W>gd :sp<cr>gd
-nmap     <C-W>GD :wincmd z \| sp \| set previewwindow<cr>gd
+nmap     <C-W>gd <cmd>sp<cr>gd
+nmap     <C-W>GD <cmd>wincmd z \| sp \| set previewwindow<cr>gd
+" Why doesn't it work without filenames by default?
+nnoremap <C-W>^ :sp <cr><C-^>
+nnoremap <C-W><C-^> :vsp <cr><C-^>
 " Tabs
 nnoremap <C-W><C-T> :tabnew<cr>
 nnoremap <C-W>gt :sp<cr><C-W>T
-nnoremap <C-W><Esc> <Esc>
+nnoremap <C-W>g<C-^> :tab sp <cr><C-^>
+nmap     <C-W><C-G><C-^> <C-W>g<C-^>
+nnoremap <C-W>m> @=":tabmove +\r"<cr>
+nnoremap <C-W>m< @=":tabmove -\r"<cr>
+nnoremap <C-W>m^ :tabmove 0<cr>
+nnoremap <C-W>m$ :tabmove $<cr>
+nnoremap <C-W>mm @=":tabmove " . v:count . "\r"<cr>
+nnoremap <C-W>g> gt
+nnoremap <C-W>g< gT
+nnoremap <C-W>g^ :tabrewind<cr>
+nnoremap <C-W>g$ :tablast<cr>
+nnoremap <C-W>gg @=":tabnext " . v:count1 . "\r"<cr>
+nnoremap <C-W><Esc> <Nop>
 " Submode
 if !empty(globpath(&rtp, 'autoload/submode.vim'))
 	call submode#enter_with('WINDOW', 'n', '', '<C-w>+', '<C-w>+')
@@ -287,6 +309,7 @@ endif
 " Denite
 if !empty(globpath(&rtp, 'autoload/denite.vim'))
 	nnoremap <A-x><A-x> :Denite source<cr>
+	nnoremap <A-x><C-^> :Denite buffer<cr>
 	cmap <A-x> <Plug>(denite-command-args to-denite)
 	autocmd FileType denite nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
 	autocmd FileType denite nnoremap <silent><buffer><expr> l denite#do_map('do_action', 'narrow')
