@@ -152,6 +152,16 @@ Calias tsp tab sp
 Calias tsplit tab split
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
+" Diff
+function! DiffFiles(file1, ...)
+	execute 'e ' . a:file1
+	diffthis
+	for l:f in a:000
+		execute 'vertical diffsplit ' . l:f
+		wincmd l
+	endfor
+endfunction
+command! -nargs=+ -complete=file TabDiff tabnew | call DiffFiles(<f-args>)
 " Buffers
 nnoremap g<C-I>   @=":setlocal bl <bar> bn\r"<cr>
 nnoremap g<C-O>   @=":setlocal bl <bar> bp\r"<cr>
