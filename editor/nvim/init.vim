@@ -112,6 +112,7 @@ if g:loaded_plug
 endif
 " END
 
+hi def link Quote Delimiter
 " Highlight current line
 set cursorline
 
