@@ -72,7 +72,7 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = PLTEEEESC
+panel_items = PLTEEEESEBC
 panel_size = 100% 40
 panel_margin = 0 0
 panel_padding = 6 2 2
@@ -192,11 +192,13 @@ clock_dwheel_command =
 # Battery
 battery_tooltip = 1
 battery_low_status = 10
-battery_low_cmd = notify-send "battery low"
+battery_low_cmd = 
 battery_full_cmd = 
+bat1_font = Noto Sans Bold 16
+bat2_font = Noto Sans 0
 battery_font_color = #ffffff 100
-bat1_format = 
-bat2_format = 
+bat1_format = %p
+bat2_format =  
 battery_padding = 1 0
 battery_background_id = 0
 battery_hide = 101
@@ -225,7 +227,7 @@ execp_dwheel_command =
 execp_font = Noto Sans Bold 16
 execp_font_color = #ffffff 100
 execp_padding = 0 0
-execp_background_id = -1
+execp_background_id = 0
 execp_centered = 0
 execp_icon_w = 0
 execp_icon_h = 0
@@ -301,6 +303,30 @@ execp_centered = 0
 execp_icon_w = 0
 execp_icon_h = 0
 
+#-------------------------------------
+# Executor 5
+execp = new
+execp_command = cat /sys/class/power_supply/BAT*/status | batstatus2emoji.sh | tr -d $'\n'; echo
+execp_interval = 1
+execp_has_icon = 0
+execp_cache_icon = 1
+execp_continuous = 1
+execp_markup = 0
+execp_tooltip = Battery status
+execp_lclick_command = 
+execp_rclick_command = 
+execp_mclick_command = 
+execp_uwheel_command = 
+execp_dwheel_command = 
+execp_font = Noto Sans Bold 16
+execp_font_color = #ffffff 100
+execp_padding = 4 2
+execp_background_id = 0
+execp_centered = 0
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
 # Button 1
 button = new
 button_text = ▼
