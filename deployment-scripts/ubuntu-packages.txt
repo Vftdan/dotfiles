@@ -1,0 +1,14 @@
+cinnamon
+neovim
+rofi
+xscreensaver
+feh
+sxiv
+dunst
+lxpolkit
+tint2
+suckless-tools
+qtchooser
+compton
+pcmanfm
+tmux
