@@ -12,3 +12,5 @@ qtchooser
 compton
 pcmanfm
 tmux
+xdotool
+jq
