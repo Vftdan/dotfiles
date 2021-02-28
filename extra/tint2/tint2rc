@@ -72,7 +72,7 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = PLTEEESC
+panel_items = PLTEEEESC
 panel_size = 100% 40
 panel_margin = 0 0
 panel_padding = 6 2 2
@@ -279,6 +279,28 @@ execp_icon_w = 0
 execp_icon_h = 0
 
 #-------------------------------------
+# Executor 4
+execp = new
+execp_command = { echo 'XkbStateNotify'; unbuffer xkbevd -cfg /dev/null; } | grep --line-buffered 'XkbStateNotify' | while read line; do if { numlockx status | fgrep -q on; }; then echo '🔢'; else echo '↔'; fi; done
+execp_interval = 1
+execp_has_icon = 0
+execp_cache_icon = 1
+execp_continuous = 1
+execp_markup = 0
+execp_tooltip = NumLock
+execp_lclick_command = numlockx toggle
+execp_rclick_command = 
+execp_mclick_command = 
+execp_uwheel_command = numlockx toggle
+execp_dwheel_command = numlockx toggle
+execp_font = Noto Sans Bold 16
+execp_font_color = #ffffff 100
+execp_padding = 4 2
+execp_background_id = 0
+execp_centered = 0
+execp_icon_w = 0
+execp_icon_h = 0
+
 # Button 1
 button = new
 button_text = ▼
