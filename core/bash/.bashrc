@@ -118,6 +118,7 @@ fi
 
 #User-defined
 shopt -s expand_aliases
+shopt -s progcomp_alias
 set -o vi
 alias upgrade="apt install --only-upgrade"
 alias edrc='nvim ~/.bashrc'
@@ -148,6 +149,21 @@ _tna() {
 	[[ "$COMP_CWORD" -eq 1 ]] && COMPREPLY=($( compgen -W "$(tmux start\; list-sessions | cut -d: -f1)" -- "${COMP_WORDS[1]}" ))
 }
 complete -F _tna tna
+_Man() {
+	__load_completion man
+	_man "$@"
+}
+complete -F _Man Man
+_upgrade() {
+	__load_completion apt
+	COMP_LINE="apt install --only-upgrade${COMP_LINE#upgrade}"
+	COMP_POINT=$((COMP_POINT + 19))
+	COMP_WORDS=(apt install --only-upgrade ${COMP_WORDS[-1]})
+	COMP_CWORD=3
+	_apt "$@"
+}
+complete -F _upgrade upgrade
+complete -c lnc
 lnc() {
 	[[ `which $1` == '' ]] && echo "No such executable" && return
 	"$@" 2> /dev/null & disown $!
