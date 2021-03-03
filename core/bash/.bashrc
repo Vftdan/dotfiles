@@ -150,13 +150,13 @@ _tna() {
 complete -F _tna tna
 lnc() {
 	[[ `which $1` == '' ]] && echo "No such executable" && return
-	$@ 2> /dev/null & disown $!
+	"$@" 2> /dev/null & disown $!
 }
 lth() {
-	ls -t $@ | head
+	ls -t "$@" | head
 }
 mkcd() {
-	mkdir $@ && cd $1
+	mkdir "$@" && cd "$1"
 }
 =sh() {
 	echo $(( $@ ))
@@ -166,7 +166,7 @@ mkcd() {
 }
 title() {
 	echo -n -e '\e]2;'
-	echo -n $@
+	echo -n "$@"
 	echo -n -e '\007'
 }
 ssh-add-key() {
