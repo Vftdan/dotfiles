@@ -130,6 +130,12 @@ xkb_keymap {
 		interpret Pointer_Right {
 			action = MovePtr(x=+8, y=+0);
 		};
+		interpret XF86ScrollDown {
+			action = PointerButton(button=5);
+		};
+		interpret XF86ScrollUp {
+			action = PointerButton(button=4);
+		};
 	};
 	xkb_symbols "my" {
 		include "pc+us+ru:2+inet(evdev)"
@@ -252,9 +258,9 @@ xkb_keymap {
 		key <MBT2> { [ Pointer_Button2, Pointer_Button2, Pointer_Drag2, Pointer_Drag2 ] };
 		key <MBT3> { [ Pointer_Button3, Pointer_Button3, Pointer_Drag3, Pointer_Drag3 ] };
 		key <MLFT> { [ Pointer_Left ] };
-		key <MDWN> { [ Pointer_Down ] };
-		key <MUP>  { [ Pointer_Up ] };
 		key <MRHT> { [ Pointer_Right ] };
+		key <MDWN> { [ Pointer_Down, Pointer_Down, XF86ScrollDown, XF86ScrollDown ] };
+		key <MUP>  { [ Pointer_Up, Pointer_Up, XF86ScrollUp, XF86ScrollUp ] };
 
 		key <CAPS> {
 			type="PC_ALT_LEVEL3",
