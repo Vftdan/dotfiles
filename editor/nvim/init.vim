@@ -124,6 +124,7 @@ if g:loaded_plug
 		Plug 'Dridus/denite-hoogle.nvim'
 		Plug 'iamcco/fzf-source.vim'
 
+		Plug 'flazz/vim-colorschemes'
 		Plug 'https://tildegit.org/sloum/gemini-vim-syntax'
 		Plug 'vftdan/vim-gemini-protocol'
 		Plug 'vftdan/vim-netfind'
