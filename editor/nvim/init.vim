@@ -57,6 +57,8 @@ if g:loaded_plug
 		Plug 'jceb/vim-orgmode', { 'for': 'org' }
 		Plug 'suliveevil/utl.vim'
 		Plug 'Vftdan/vim-translator'
+		Plug 'baskerville/vim-sxhkdrc'
+		Plug 'cespare/vim-toml'
 
 		Plug 'https://gitlab.com/HiPhish/info.vim'
 
