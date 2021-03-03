@@ -12,6 +12,7 @@ bspwm-ignore-new-windows.sh &
 bspwm-sfml-fix.sh &
 bspwm-new-floating-above.sh &
 bspwm-unminimize-event.sh &
+bspwm-tint2-compton-transparecy.sh 80 &
 xfce4-power-manager &
 lxpolkit &
 feh --bg-scale /usr/share/backgrounds/linuxmint/bookwood_linuxmint.jpg

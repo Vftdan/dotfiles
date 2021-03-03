@@ -19,3 +19,4 @@ numlockx
 expect
 x11-xkb-utils
 xsettingsd
+wmctrl
