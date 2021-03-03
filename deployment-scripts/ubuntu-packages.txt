@@ -18,6 +18,7 @@ jq
 numlockx
 expect
 x11-xkb-utils
+x11-utils
 xsettingsd
 network-manager-gnome
 wmctrl
