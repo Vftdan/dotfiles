@@ -458,7 +458,7 @@ if !empty(globpath(&rtp, 'autoload/translator.vim'))
 endif
 " Surround
 if !empty(globpath(&rtp, 'plugin/surround.vim'))
-	nmap <A-u> viwS_
+	nmap <A-u><A-u> viw<Plug>VSurround_
 endif
 " EasyMotion
 if !empty(globpath(&rtp, 'autoload/EasyMotion.vim'))
