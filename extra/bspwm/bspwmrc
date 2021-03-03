@@ -1,6 +1,7 @@
 #! /bin/sh
 
 export WINEPREFIX=$HOME/.wine32
+export XDG_CURRENT_DESKTOP='bspwm:X-Cinnamon:XFCE'
 dunst &
 sxhkd &
 tint2 &
