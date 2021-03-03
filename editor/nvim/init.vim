@@ -358,6 +358,48 @@ function! s:forceSyntax(lang)
 	execute "runtime syntax/" . a:lang . ".vim"
 endfunction
 command! -nargs=1 ForceSyntax call <SID>forceSyntax("<args>")
+" Markdown <url:https://github.com/mathdown/mathdown>
+let g:markdown_folding = v:true
+" TODO: mathup
+let g:markdown_fenced_languages = [
+			\ 'c',
+			\ 'sh',
+			\ 'function-plot=yaml',
+			\ 'math=tex',
+			\ 'dot',
+			\ 'lambda',
+			\ 'hs=haskell',
+			\ 'haskell',
+			\ 'xml',
+			\ 'csharp=cs',
+			\ 'cs',
+			\ 'yaml',
+			\ ]
+if !empty(globpath(&rtp, 'syntax/lambda.vim'))
+	call insert(g:markdown_fenced_languages, 'lambda')
+endif
+function! MarkdownMatchMore()
+	unlet b:current_syntax
+	syn include @Tex syntax/tex.vim
+	let b:current_syntax="markdown"
+	syn match markdownTableHbar "\v-+" contained
+	syn match markdownTableVbar "\v\|+" contained
+	syn match markdownTable "\v^\s*\|.*[^\s\|-].*\|\s*$" contains=markdownTableVbar
+	syn match markdownTableHline "\v^\s*\|[\s\|-]*-[\s\|-]*\|\s*$" contains=markdownTableVbar,markdownTableHbar
+	syn region markdownTexMath start=/\v\ze\$/ end=// contains=texMathZoneX,texMathZoneY transparent
+	syn cluster TOP add=texMathZoneX,texMathZoneY 
+	let l:concealends = has('conceal') ? ' concealends' : ''
+	exe 'syn region markdownStrike matchgroup=markdownStrikeDelimiter start="\S\@<=\~\~\|\~\~\S\@=" end="\S\@<=\~\~\|\~\~\S\@=" keepend contains=markdownLineStart' . l:concealends
+	syn region markdownPandocHeader matchgroup=markdownCodeDelimiter start=/\v%^---$/ end=/\v^---$/ contains=@markdownHighlightyaml
+
+	hi def link markdownTableHbar PreProc
+	hi def link markdownTableVbar PreProc 
+	hi def link markdownStrike htmlStrike
+endfunction
+aug MarkdownMatchMore
+	au!
+	au Syntax markdown call MarkdownMatchMore()
+aug END
 " Snippets key
 let g:snippetsEmu_key = "<A-space>"
 " Language client and ncm2
