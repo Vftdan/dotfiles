@@ -400,6 +400,18 @@ aug MarkdownMatchMore
 	au!
 	au Syntax markdown call MarkdownMatchMore()
 aug END
+" Utl
+function! GetSelectedText()
+	let l:preserve = @a
+	silent normal! gv"ay
+	let l:text = @a
+	let @a = l:preserve
+	return l:text
+endfunction
+if !empty(globpath(&rtp, 'plugin/utl.vim'))
+	nnoremap gl <cmd>Utl<cr>
+	xnoremap gl :<C-u>call Utl('openLink', GetSelectedText())<cr>
+endif 
 " Snippets key
 let g:snippetsEmu_key = "<A-space>"
 " Language client and ncm2
