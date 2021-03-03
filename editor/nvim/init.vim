@@ -195,18 +195,85 @@ command! -nargs=+ -complete=file TabDiff tabnew | call DiffFiles(<f-args>)
 nnoremap g<C-I>   @=":setlocal bl <bar> bn\r"<cr>
 nnoremap g<C-O>   @=":setlocal bl <bar> bp\r"<cr>
 nnoremap g<S-TAB> @=":setlocal bl <bar> bp\r"<cr>
+" Window (command) mode
+let g:wincmdmode_prefix_pattern = '\v^[1-9]?[0-9]*[gG\x17m]?$'
+let g:wincmdmode_split_number_pattern = '\v^[0-9]*\zs'
+let s:wincmdmode_running = v:false
+
+function! s:wincmdmode_wrapper(sid)
+	" This function exists in case if sommebody remaps <C-W> to <Plug>(wincmdmode-loop)
+	if s:wincmdmode_running
+		return "\<C-W>"
+	endif
+	return "\<cmd>call " . a:sid . "wincmdmode_loop()\<cr>"
+endfunction
+
+function! s:wincmdmode_loop()
+	let l:chord = ''
+	let s:wincmdmode_running = v:true
+	try
+		while s:wincmdmode_running
+			mode
+			echo '-- WINDOW --'
+			let l:key = getchar()
+			if type(l:key) == 0
+				let l:key = nr2char(l:key)
+			endif
+			let l:chord .= l:key
+			if match(l:chord, g:wincmdmode_prefix_pattern) > -1
+				continue
+			endif
+			call inputsave()
+			try
+				call feedkeys(substitute(l:chord, g:wincmdmode_split_number_pattern, "\<C-W>", ''), 'x')
+				redraw
+			finally
+				call inputrestore()
+				let l:chord = ''
+			endtry
+		endwhile
+	finally
+		let s:wincmdmode_running = v:false
+	endtry
+	mode
+	return ''
+endfunction
+
+function! s:wincmdmode_break_loop()
+	let s:wincmdmode_running = v:false
+	return ''
+endfunction
+
+nnoremap <expr> <Plug>(wincmdmode-loop) <SID>wincmdmode_wrapper('<SID>')
+nnoremap <expr> <Plug>(wincmdmode-break) <SID>wincmdmode_break_loop()
+nmap     g<C-W> <Plug>(wincmdmode-loop)
+nmap     <C-W><ESC> <Plug>(wincmdmode-break)
+nmap     <C-W><CR> <cmd>exe "wincmd \<lt>cr>"<cr><Plug>(wincmdmode-break)
+nmap     <C-W><LF> <Plug>(wincmdmode-break)
+nmap     <C-W><space> <Plug>(wincmdmode-break)
 " Window splitting
 nnoremap <C-W>% :vsp<cr>
 nnoremap <C-W>" :sp<cr>
-nnoremap <C-W>z :res<cr>:vertical res<cr>
+nmap     <C-W><bar> <cmd>wincmd <bar><cr><Plug>(wincmdmode-break)
+nmap     <C-W>_ <cmd>wincmd _<cr><Plug>(wincmdmode-break)
+nmap     <C-W>z <C-W><bar><C-W>_
 nmap     <C-W>gd <cmd>sp<cr>gd
 nmap     <C-W>GD <cmd>wincmd z \| sp \| set previewwindow<cr>gd
 " Why doesn't it work without filenames by default?
 nnoremap <C-W>^ :sp <cr><C-^>
 nnoremap <C-W><C-^> :vsp <cr><C-^>
+" Move window (it seems impossible to use it in mixed split directions)
+" Expr-ception
+nnoremap <C-W>mh @="@=winnr('h')\r\<lt>c-w>x\<lt>cmd>call win_gotoid(" . win_getid() . ")\r"<cr><cmd>mode<cr>
+nnoremap <C-W>mj @="@=winnr('j')\r\<lt>c-w>x\<lt>cmd>call win_gotoid(" . win_getid() . ")\r"<cr><cmd>mode<cr>
+nnoremap <C-W>mk @="@=winnr('k')\r\<lt>c-w>x\<lt>cmd>call win_gotoid(" . win_getid() . ")\r"<cr><cmd>mode<cr>
+nnoremap <C-W>ml @="@=winnr('l')\r\<lt>c-w>x\<lt>cmd>call win_gotoid(" . win_getid() . ")\r"<cr><cmd>mode<cr>
 " Tabs
 nnoremap <C-W><C-T> :tabnew<cr>
-nnoremap <C-W>gt :sp<cr><C-W>T
+" This should exist, but doesn't
+nnoremap <C-W>gt gt
+nnoremap <C-W>gT gT
+nnoremap <C-W>g<C-T> :tab split<cr>
 nnoremap <C-W>g<C-^> :tab sp <cr><C-^>
 nmap     <C-W><C-G><C-^> <C-W>g<C-^>
 nnoremap <C-W>m> @=":tabmove +\r"<cr>
@@ -219,38 +286,20 @@ nnoremap <C-W>g< gT
 nnoremap <C-W>g^ :tabrewind<cr>
 nnoremap <C-W>g$ :tablast<cr>
 nnoremap <C-W>gg @=":tabnext " . v:count1 . "\r"<cr>
-nnoremap <C-W><Esc> <Nop>
-" Submode
-if !empty(globpath(&rtp, 'autoload/submode.vim'))
-	call submode#enter_with('WINDOW', 'n', '', '<C-w>+', '<C-w>+')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w>-', '<C-w>-')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w><lt>', '<C-w><lt>')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w>>', '<C-w>>')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w>h', '<C-w>h')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w>j', '<C-w>j')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w>k', '<C-w>k')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w>l', '<C-w>l')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w><left>', '<C-w>h')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w><down>', '<C-w>j')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w><up>', '<C-w>k')
-	call submode#enter_with('WINDOW', 'n', '', '<C-w><right>', '<C-w>l')
-	call submode#leave_with('WINDOW', 'n', '', '<Esc>')
-	call submode#map('WINDOW', 'n', '', '+', '<C-w>+')
-	call submode#map('WINDOW', 'n', '', '-', '<C-w>-')
-	call submode#map('WINDOW', 'n', '', '<lt>', '<C-w><lt>')
-	call submode#map('WINDOW', 'n', '', '>', '<C-w>>')
-	call submode#map('WINDOW', 'n', '', 'h', '<C-w>h')
-	call submode#map('WINDOW', 'n', '', 'j', '<C-w>j')
-	call submode#map('WINDOW', 'n', '', 'k', '<C-w>k')
-	call submode#map('WINDOW', 'n', '', 'l', '<C-w>l')
-	call submode#map('WINDOW', 'n', '', '<left>', '<C-w>h')
-	call submode#map('WINDOW', 'n', '', '<down>', '<C-w>j')
-	call submode#map('WINDOW', 'n', '', '<up>', '<C-w>k')
-	call submode#map('WINDOW', 'n', '', '<right>', '<C-w>l')
-	call submode#map('WINDOW', 'n', 'x', '<bar>', '<C-w><bar>')
-	call submode#map('WINDOW', 'n', 'x', '_', '<C-w>_')
-	call submode#map('WINDOW', 'n', 'x', 'z', '<C-w>_<C-w><bar>')
-	let g:submode_timeoutlen=10000
+" Use <A-C-{i,o}> to switch tabs
+noremap  <A-Tab> <C-PageDown>
+noremap  <C-W><A-Tab> <C-PageDown>
+noremap! <A-Tab> <C-PageDown>
+noremap  <A-C-O> <C-PageUp>
+noremap  <C-W><A-C-O> <C-PageUp>
+noremap! <A-C-O> <C-PageUp>
+if has("gui_running")
+	noremap  <89> <C-PageDown>
+	noremap  <C-W><89> <C-PageDown>
+	noremap! <89> <C-PageDown>
+	noremap  <8f> <C-PageUp>
+	noremap  <C-W><8f> <C-PageUp>
+	noremap! <8f> <C-PageUp>
 endif
 " Displaying space characters
 nnoremap <C-L>n :set listchars=tab:┊\ <cr>
