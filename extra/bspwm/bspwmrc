@@ -58,8 +58,17 @@ bspc rule -a Gnome-calculator state=floating
 bspc rule -a Onboard state=floating
 bspc rule -a libreoffice state=tiled
 bspc rule -a Soffice state=tiled
+# For the floating window during video calls:
+bspc rule -a Skype state=floating
+bspc rule -a Skype -o state=tiled
 # For media viewer overlay:
-bspc rule -a TelegramDesktop state=floating
-bspc rule -a TelegramDesktop -o state=tiled
+# if Telegram versiom < 2.5.7
+# bspc rule -a TelegramDesktop state=floating
+# else
+bspc rule -a TelegramDesktop state=fullscreen layer=above
+# endif
+bspc rule -a TelegramDesktop -o state=tiled layer=normal
+bspc rule -a "Acme SAC" -o state=pseudo_tiled
 
 (while true; do [ "$(xkb-switch -l | wc -l)" -eq 1 ] && (setxkbmap -layout us,ru; xkbcomp $HOME/.config/xkb/my $DISPLAY); sleep 5; done) &
+(while true; do while { bspc rule --list | grep '^TelegramDesktop' | fgrep -q 'state=tiled' || (wmctrl -lx || echo 'Telegram.TelegramDesktop') | sed -e 's/ \+/\t/g' | cut -f 3 | grep -q '^Telegram.TelegramDesktop$'; }; do sleep 5; done; bspc rule -a TelegramDesktop -o state=tiled layer=normal; done) &
