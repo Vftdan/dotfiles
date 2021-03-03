@@ -4,5 +4,6 @@ bspwm:
 		cp ./$$i/* ${HOME}/.config/$$i/;\
 	done
 	cp xsettingsd/.xsettingsd ${HOME}/
+	cp xcompose/.XCompose ${HOME}/
 
 .PHONY: bspwm
