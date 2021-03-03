@@ -416,7 +416,9 @@ endif
 let g:snippetsEmu_key = "<A-space>"
 " Language client and ncm2
 set completeopt=menuone,noselect
+" I actually don't want noselect
 inoremap <expr> <C-N> pumvisible() ? "\<C-N>" : "\<C-N>\<C-N>"
+inoremap <expr> <C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-P>"
 imap <expr> <C-space> pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
 if !empty(globpath(&rtp, 'autoload/LanguageClient.vim'))
 	let g:LanguageClient_serverCommands = {
