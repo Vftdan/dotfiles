@@ -22,7 +22,7 @@ xkbcomp $HOME/.config/xkb/my $DISPLAY
 xdotool key Num_Lock
 xsetroot -cursor_name left_ptr
 
-run_desktop=pcmanfm
+run_desktop=$(which exo-open || echo pcmanfm)
 for i in ~/.config/autostart/*.desktop
 do
 	$run_desktop $i

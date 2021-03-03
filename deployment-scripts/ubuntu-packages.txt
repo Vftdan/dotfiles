@@ -21,3 +21,4 @@ x11-xkb-utils
 xsettingsd
 network-manager-gnome
 wmctrl
+exo-utils
