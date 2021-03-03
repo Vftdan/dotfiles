@@ -1,0 +1,18 @@
+Net/IconThemeName "Mint-Y"
+Net/ThemeName "Mint-Y-Dark-Custom"
+Net/CursorBlinkTime 1000
+Net/DoubleClickTime 400
+
+Xft/Antialias 1
+Xft/HintStyle "hintslight"
+Xft/Hinting 1
+Xft/RGBA "rgb"
+
+Gtk/ColorPalette "black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"
+Gtk/CursorThemeName "DMZ-White"
+Gtk/CursorThemeSize 32
+Gtk/FontName "Noto Sans 18"
+Gtk/MonospaceFontName "Noto Mono PS Bold 22"
+Gtk/MenuBarAccel "<Control>F10"
+
+Gdk/WindowScalingFactor 1

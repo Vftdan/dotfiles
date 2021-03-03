@@ -3,5 +3,6 @@ bspwm:
 		mkdir -p ${HOME}/.config/$$i;\
 		cp ./$$i/* ${HOME}/.config/$$i/;\
 	done
+	cp xsettingsd/.xsettingsd ${HOME}/
 
 .PHONY: bspwm
