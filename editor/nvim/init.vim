@@ -2,11 +2,15 @@
 set encoding=utf-8
 set fileencoding=utf-8
 set number
+set relativenumber
 set autoindent
 set incsearch
 set laststatus=2
 set ruler
 set switchbuf=useopen,usetab,vsplit
+set scrolloff=4
+set sidescrolloff=4
+set shiftwidth=0
 " Force recompilation
 " set makeprg=make\ -B
 " For gvim
