@@ -76,6 +76,9 @@ xkb_keymap {
 		};
 		type "PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC" {
 			modifiers = Shift+Lock+LevelThree+LevelFive+Control;
+			preserve[Control] = Control;
+			preserve[Shift+Control] = Control;
+			preserve[Lock+Shift+Control] = Control;
 			// From EIGHT_LEVEL_ALPHABETIC
 			map[None] = Level1;
 			map[Shift] = Level2;
@@ -86,6 +89,9 @@ xkb_keymap {
 			map[Lock+Shift+LevelThree] = Level3;
 			// End
 
+			map[Control] = Level1;
+			map[Shift+Control] = Level2;
+			map[Lock+Control] = Level2;
 			map[LevelThree+Control] = Level7;
 			map[Shift+LevelThree+Control] = Level8;
 			map[Lock+LevelThree+Control] = Level8;
