@@ -296,3 +296,5 @@ xkb_keymap {
 	};
 	xkb_geometry  { include "pc(pc105)"	};
 };
+
+// vim: ft=xkb
