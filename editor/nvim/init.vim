@@ -93,6 +93,18 @@ if g:loaded_plug
 		Plug 'Xuyuanp/nerdtree-git-plugin'
 		Plug 'neoclide/vim-easygit'
 
+		Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+		let g:Hexokinase_optInPatterns = [
+					\     'full_hex',
+					\     'triple_hex',
+					\     'rgb',
+					\     'rgba',
+					\     'hsl',
+					\     'hsla',
+					\     'colour_names'
+					\ ]
+		let g:Hexokinase_highlighters = [ 'background' ]
+
 		Plug 'Shougo/denite.nvim'
 		Plug 'Vftdan/denite-command-args'
 		Plug 'neoclide/denite-git'
