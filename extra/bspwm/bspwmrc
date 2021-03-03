@@ -7,8 +7,7 @@ sxhkd &
 tint2 &
 xsettingsd &
 compton --invert-color-include '_COMPTON_INVERT:8c > 0' &
-xscreensaver -no-splash &
-xscreensaver-dunst-fix.sh &
+xfce4-screensaver &
 bspwm-ignore-new-windows.sh &
 bspwm-sfml-fix.sh &
 bspwm-new-floating-above.sh &

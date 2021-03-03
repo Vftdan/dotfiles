@@ -2,6 +2,7 @@ cinnamon
 neovim
 rofi
 xscreensaver
+xfce4-screensaver
 feh
 sxiv
 dunst
