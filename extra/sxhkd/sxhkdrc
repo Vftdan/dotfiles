@@ -69,6 +69,11 @@ super + shift + KP_{Add,Subtract}
 	pactl -- set-sink-volume @DEFAULT_SINK@ $nvalues; \
 	(rofi -e "$nvalues" -width 4 & (sleep .2; kill $!) &)
 
+# select player to control
+super + shift + m
+	p=$(player.sh -l | rofi -dmenu); \
+	[ -n "$p" ] && player.sh -S "$p"
+
 # play/pause
 super + shift + KP_Enter
 	player.sh -c PlayPause
