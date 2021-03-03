@@ -119,6 +119,7 @@ fi
 #User-defined
 shopt -s expand_aliases
 shopt -s progcomp_alias
+shopt -s nullglob
 set -o vi
 alias upgrade="apt install --only-upgrade"
 alias edrc='nvim ~/.bashrc'
