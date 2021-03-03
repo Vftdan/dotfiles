@@ -127,7 +127,7 @@ if g:loaded_plug
 
 		Plug 'flazz/vim-colorschemes'
 		Plug 'https://tildegit.org/sloum/gemini-vim-syntax'
-		Plug 'vftdan/vim-gemini-protocol'
+		Plug 'vftdan/vim-gemini-protocol', { 'do': 'make' }
 		Plug 'vftdan/vim-netfind'
 
 		" For doc
