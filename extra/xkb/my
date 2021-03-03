@@ -34,6 +34,46 @@ xkb_keymap {
 			level_name[Level3] = "Super Base";
 			level_name[Level4] = "Shift Super";
 		};
+		type "PC_LEVEL3_ALT_CONTROL_16LEVELS" {
+			modifiers = Shift+LevelThree+Alt+Control;
+			map[None] = Level1;
+			map[Shift] = Level2;
+			map[LevelThree] = Level3;
+			map[Shift+LevelThree] = Level4;
+
+			map[Alt] = Level5;
+			map[Shift+Alt] = Level6;
+			map[LevelThree+Alt] = Level7;
+			map[Shift+LevelThree+Alt] = Level8;
+
+			map[Control] = 9;
+			map[Control+Shift] = 10;
+			map[Control+LevelThree] = 11;
+			map[Control+Shift+LevelThree] = 12;
+
+			map[Control+Alt] = 13;
+			map[Control+Shift+Alt] = 14;
+			map[Control+LevelThree+Alt] = 15;
+			map[Control+Shift+LevelThree+Alt] = 16;
+
+
+			level_name[Level1] = "Base";
+			level_name[Level2] = "Shift";
+			level_name[Level3] = "Level3 Base";
+			level_name[Level4] = "Shift Level3";
+			level_name[Level5] = "Alt";
+			level_name[Level6] = "Shift Alt";
+			level_name[Level7] = "Level3+Alt Base";
+			level_name[Level8] = "Shift Level3+Alt";
+			level_name[ 9] = "Control";
+			level_name[10] = "Shift Control";
+			level_name[11] = "Level3+Control Base";
+			level_name[12] = "Shift Level3+Control";
+			level_name[13] = "Alt+Control";
+			level_name[14] = "Shift Alt+Control";
+			level_name[15] = "Level3+Alt+Control Base";
+			level_name[16] = "Shift Level3+Alt+Control";
+		};
 		type "PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC" {
 			modifiers = Shift+Lock+LevelThree+LevelFive+Control;
 			// From EIGHT_LEVEL_ALPHABETIC
@@ -195,6 +235,12 @@ xkb_keymap {
 			actions[Group2] = [ NoAction(), NoAction(),
 			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree),
 			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree) ]
+		};
+
+		key <LSGT> {
+			type="PC_LEVEL3_ALT_CONTROL_16LEVELS",
+			symbols[Group1] = [ dead_diaeresis, dead_acute, dead_grave, dead_circumflex, dead_greek, dead_cedilla, dead_caron, dead_macron, dead_stroke, dead_tilde, dead_abovering, dead_doubleacute, dead_currency, dead_breve ],
+			symbols[Group2] = [ dead_diaeresis, dead_acute, dead_grave, dead_circumflex, dead_greek, dead_cedilla, dead_caron, dead_macron, dead_stroke, dead_tilde, dead_abovering, dead_doubleacute, dead_currency, dead_breve ]
 		};
 
 		key <AB07> {
