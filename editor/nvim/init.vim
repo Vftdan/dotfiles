@@ -325,6 +325,9 @@ inoremap <Plug>(ctrl-l-prefix)m <esc>:TogMouse<cr>a
 nnoremap <C-L>m :TogMouse<cr>
 " Word count
 command! Wc w !wc
+" ASCII art helpers
+command! -range AARev <line1>,<line2>!rev | tr '`./(qd<\[{'"'"',\\)pb>\]}' ''"'"',\\)pb>\]}`./(qd<\[{'
+command! -range AATac <line1>,<line2>!tac | tr '`'"'"'/^qpwWn\!,.\\vdbmMui' ',.\\vdbmMui`'"'"'/^qpwWn\!'
 " New column
 function! s:newcol()
 	new
