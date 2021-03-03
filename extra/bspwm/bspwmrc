@@ -52,6 +52,7 @@ bspc config pointer_action2      move
 bspc config pointer_action3      resize_corner
 bspc config click_to_focus       button1
 bspc config swallow_first_click  true
+bspc config ignore_ewmh_focus    true
 
 bspc rule -a Gnome-calculator state=floating
 bspc rule -a Onboard state=floating
