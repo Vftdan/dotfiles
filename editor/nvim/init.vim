@@ -122,7 +122,7 @@ if g:loaded_plug
 		Plug 'hsawaji/denite-ctags'
 		Plug 'Vftdan/denite-fzf'
 		Plug 'igrep/denite-mapping'
-		Plug 'Dridus/denite-hoogle.nvim'
+		Plug 'vftdan/denite-hoogle.nvim'
 		Plug 'iamcco/fzf-source.vim'
 
 		Plug 'flazz/vim-colorschemes'
