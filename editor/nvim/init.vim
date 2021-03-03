@@ -421,14 +421,32 @@ inoremap <expr> <C-N> pumvisible() ? "\<C-N>" : "\<C-N>\<C-N>"
 inoremap <expr> <C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-P>"
 imap <expr> <C-space> pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
 if !empty(globpath(&rtp, 'autoload/LanguageClient.vim'))
+	let g:LanguageClient_hoverPreview = 'Always'
 	let g:LanguageClient_serverCommands = {
 		\ 'c': ['clangd'],
 		\ 'cpp': ['clangd'],
 		\ 'python': ['pyls'],
+		\ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
 	\ }
+	if system('which rls') != ''
+		let g:LanguageClient_serverCommands['rust'] = ['rls']
+	endif
+	if system('which pyright-langserver') != ''
+		let g:LanguageClient_serverCommands['python'] = ['node', '--experimental-worker', split(system('which pyright-langserver'), '\n')[0], '--stdio']
+	endif
+	if system('which typescript-language-server') != ''
+		let g:LanguageClient_serverCommands['typescript'] = ['typescript-language-server', '--stdio']
+		let g:LanguageClient_serverCommands['javascript'] = ['typescript-language-server', '--stdio']
+		let g:LanguageClient_serverCommands['html'] = ['typescript-language-server', '--stdio']
+	endif
 	nnoremap <expr> gd LanguageClient_isServerRunning() ? ':call LanguageClient_textDocument_definition()<CR>' : 'gd'
 	nnoremap <A-u>f :call LanguageClient_textDocument_references()<CR>
 	nnoremap <F2> :call LanguageClient_textDocument_rename()<CR>
+	nmap gK <plug>(lcn-hover)
+	aug LCNfex
+		au!
+		au User LanguageClientTextDocumentDidOpenPost setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+	aug END
 endif
 " Translator
 if !empty(globpath(&rtp, 'autoload/translator.vim'))
