@@ -51,7 +51,7 @@ super + alt + {bracketright,bracketleft}
 
 # lock screen
 super + alt + l
-	which xscreensaver-command && xscreensaver-command -lock
+	which xfce4-screensaver-command && xfce4-screensaver-command -l
 
 #
 # volume
