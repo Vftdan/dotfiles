@@ -15,6 +15,7 @@ bspwm-unminimize-event.sh &
 bspwm-tint2-compton-transparecy.sh 80 &
 xfce4-power-manager &
 lxpolkit &
+nm-applet &
 feh --bg-scale /usr/share/backgrounds/linuxmint/bookwood_linuxmint.jpg
 setxkbmap -layout us,ru
 xkbcomp $HOME/.config/xkb/my $DISPLAY
