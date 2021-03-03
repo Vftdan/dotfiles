@@ -46,8 +46,8 @@ super + shift + x
 	xcpng2txt
 
 # rotate monitor
-super + alt + {bracketright,bracketleft}
-	xrandr -o {left,normal}
+super + alt + {bracketright,shift + bracketleft,bracketleft,shift + bracketright}
+	xrandr -o {left,inverted,normal,right}
 
 # lock screen
 super + alt + l
