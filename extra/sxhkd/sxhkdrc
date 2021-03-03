@@ -197,6 +197,12 @@ super + F5
 	bspc node focused.normal -l above || \
 	bspc node focused.above -l normal
 
+# revert above for this desktop
+super + shift + F5
+	for w in $(bspc query -N -n .above.local); do \
+		bspc node "$w" -l normal; \
+	done
+
 #
 # focus/swap
 #
@@ -248,6 +254,16 @@ super + {o,i}
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# choose window to focus
+super + F3
+	w=$(bspc query -N -n .local.window | while read i; \ 
+		do echo $i $(xprop -id $i | fgrep NET_WM_NAME | \
+		sed 's/^[^=]* = //'); done | rofi -dmenu); \
+	if [ -n "$w" ]; then \
+		w=$(echo $w | cut -d ' ' -s -f 1); \
+		bspc node -f $w; \
+	fi
 
 #
 # preselect
