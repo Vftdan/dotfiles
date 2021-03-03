@@ -139,6 +139,12 @@ xkb_keymap {
 	};
 	xkb_symbols "my" {
 		include "pc+us+ru:2+inet(evdev)"
+		// Many keymaps have endash and emdash in the other order.
+		// Is endash considered more commonly used? I only use it for ranges.
+		key <AE11> {
+			symbols[Group1] = [	minus,	underscore,	emdash,	endash	],
+			symbols[Group2] = [	minus,	underscore,	emdash,	endash	]
+		};
 		key <AC01> {
 			overlay1=<MACC>
 		};
