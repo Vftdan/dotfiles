@@ -121,6 +121,17 @@ shopt -s expand_aliases
 shopt -s progcomp_alias
 shopt -s nullglob
 set -o vi
+stty werase undef
+bind -m vi-insert -r '"\C-a"'
+bind -m vi-insert -r '"\C-b"'
+bind -m vi-insert -r '"\C-e"'
+bind -m vi-insert -r '"\C-w"'
+bind -m vi-insert -r '"\C-u"'
+bind -m vi-insert '"\C-a":beginning-of-line'
+bind -m vi-insert '"\C-b":beginning-of-line'
+bind -m vi-insert '"\C-e":end-of-line'
+bind -m vi-insert '"\C-w":backward-kill-word'
+bind -m vi-insert '"\C-u":backward-kill-line'
 alias upgrade="apt install --only-upgrade"
 alias edrc='nvim ~/.bashrc'
 alias rerc=". ~/.bashrc"
