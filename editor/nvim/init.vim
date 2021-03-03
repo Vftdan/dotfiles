@@ -177,6 +177,10 @@ Calias tsp tab sp
 Calias tsplit tab split
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
+" Home/End
+inoremap <C-G><C-A> <Home>
+inoremap <C-G><C-B> <Home>
+inoremap <C-G><C-E> <End>
 " Diff
 function! DiffFiles(file1, ...)
 	execute 'e ' . a:file1
