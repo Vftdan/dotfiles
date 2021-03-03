@@ -329,11 +329,29 @@ command! Wc w !wc
 command! -range AARev <line1>,<line2>!rev | tr '`./(qd<\[{'"'"',\\)pb>\]}' ''"'"',\\)pb>\]}`./(qd<\[{'
 command! -range AATac <line1>,<line2>!tac | tr '`'"'"'/^qpwWn\!,.\\vdbmMui' ',.\\vdbmMui`'"'"'/^qpwWn\!'
 " New column
-function! s:newcol()
-	new
-	wincmd L
+function! s:newcol(cmd)
+	if a:cmd == ''
+		vertical bo new
+	else
+		exe 'vertical bo ' . a:cmd
+	endif
 endfunction
-command! Newcol call <SID>newcol()
+command! -nargs=* Newcol call <SID>newcol(<q-args>)
+" Preview window
+function! s:preview(cmd)
+	try
+		aug PreviewWindow
+			au!
+			au WinNew * set previewwindow
+		aug END 
+		exe a:cmd
+	finally
+		aug PreviewWindow
+			au!
+		aug END
+	endtry
+endfunction
+command! -nargs=* -complete=command Preview call s:preview(<q-args>)
 " Force syntax
 function! s:forceSyntax(lang)
 	unlet! b:current_syntax
