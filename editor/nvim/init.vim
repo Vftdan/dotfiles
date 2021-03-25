@@ -549,7 +549,7 @@ nnoremap <A-x>y :let @+=@"<CR>
 " Replace
 nnoremap <A-r> :%s///g<Left><Left><Left>
 " Replace selection
-vnoremap <A-r> y<esc>:%s/<C-R>"//g<Left><Left>
+vnoremap <A-r> y<esc>:%s/\V<C-R>=escape(@", '/\')<CR>//g<Left><Left>
 " Remove tabulation
 inoremap <S-Tab> <C-D>
 " Make <S-Tab> work in Windows
