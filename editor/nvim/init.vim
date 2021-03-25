@@ -471,10 +471,11 @@ if !empty(globpath(&rtp, 'autoload/EasyMotion.vim'))
 	map ';; <Plug>(easymotion-next)
 endif
 " Duplicate line
-nnoremap <C-D> mzyyp`zj
-inoremap <C-D> <esc>mzyyp`zja
+" NOTE: repeatable with @@ , not with .
+nnoremap <C-D> @="m':t.\<lt>cr>\<lt>c-o>j"<cr>
+inoremap <C-D> <esc>m':t.<cr><c-o>ja
 " Duplicate selection
-vnoremap <C-D> y`>p
+vnoremap <C-D> yg`<Pg`>@={'V':'','v':(count(@","\n")?'':len(@").'l'),"\<lt>c-v>":len(split(@","\n")[-1]).'l'}[visualmode()]<cr>m`
 " Find selection
 vnoremap // y/\V<C-R>"<CR>
 vnoremap /<Right> y/\V<C-R>"
