@@ -1,9 +1,15 @@
-bspwm:
+bspwm: themes/Mint-Y-Dark-Custom
 	for i in bspwm xkb sxhkd rofi dunst tint2; do\
 		mkdir -p ${HOME}/.config/$$i;\
 		cp ./$$i/* ${HOME}/.config/$$i/;\
 	done
 	cp xsettingsd/.xsettingsd ${HOME}/
 	cp xcompose/.XCompose ${HOME}/
+
+${HOME}/.local/share/themes/Mint-Y-Dark-Custom:
+	mkdir -p ${HOME}/.local/share/themes/
+	cp -r themes/Mint-Y-Dark-Custom/. ${HOME}/.local/share/themes/Mint-Y-Dark-Custom/.
+	echo 'Run:' >&2
+	echo 'sudo ln -s "${HOME}/.local/share/themes/Mint-Y-Dark-Custom" /usr/share/themes/Mint-Y-Dark-Custom' >&2
 
 .PHONY: bspwm
