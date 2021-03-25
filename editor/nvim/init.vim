@@ -484,6 +484,7 @@ vnoremap /v/ y/\v<C-R>"<CR>
 vnoremap /v<Right> y/\v<C-R>"
 " Atomatic very magic
 nnoremap / /\v
+vnoremap /g /\v
 " FZF
 if !empty(globpath(&rtp, 'autoload/fzf/vim.vim'))
 	nmap <silent> <A-/><A-/> :call ColoredBLines({'options': '+s -e'})<CR>
