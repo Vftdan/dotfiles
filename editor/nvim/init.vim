@@ -11,6 +11,9 @@ set switchbuf=useopen,usetab,vsplit
 set scrolloff=4
 set sidescrolloff=4
 set shiftwidth=0
+set hlsearch
+" For urls
+set isfname+=:,;,?,&
 " Force recompilation
 " set makeprg=make\ -B
 " For gvim
