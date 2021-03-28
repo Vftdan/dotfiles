@@ -166,3 +166,24 @@
     :i "C-h"               #'backward-delete-char
     :i "TAB"               (cmd! (insert-tab 1))
 )
+
+(map! :map ein:notebook-mode-map
+    :n "<C-return>"        #'ein:worksheet-execute-cell
+    :i "<C-return>"        #'ein:worksheet-execute-cell
+    :n "<S-return>"        #'ein:worksheet-execute-cell-and-goto-next
+    :i "<S-return>"        #'ein:worksheet-execute-cell-and-goto-next
+    (:prefix "M-c"
+        "d"                #'ein:worksheet-kill-cell
+        "y"                #'ein:worksheet-copy-cell
+        "p"                #'ein:worksheet-yank-cell
+        "t"                #'ein:worksheet-change-cell-type
+        "a"                #'ein:worksheet-insert-cell-above
+        "b"                #'ein:worksheet-insert-cell-below
+        "k"                #'ein:worksheet-goto-prev-input
+        "j"                #'ein:worksheet-goto-next-input
+        (:prefix "e"
+             "a"           #'ein:worksheet-execute-all-cells-above
+             "b"           #'ein:worksheet-execute-all-cells-below
+        )
+    )
+)
