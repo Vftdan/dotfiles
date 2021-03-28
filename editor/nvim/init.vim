@@ -27,7 +27,7 @@ if has("gui_running")
 	endif
 endif
 " Enable 16M colors
-if $TERM =~ '-256color'
+if $TERM =~ '-256color' || $TERM =~ '-24bit'
 	set tgc
 endif
 colorscheme vftdan_colors

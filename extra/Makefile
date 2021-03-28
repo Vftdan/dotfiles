@@ -1,3 +1,5 @@
+all: bspwm terminfo
+
 bspwm: themes/Mint-Y-Dark-Custom
 	for i in bspwm xkb sxhkd rofi dunst tint2; do\
 		mkdir -p ${HOME}/.config/$$i;\
@@ -12,4 +14,9 @@ ${HOME}/.local/share/themes/Mint-Y-Dark-Custom:
 	echo 'Run:' >&2
 	echo 'sudo ln -s "${HOME}/.local/share/themes/Mint-Y-Dark-Custom" /usr/share/themes/Mint-Y-Dark-Custom' >&2
 
-.PHONY: bspwm
+terminfo: ${HOME}/.terminfo
+
+${HOME}/.terminfo: xterm-24bit.ti
+	tic -x -o "$@" "$<"
+
+.PHONY: bspwm terminfo all

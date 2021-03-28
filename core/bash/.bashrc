@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color|*-24bit) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -214,6 +214,11 @@ __copyfile() {
 Man() {
 	nvim "man://man" "++Man $*"
 }
+if [ "$TERM" = xterm-256color ]; then \
+	if ( toe -a | grep ^xterm-24bit -q; ); then \
+		export TERM=xterm-24bit
+	fi
+fi
 _msys=' '
 if [[ ${#MSYSTEM} != 0 ]] ; then
 	_msys=' \[\e[35m\]$MSYSTEM\[\e[0m\] '
