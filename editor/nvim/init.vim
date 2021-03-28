@@ -12,6 +12,8 @@ set scrolloff=4
 set sidescrolloff=4
 set shiftwidth=0
 set hlsearch
+set splitbelow
+set splitright
 " For urls
 set isfname+=:,;,?,&
 " Force recompilation
