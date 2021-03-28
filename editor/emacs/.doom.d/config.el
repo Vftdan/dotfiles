@@ -141,7 +141,7 @@
     :n "C-/"               #'comment-dwim
     :n "C-_"               #'comment-dwim
     :n "M-R"               #'+eval/buffer
-    :n "M-r"               #'+query-replace-regexp
+    :n "M-r"               #'query-replace-regexp
     :n "C-S-d"             #'evil-scroll-down
     :n "C-d"               #'duplicate-selected-normal
 )
