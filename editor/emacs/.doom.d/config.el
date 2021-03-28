@@ -160,4 +160,7 @@
     :i "<C-S-iso-lefttab>" #'+workspace:switch-previous
     :i "<backtab>"         #'evil-shift-left-line
     :i "C-d"               #'duplicate-selected-normal
+    :i "DEL"               #'backward-delete-char
+    :i "C-h"               #'backward-delete-char
+    :i "TAB"               (cmd! (insert-tab 1))
 )
