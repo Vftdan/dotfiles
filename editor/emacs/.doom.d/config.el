@@ -56,6 +56,7 @@
 (setq evil-vsplit-window-right t)
 (setq indent-tabs-mode t)
 (setq highlight-indent-guides-character 9482)
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 (defun split-and-lookup-definition (identifier &optional arg)
     (interactive (list (doom-thing-at-point-or-region) current-prefix-arg))
