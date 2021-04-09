@@ -672,8 +672,32 @@ au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>ul<space> \begin{enumerate}<C
 au BufNewFile,BufRead,Bufenter *.tex inoremap <A-l>li<space> \item<space>
 
 au BufNewFile,BufRead,Bufenter *.hs set ts=4 sw=4 et makeprg=stack\ build
-map [n :cn<CR>
-map [N :cN<CR>
+function! ExecuteNoSwitchbuf(cmd)
+	let l:swb = &switchbuf
+	try
+		set switchbuf=
+		execute a:cmd
+	finally
+		let &switchbuf = l:swb
+	endtry
+endfunction
+command! -nargs=* -complete=command ExecuteNoSwitchbuf call ExecuteNoSwitchbuf(<q-args>)
+Calias lgrep ExecuteNoSwitchbuf lgrep
+Calias lvimgrep ExecuteNoSwitchbuf lvimgrep
+function! TogListQL()
+	let w:list_is_location = !get(w:, 'list_is_location', v:false)
+	echo w:list_is_location ? 'Location' : 'QuickFix'
+endfunction
+command! -nargs=0 TogListQL call TogListQL()
+nnoremap <silent> [n :if get(w:, 'list_is_location', v:false) <bar> call ExecuteNoSwitchbuf('lnext') <bar> else <bar> cn <bar> endif<CR>
+nnoremap <silent> [N :if get(w:, 'list_is_location', v:false) <bar> call ExecuteNoSwitchbuf('lNext') <bar> else <bar> cN <bar> endif<CR>
+aug loclistnoswb
+	au!
+	au BufReadPost quickfix if getwininfo(win_getid())[0]['loclist']
+	au BufReadPost quickfix 	nnoremap <silent> <buffer> <CR> :call ExecuteNoSwitchbuf("normal! \<lt>cr>")<CR>
+	au BufReadPost quickfix 	nnoremap <silent> <buffer> <C-W><CR> :call ExecuteNoSwitchbuf("normal! \<lt>c-w>\<lt>cr>")<CR>
+	au BufReadPost quickfix endif
+aug END
 " Fix vulnerability
 if !has("patch-8.1.1365") && !has("patch8.1.1365")
 	set nomodeline
