@@ -165,6 +165,8 @@
     :i "DEL"               #'backward-delete-char
     :i "C-h"               #'backward-delete-char
     :i "TAB"               (cmd! (insert-tab 1))
+    :i "C-6"               #'toggle-input-method
+    :i "C-^"               #'toggle-input-method
 )
 
 (map! :map ein:notebook-mode-map
