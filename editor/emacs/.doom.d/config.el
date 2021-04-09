@@ -56,6 +56,10 @@
 (setq evil-vsplit-window-right t)
 (setq indent-tabs-mode t)
 (setq highlight-indent-guides-character 9482)
+(add-hook '+popup-mode-hook (cmd! (if +popup-mode (progn
+    (remove-hook 'doom-escape-hook #'+popup-close-on-escape-h)
+    (map! :map evil-window-map "C-z" (cmd! (+popup-close-on-escape-h)))
+))) 'append)
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 (defun split-and-lookup-definition (identifier &optional arg)
