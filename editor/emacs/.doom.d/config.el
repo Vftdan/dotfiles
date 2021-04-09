@@ -187,3 +187,9 @@
         )
     )
 )
+
+(map! :after evil-org :map evil-org-mode-map
+    :i "<backtab>"         #'org-metaleft
+    :i "C-d"               #'duplicate-selected-normal
+    :i "C-h"               #'backward-delete-char
+)
