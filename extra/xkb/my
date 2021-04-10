@@ -152,7 +152,18 @@ xkb_keymap {
 			symbols[Group2] = [	minus,	underscore,	emdash,	endash	]
 		};
 		key <AC01> {
-			overlay1=<MACC>
+			type="PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC",
+			overlay1=<MACC>,
+			actions[Group1] = [ NoAction(), NoAction(),
+			            NoAction(), NoAction(), 
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<HOME>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<HOME>, clearmodifiers=Control+LevelThree) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            NoAction(), NoAction(), 
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<HOME>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<HOME>, clearmodifiers=Control+LevelThree) ]
 		};
 		key <AC02> {
 			overlay1=<MBT2>,
@@ -162,7 +173,26 @@ xkb_keymap {
 			overlay1=<MBT3>
 		};
 		key <AC04> {
-			overlay1=<MBT1>
+			type="PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC",
+			overlay1=<MBT1>,
+			actions[Group1] = [ NoAction(), NoAction(),
+			            NoAction(), NoAction(), 
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<PGDN>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<PGDN>, clearmodifiers=Control+LevelThree) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            NoAction(), NoAction(), 
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<PGDN>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<PGDN>, clearmodifiers=Control+LevelThree) ]
+		};
+		key <AC05> {
+			actions[Group1] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<HOME>, clearmodifiers=LevelThree,       modifiers=Control),
+			            RedirectKey(keycode=<END>,  clearmodifiers=Shift+LevelThree, modifiers=Control) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<HOME>, clearmodifiers=LevelThree,       modifiers=Control),
+			            RedirectKey(keycode=<END>,  clearmodifiers=Shift+LevelThree, modifiers=Control) ]
 		};
 
 		key <AD02> {
@@ -181,20 +211,34 @@ xkb_keymap {
 			            RedirectKey(keycode=<BKSP>, clearmodifiers=LevelThree, modifiers=Control) ]
 		};
 		key <AD03> {
+			type="PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC",
 			actions[Group1] = [ NoAction(), NoAction(),
 			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control),
-			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control) ],
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control),
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<END>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<END>, clearmodifiers=Control+LevelThree) ],
 			actions[Group2] = [ NoAction(), NoAction(),
 			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control),
-			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control) ]
+			            RedirectKey(keycode=<RGHT>, clearmodifiers=LevelThree, modifiers=Control),
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<END>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<END>, clearmodifiers=Control+LevelThree) ]
 		};
 		key <AB05> {
+			type="PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC",
 			actions[Group1] = [ NoAction(), NoAction(),
 			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control),
-			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control) ],
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control),
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<PGUP>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<PGUP>, clearmodifiers=Control+LevelThree) ],
 			actions[Group2] = [ NoAction(), NoAction(),
 			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control),
-			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control) ]
+			            RedirectKey(keycode=<LEFT>, clearmodifiers=LevelThree, modifiers=Control),
+			            NoAction(), NoAction(), 
+			            RedirectKey(keycode=<PGUP>, clearmodifiers=Control+LevelThree),
+			            RedirectKey(keycode=<PGUP>, clearmodifiers=Control+LevelThree) ]
 		};
 
 		key <AC06> {	
