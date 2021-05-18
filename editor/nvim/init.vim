@@ -47,6 +47,7 @@ if g:loaded_plug
 			Plug 'roxma/vim-hug-neovim-rpc'
 		endif
 
+		Plug 'vftdan/vim-hexbuffer'
 		Plug 'vftdan/vim-source-buffer'
 		Plug 'idris-hackers/idris-vim', { 'for': 'idris' } 
 		Plug 'tpope/vim-fugitive'
