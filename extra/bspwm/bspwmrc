@@ -18,6 +18,7 @@ bspwm-sfml-fix.sh &
 bspwm-new-floating-above.sh &
 bspwm-unminimize-event.sh &
 bspwm-tint2-compton-transparecy.sh 80 &
+bspwm-focused-child-bigger.sh daemon &
 xfce4-power-manager &
 lxpolkit &
 nm-applet &

@@ -130,6 +130,10 @@ super + Return
 super + ctrl + f
 	bspc config focus_follows_pointer {true,false}
 
+# toggle making focused node bigger than its sibling
+super + ctrl + b
+	bspwm-focused-child-bigger.sh toggle
+
 # send the current node to the preselected last node
 super + F10
 	bspc node -n last.!automatic.local
