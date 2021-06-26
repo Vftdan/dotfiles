@@ -77,6 +77,10 @@ bspc subscribe node | egrep --line-buffered '^node_focus' | while read line; do 
 		continue
 	fi
 	node=$(echo $line | cut -d ' ' -s -f 4)
+	case "$(bspc query -T -n "$node" | jq -r '.client.state')" in
+		floating|fullscreen)
+			continue;;
+	esac
 	while [ -n "$node" ]; do \
 		par="$(getparent $node)"
 		[ -z "$par" ] && break
