@@ -25,6 +25,9 @@ hi CursorLine   cterm=NONE ctermbg=239 guibg=#364b51
 hi CursorColumn ctermbg=240 guibg=#1b3b43
 hi ColorColumn  ctermbg=DarkGrey guibg=#a58888
 hi Visual       ctermbg=242 guibg=#6c6c6c
+if !($TERM =~ '-256color|-24bit')
+    hi Visual   ctermbg=0 ctermfg=242 cterm=reverse
+endif
 
 hi MatchParen   cterm=bold gui=bold ctermbg=6 guibg=#217ca0
 hi TabLine      cterm=underline ctermfg=15 ctermbg=237 gui=underline guibg=#383838
