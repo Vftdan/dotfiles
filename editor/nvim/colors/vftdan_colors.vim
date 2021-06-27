@@ -65,3 +65,20 @@ hi Question     ctermfg=83 gui=bold guifg=#53ff55
 hi ModeMsg      cterm=bold gui=bold ctermfg=15 guifg=#deffff
 
 hi Noise        ctermfg=109 guifg=#859794
+
+let g:terminal_color_0  = '#000042'
+let g:terminal_color_1  = '#bd0000'
+let g:terminal_color_2  = '#42bd00'
+let g:terminal_color_3  = '#bdbd42'
+let g:terminal_color_4  = '#4272ff'
+let g:terminal_color_5  = '#bd00bd'
+let g:terminal_color_6  = '#00bdbd'
+let g:terminal_color_7  = '#bdbdbd'
+let g:terminal_color_8  = '#424242'
+let g:terminal_color_9  = '#ff4200'
+let g:terminal_color_10 = '#42ff42'
+let g:terminal_color_11 = '#ffff42'
+let g:terminal_color_12 = '#42bdff'
+let g:terminal_color_13 = '#ff42bd'
+let g:terminal_color_14 = '#72dfcf'
+let g:terminal_color_15 = '#bdffff'
