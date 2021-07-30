@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 showusage() {
 	cat <<END
@@ -53,7 +53,7 @@ case "$1" in
 esac
 
 getrelative() {
-	bspc query -N -n "$1#@$2" | tr -d $'\n'
+	bspc query -N -n "$1#@$2" | tr -d '\n'
 }
 
 getparent() {
