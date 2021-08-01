@@ -159,6 +159,7 @@
     :v "M-r"               #'search-replace-selected
     :v "C-S-d"             #'evil-scroll-down
     :v "C-d"               #'duplicate-selected-visual
+    :v "C-S-c"             #'clipboard-kill-ring-save
 )
 
 (map!
@@ -172,6 +173,7 @@
     :i "TAB"               (cmd! (insert-tab 1))
     :i "C-6"               #'toggle-input-method
     :i "C-^"               #'toggle-input-method
+    :i "C-S-v"             #'clipboard-yank
 )
 
 (map! :map ein:notebook-mode-map
