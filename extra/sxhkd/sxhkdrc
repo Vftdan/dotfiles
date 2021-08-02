@@ -45,6 +45,10 @@ super + x
 super + shift + x
 	xcpng2txt
 
+# translate
+super + Insert
+	python3 ~/.config/nvim/plugged/vim-translator/script/translator.py --engines google --target_lang ru --source_lang auto "$(xclip -o | tr $'\n' ' ')" | jq -r '.text, (.results[] | .paraphrase, .explain[])' | sed 's/.\\\{70\\\}/\0\n/g' | rofi -p 'Translation:' -dmenu
+
 # rotate monitor
 super + alt + {bracketright,shift + bracketleft,bracketleft,shift + bracketright}
 	xrandr -o {left,inverted,normal,right}
