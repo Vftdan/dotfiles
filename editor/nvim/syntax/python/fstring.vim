@@ -3,7 +3,7 @@ syn match pythonFStringUnmatchedBrace "\V}" contained
 syn match pythonFStringEscapeBrace "\V{{\|}}" contained
 syn region pythonFStringCode matchgroup=pythonFStringBrace start=/\v\{\ze[^\{]/ end="\V}" contained contains=TOP
 syn cluster pythonFStringContent contains=pythonFStringUnmatchedBrace,pythonFStringEscapeBrace,pythonFStringCode
-syn region pythonSet start="{" end="}"
+syn region pythonSet start="{" end="}" contains=TOP
 
 hi def link pythonFString	pythonString
 hi def link pythonFStringEscapeBrace	pythonEscape
