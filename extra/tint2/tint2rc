@@ -72,7 +72,7 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = PLTEEEESEBC
+panel_items = PLTEEEEESEBC
 panel_size = 100% 40
 panel_margin = 0 0
 panel_padding = 6 2 2
@@ -305,6 +305,29 @@ execp_icon_h = 0
 
 #-------------------------------------
 # Executor 5
+execp = new
+execp_command = curl 'wttr.in?format=%c%t'; echo
+execp_interval = 900
+execp_has_icon = 0
+execp_cache_icon = 1
+execp_continuous = 1
+execp_markup = 0
+execp_tooltip = Weather
+execp_lclick_command = 
+execp_rclick_command = 
+execp_mclick_command = 
+execp_uwheel_command = 
+execp_dwheel_command = 
+execp_font = Noto Sans Bold 16
+execp_font_color = #ffffff 100
+execp_padding = 4 2
+execp_background_id = 0
+execp_centered = 0
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 6
 execp = new
 execp_command = cat /sys/class/power_supply/BAT*/status | batstatus2emoji.sh | tr -d $'\n'; echo
 execp_interval = 1
