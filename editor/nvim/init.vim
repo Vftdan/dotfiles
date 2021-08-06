@@ -575,6 +575,20 @@ nnoremap yY y:<C-U>normal! 0v$h<CR>
 " Delete/yank till <EOL>
 nnoremap D d$
 nnoremap Y y$
+" Extract to variable
+vnoremap <expr> <Plug>(vftdan-extract) <sid>extract_var_sequence(v:register)
+vmap g<A-e> <Plug>(vftdan-extract)
+function! s:extract_var_sequence(reg)
+	let l:prefix = get(b:, 'lang_var_decl_prefix', '')
+	let l:postfix = get(b:, 'lang_statement_postfix', ';')
+	call inputsave()
+	let l:varname = input('Variable name: ')
+	call inputrestore()
+	return '"' . a:reg . 'c' . l:varname . "\<ESC>O" . l:prefix . l:varname
+			\ . " = \<C-R>\<C-R>" . a:reg . l:postfix
+			\ . "\<ESC>:let @" . a:reg . ' = "'
+			\ . escape(l:varname, '"\') . "\"\<CR>"
+endfunction
 " Natural language
 set keymap=russian-jcukenwin
 lmap \| /
