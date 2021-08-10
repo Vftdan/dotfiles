@@ -52,6 +52,15 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+(setq org-agenda-files '("~/org/todo.org" "~/org/schedules.org" "~/org/projects.org" "~/org/resources.org"))
+(setq org-default-notes-file "~/org/notes.org")
+(after! org
+    (setq org-todo-keywords
+        '((sequence "TODO(t)" "FGND(f!/!)" "PROJ(p)" "LOOP(r)" "ITER(i!)" "STRT(s/!)" "WAIT(w@/!)" "HOLD(h)" "IDEA(I)" "|" "DONE(d!)" "KILL(k@)" "HIDE(H)")
+          (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D!)")
+          (sequence "DECD(q)" "|" "OKAY(o)" "YES(y)" "NO(n)")))
+)
+
 (setq evil-split-window-below t)
 (setq evil-vsplit-window-right t)
 (setq indent-tabs-mode t)
