@@ -307,6 +307,9 @@ if has("gui_running")
 	noremap  <C-W><8f> <C-PageUp>
 	noremap! <8f> <C-PageUp>
 endif
+" Org
+let g:org_agenda_files = ["~/org/todo.org", "~/org/schedules.org", "~/org/projects.org", "~/org/resources.org"]
+let g:org_todo_keywords = ["TODO", "FGND", "PROJ", "LOOP", "ITER", "STRT", "WAIT", "HOLD", "IDEA", "|", "DONE", "KILL", "HIDE"]
 " Displaying space characters
 nnoremap <C-L>n :set listchars=tab:┊\ <cr>
 nnoremap <C-L>s :set listchars=tab:\\\|-,eol:$,nbsp:%,space:_,trail:#<cr>
