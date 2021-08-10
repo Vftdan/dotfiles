@@ -56,6 +56,7 @@
 (setq evil-vsplit-window-right t)
 (setq indent-tabs-mode t)
 (setq highlight-indent-guides-character 9482)
+(setq default-input-method "russian-computer")
 (add-hook '+popup-mode-hook (cmd! (if +popup-mode (progn
     (remove-hook 'doom-escape-hook #'+popup-close-on-escape-h)
     (map! :map evil-window-map "C-z" (cmd! (+popup-close-on-escape-h)))
