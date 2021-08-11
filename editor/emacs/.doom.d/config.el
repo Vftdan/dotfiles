@@ -57,7 +57,7 @@
 (after! org
     (setq org-todo-keywords
         '((sequence "TODO(t)" "FGND(f!/!)" "PROJ(p)" "LOOP(r)" "ITER(i!)" "STRT(s/!)" "WAIT(w@/!)" "HOLD(h)" "IDEA(I)" "|" "DONE(d!)" "KILL(k@)" "HIDE(H)")
-          (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D!)")
+          (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
           (sequence "DECD(q)" "|" "OKAY(o)" "YES(y)" "NO(n)")))
 )
 
