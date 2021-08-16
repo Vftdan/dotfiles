@@ -16,7 +16,7 @@ ${HOME}/.local/share/themes/Mint-Y-Dark-Custom:
 
 terminfo: ${HOME}/.terminfo
 
-${HOME}/.terminfo: xterm-24bit.ti
-	tic -x -o "$@" "$<"
+${HOME}/.terminfo: xterm-24bit.ti tmux-24bit.ti st-24bit.ti
+	cat $^ | tic -x -o "$@" -
 
 .PHONY: bspwm terminfo all
