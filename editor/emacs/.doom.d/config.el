@@ -60,6 +60,9 @@
           (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
           (sequence "DECD(q)" "|" "OKAY(o)" "YES(y)" "NO(n)")))
 )
+(after! undo-tree
+    (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
+)
 
 (setq evil-split-window-below t)
 (setq evil-vsplit-window-right t)
