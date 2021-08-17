@@ -469,6 +469,39 @@ endif
 if !empty(globpath(&rtp, 'plugin/surround.vim'))
 	nmap <A-u><A-u> viw<Plug>VSurround_
 endif
+" Visual multi
+if !empty(globpath(&rtp, 'plugin/visual-multi.vim'))
+	function! s:visual_to_vm_sequence()
+		let l:seq = "`<"
+				\ . ":call vm#commands#add_cursor_down(0, getpos(\"'>\")[1] - getpos(\"'<\")[1])\<cr>"
+		let l:cnt = getpos("'>")[2] - getpos("'<")[2]
+		if l:cnt >= 0
+			let l:seq .= ":call vm#commands#motion('l', " . l:cnt . ", 1, 0)\<cr>"
+		else
+			let l:seq .= ":call vm#commands#motion('h', " . (-l:cnt) . ", 1, 0)\<cr>"
+		endif
+		return l:seq
+	endfunction
+	function! s:visual_to_vm_insert_sequence(ins, block_default)
+		if a:block_default && visualmode() == "\<C-v>"
+			return 'gv' . toupper(a:ins)
+		endif
+		let l:seq = s:visual_to_vm_sequence()
+		let l:seq .= ":call b:VM_Selection.Insert.key('" . a:ins . "')\<cr>"
+		return l:seq
+	endfunction
+	function! VisualToVM()
+		call feedkeys(s:visual_to_vm_sequence(), 'm')
+	endfunction
+	nnoremap <expr> <Plug>(vftdan-visual-to-VM) <SID>visual_to_vm_sequence()
+	vmap <Plug>(vftdan-visual-to-VM) <esc><Plug>(vftdan-visual-to-VM)
+	nnoremap <expr> <Plug>(vftdan-visual-to-VM-insert-i) <SID>visual_to_vm_insert_sequence('i', 1)
+	nnoremap <expr> <Plug>(vftdan-visual-to-VM-insert-a) <SID>visual_to_vm_insert_sequence('a', 1)
+	vmap <Plug>(vftdan-visual-to-VM-insert-i) <esc><Plug>(vftdan-visual-to-VM-insert-i)
+	vmap <Plug>(vftdan-visual-to-VM-insert-a) <esc><Plug>(vftdan-visual-to-VM-insert-a)
+	vmap I <Plug>(vftdan-visual-to-VM-insert-i)
+	vmap A <Plug>(vftdan-visual-to-VM-insert-a)
+endif
 " EasyMotion
 if !empty(globpath(&rtp, 'autoload/EasyMotion.vim'))
 	let g:EasyMotion_use_upper = 1
