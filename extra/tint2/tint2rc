@@ -306,7 +306,7 @@ execp_icon_h = 0
 #-------------------------------------
 # Executor 5
 execp = new
-execp_command = curl 'wttr.in?format=%c%t'; echo
+execp_command = curl 'wttr.in?format=%c%t' | head -c 16; echo
 execp_interval = 900
 execp_has_icon = 0
 execp_cache_icon = 1
