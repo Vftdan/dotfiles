@@ -68,6 +68,7 @@ bspc rule -a Soffice state=tiled
 # For the floating window during video calls:
 bspc rule -a Skype state=floating
 bspc rule -a Skype -o state=tiled
+bspc rule -a Firefox:Picture-in-Picture state=floating
 bspc rule -a "Acme SAC" -o state=pseudo_tiled
 
 (while true; do [ "$(xkb-switch -l | wc -l)" -eq 1 ] && (setxkbmap -layout us,ru; xkbcomp $HOME/.config/xkb/my $DISPLAY); sleep 5; done) &
