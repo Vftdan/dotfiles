@@ -1,5 +1,5 @@
 #! /bin/sh
 
 if [ "$2" = TelegramDesktop ]; then \
-	exec "$0-telegram"
+	exec "$0-telegram" "$@"
 fi

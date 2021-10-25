@@ -2,14 +2,15 @@
 
 xprop -id "$1" | egrep '^(WM_NAME\(|_NET_WM_WINDOW_TYPE\()' | LC_ALL=C sort | {
 	read title
+	read type
 	echo "$title" | if grep -q 'Media viewer'; then \
 		echo state=fullscreen layer=above
-		exit 0
+	else
+		echo "$type" | if grep -q '_NET_WM_WINDOW_TYPE_UTILITY'; then \
+			# Floating player
+			echo center=on state=floating
+		else
+			echo state=tiled layer=normal
+		fi
 	fi
-	if grep -q '_NET_WM_WINDOW_TYPE_UTILITY'; then \
-		# Floating player
-		echo center=on state=floating
-		exit 0
-	fi
-	echo state=tiled layer=normal
 }
