@@ -135,8 +135,8 @@ bind -m vi-insert '"\C-u":backward-kill-line'
 alias upgrade="apt install --only-upgrade"
 alias edrc='nvim ~/.bashrc'
 alias rerc=". ~/.bashrc"
-alias lla="ls -la"
-alias llt="ls -lt"
+alias lla="ls -lha --time-style=long-iso"
+alias llt="ls -lht --time-style=long-iso"
 (which exa > /dev/null) && alias lg="exa -lTa --git"
 alias jj='java -jar'
 alias gs='git status'
