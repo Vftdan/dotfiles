@@ -209,7 +209,7 @@ ssh-add-key() {
 }
 __copyfile() {
 	for i in "$@"; do \
-		echo file://$(realpath "$i")
+		echo file://$(realpath "$i") | sed -e 's/\%/%25/g; s/ /%20/g; s/\?/%3F/g; s/\&/%26/g'
 	done | xclip -selection clipboard -i -t text/uri-list
 }
 Man() {
