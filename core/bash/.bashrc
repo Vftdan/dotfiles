@@ -157,7 +157,7 @@ alias md-read="nvim +'set notgc' +'term python3 -m rich.markdown -c % ; sleep in
 alias sag='eval $(ssh-agent)'
 alias sa="ssh-add"
 # Pre Ubuntu 19 behavior:
-alias sudo="sudo --preserve-env=HOME"
+alias sudo="sudo --preserve-env=HOME,SHLVL"
 _tna() {
 	[[ "$COMP_CWORD" -eq 1 ]] && COMPREPLY=($( compgen -W "$(tmux start\; list-sessions | cut -d: -f1)" -- "${COMP_WORDS[1]}" ))
 }
