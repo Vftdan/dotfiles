@@ -215,6 +215,9 @@ __copyfile() {
 Man() {
 	nvim "man://man" "++Man $*"
 }
+ietfrfc() {
+	nvim "https://tools.ietf.org/rfc/rfc$1.txt"
+}
 if [ "$TERM" = xterm-256color ]; then \
 	if ( toe -a | grep ^xterm-24bit -q; ); then \
 		export TERM=xterm-24bit
