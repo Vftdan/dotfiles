@@ -356,3 +356,23 @@ super + alt + i
 	else \
 		xprop -id $w -format _COMPTON_INVERT 8c -set _COMPTON_INVERT 0; \
 	fi
+
+#
+# dunst keys
+#
+
+# close notification
+super + n
+	dunstctl close
+
+# close all notifications
+super + shift + n
+	dunstctl close-all
+
+# redisplay last message(s)
+super + ctrl + F1
+	dunstctl history-pop
+
+# context menu
+super + alt + F1
+	dunstctl context
