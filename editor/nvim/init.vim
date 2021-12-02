@@ -51,6 +51,7 @@ if g:loaded_plug
 		Plug 'vftdan/vim-source-buffer'
 		Plug 'idris-hackers/idris-vim', { 'for': 'idris' } 
 		Plug 'tpope/vim-fugitive'
+		Plug 'tpope/vim-rhubarb'
 		Plug 'tpope/vim-commentary'
 		Plug 'tpope/vim-surround'
 		Plug 'tpope/vim-repeat'
