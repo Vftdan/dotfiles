@@ -1,0 +1,13 @@
+#! /bin/sh
+
+echo -n 'desktop=^6 '
+xprop -id "$1" | egrep '^(_NET_WM_WINDOW_TYPE\()' | LC_ALL=C sort | {
+	read type
+	echo "$type" | if egrep -q '_KDE_NET_WM_WINDOW_TYPE_OVERRIDE|_NET_WM_WINDOW_TYPE_DIALOG'; then \
+		# Override => notification or recording permission
+		# Dialog => file dialog
+		echo state=floating
+	else
+		echo layer=normal
+	fi
+}

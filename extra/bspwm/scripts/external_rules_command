@@ -3,3 +3,7 @@
 if [ "$2" = TelegramDesktop ]; then \
 	exec "$0-telegram" "$@"
 fi
+
+if [ "$2" = zoom ]; then \
+	exec "$0-zoom" "$@"
+fi
