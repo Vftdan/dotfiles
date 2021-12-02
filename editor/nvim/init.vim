@@ -183,6 +183,10 @@ Calias Q q
 Calias Qall qall
 Calias tsp tab sp
 Calias tsplit tab split
+" Make parent directories for the current file
+command! Mkdirs call mkdir(expand('%:h'), 'p')
+command! TcdHere exe 'tcd ' . expand('%:h')
+command! GcdHere exe 'cd ' . expand('%:h')
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
 " Home/End
