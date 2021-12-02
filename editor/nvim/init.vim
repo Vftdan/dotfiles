@@ -662,6 +662,8 @@ set colorcolumn=81
 if &t_Co == 8
 	hi ColorColumn guibg=Grey42 ctermbg=Cyan
 endif
+" Populate :edit with the current file path/url
+nnoremap <F6> :e <C-R>=@%<CR>
 " Shortcut for make
 nmap <F10> :w \| make<CR>
 map <S-F10> <F22>
