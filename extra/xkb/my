@@ -313,7 +313,14 @@ xkb_keymap {
 			symbols[Group1] = [ NoSymbol, NoSymbol, Pointer_EnableKeys ]
 		};
 
-		key <AB08> { [ comma, less, dead_cedilla ] };
+		key <AB08> {
+			symbols[Group1] = [ NoSymbol, NoSymbol, dead_cedilla ],
+			symbols[Group2] = [ NoSymbol, NoSymbol, dead_cedilla ]
+		};
+		key <AB10> {
+			symbols[Group1] = [ NoSymbol, NoSymbol, U0338, dead_stroke ],
+			symbols[Group2] = [ NoSymbol, NoSymbol, U0338, dead_stroke ]
+		};
 
 		key <MACC> { [ Pointer_Accelerate ] };
 		key <MBT1> { [ Pointer_Button1, Pointer_Button1, Pointer_Drag1, Pointer_Drag1 ] };
@@ -337,6 +344,7 @@ xkb_keymap {
 			symbols[Group1] = [ Multi_key ]
 		};
 		key <TLDE> {	[     grave,	asciitilde, dead_grave, dead_tilde	]	};
+		key <SPCE> { [space, space, space, nobreakspace] };
 	};
 	xkb_geometry  { include "pc(pc105)"	};
 };
