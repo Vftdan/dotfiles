@@ -53,6 +53,7 @@ if g:loaded_plug
 		Plug 'tpope/vim-fugitive'
 		Plug 'tpope/vim-commentary'
 		Plug 'tpope/vim-surround'
+		Plug 'tpope/vim-repeat'
 		Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 		Plug 'vim-scripts/synmark.vim'
 		Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh' }
