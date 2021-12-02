@@ -212,6 +212,9 @@ __copyfile() {
 		echo file://$(realpath "$i") | sed -e 's/\%/%25/g; s/ /%20/g; s/\?/%3F/g; s/\&/%26/g'
 	done | xclip -selection clipboard -i -t text/uri-list
 }
+__to_data_url() {
+	echo "data:$1;base64,$(base64 $2)"
+}
 Man() {
 	nvim "man://man" "++Man $*"
 }
