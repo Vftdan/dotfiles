@@ -9,6 +9,7 @@ include "%L"
 # <dead_grave> <dead_diaeresis> : dead_doublegrave
 <Multi_key> <s> <h> : "ʃ" U0283
 <Multi_key> <asciitilde> <equal> : "≈" approxeq
+<Multi_key> <exclam> <equal> : "≠" U2260
 <Multi_key> <0> <parenleft> : "∝" U221D
 <Multi_key> <minus> <plus> : "∓" U2213
 <Multi_key> <ampersand> <asciitilde> : "∖" U2216 # setminus
@@ -22,6 +23,8 @@ include "%L"
 <Multi_key> <slash> <bar> <bar> : "⋁" U22c1
 <Multi_key> <F> <A> : "∀" U2200
 <Multi_key> <T> <E> : "∃" U2203
+<Multi_key> <T> <N> <E> : "∄" U2204
+<Multi_key> <0> <slash> : "∅" U2205
 <Multi_key> <s> <u> <m> : "∑" U2211
 <Multi_key> <p> <r> <o> <d> : "∏" U220f
 <Multi_key> <i> <n> : "∈" U2208
@@ -56,3 +59,5 @@ include "%L"
 <Multi_key> <colon> <h> <m> <m> <colon> : "🤔" U1f914
 <Multi_key> <colon> <s> <h> <r> <u> <g> <colon> : "🤷" U1f937
 <Multi_key> <colon> <m> <o> <o> <n> <colon> : "🌚" U1f31a
+<Multi_key> <0> <greater> : "♂" U2642
+<Multi_key> <0> <plus> : "♀" U2640
