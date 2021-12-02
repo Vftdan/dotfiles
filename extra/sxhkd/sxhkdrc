@@ -36,6 +36,8 @@ super + Escape
 # screenshot
 {_,alt + , shift + } {_,ctrl + }Print
 	pkill -x xfce4-screensho || xfce4-screenshooter {-f,-w,-r} {_,-o 'xclip -i -t image/png -selection clipboard'}
+super + {_,alt + , shift + } {_,ctrl + }Print
+	sleep 4; pkill -x xfce4-screensho || xfce4-screenshooter {-f,-w,-r} {_,-o 'xclip -i -t image/png -selection clipboard'}
 
 # text to image
 super + x
