@@ -228,7 +228,7 @@ super + {bracketleft,bracketright,shift + bracketleft,shift + bracketright}
 
 # focus the next/previous node in the current desktop
 alt + {_,shift + }Tab
-	bspc node -f {next,prev}.local
+	bspc node -f {next,prev}.local.window
 
 # focus the next/previous desktop in the current monitor
 super + alt + {Left,Right}
