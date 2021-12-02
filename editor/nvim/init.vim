@@ -437,6 +437,14 @@ if !empty(globpath(&rtp, 'plugin/utl.vim'))
 	nnoremap gl <cmd>Utl<cr>
 	xnoremap gl :<C-u>call Utl('openLink', GetSelectedText())<cr>
 endif 
+" gemini
+if !empty(globpath(&rtp, 'plugin/gemini_protocol.vim'))
+	if !empty(globpath(&rtp, 'plugin/netfind.vim'))
+		let g:gemini_follow_redirects = v:false
+		let g:gemini_connect_with = 'ncat'
+		let g:Gemini_redirect_function = function('netfind#resolve')
+	endif 
+endif 
 " Snippets key
 let g:snippetsEmu_key = "<A-space>"
 " Language client and ncm2
