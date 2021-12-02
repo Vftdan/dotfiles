@@ -172,7 +172,7 @@ launcher_item_app = /usr/share/applications/clementine.desktop
 
 #-------------------------------------
 # Clock
-time1_format = %Y-%m-%d %H:%M
+time1_format = %Y-%m-%d %a %H:%M
 time2_format = 
 time1_font = Noto Sans Bold 16
 time1_timezone = 
