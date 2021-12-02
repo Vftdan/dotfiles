@@ -752,6 +752,9 @@ au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>##<space> \subsectio
 au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>###<space> \subsubsection{}<Left>
 au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>ul<space> \begin{enumerate}<CR>\end{enumerate}<esc>O
 au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>li<space> \item<space>
+" Jumping to form feed
+au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> ]] ]]zt
+au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> [[ [[zt
 
 au BufNewFile,BufRead,Bufenter *.hs setlocal ts=4 sw=4 et makeprg=stack\ build
 function! ExecuteNoSwitchbuf(cmd)
