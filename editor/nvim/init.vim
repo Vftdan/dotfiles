@@ -286,6 +286,7 @@ nnoremap <C-W><C-T> :tabnew<cr>
 nnoremap <C-W>gt gt
 nnoremap <C-W>gT gT
 nnoremap <C-W>g<C-T> :tab split<cr>
+nmap     <C-W><C-G><C-T> <C-W>g<C-T>
 nnoremap <C-W>g<C-^> :tab sp <cr><C-^>
 nmap     <C-W><C-G><C-^> <C-W>g<C-^>
 nnoremap <C-W>m> @=":tabmove +\r"<cr>
