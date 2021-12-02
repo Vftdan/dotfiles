@@ -70,7 +70,9 @@ if g:loaded_plug
 		Plug 'cespare/vim-toml'
 
 		Plug 'https://gitlab.com/HiPhish/info.vim'
+		Plug 'Vftdan/vim-hcl'
 		Plug 'jidn/vim-dbml'
+		Plug 'hjson/vim-hjson'
 
 		Plug 'kana/vim-textobj-user'
 		Plug 'kana/vim-operator-user'
