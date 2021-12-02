@@ -138,6 +138,9 @@ if g:loaded_plug
 		Plug 'vftdan/vim-gemini-protocol', { 'do': 'make' }
 		Plug 'vftdan/vim-netfind'
 
+		Plug 'lifepillar/pgsql.vim'
+		let g:sql_type_default = 'pgsql'
+
 		" For doc
 		Plug 'junegunn/vim-plug'
 	call plug#end()
@@ -392,6 +395,7 @@ let g:markdown_fenced_languages = [
 			\ 'csharp=cs',
 			\ 'cs',
 			\ 'yaml',
+			\ 'sql',
 			\ ]
 if !empty(globpath(&rtp, 'syntax/lambda.vim'))
 	call insert(g:markdown_fenced_languages, 'lambda')
