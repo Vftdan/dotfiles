@@ -54,6 +54,7 @@ if g:loaded_plug
 		Plug 'tpope/vim-commentary'
 		Plug 'tpope/vim-surround'
 		Plug 'tpope/vim-repeat'
+		Plug 'andymass/vim-matchup'
 		Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 		Plug 'vim-scripts/synmark.vim'
 		Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh' }
@@ -644,6 +645,10 @@ map <S-F10> <F22>
 nmap <silent> <F22> :w \| wincmd z \| noswapfile bo new \| set previewwindow \| term make run<CR>
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
+" Matchup
+if !empty(globpath(&rtp, 'autoload/matchup.vim'))
+	let g:matchup_matchparen_offscreen = {'method': 'popup'}
+endif
 " Commentary
 if !empty(globpath(&rtp, 'plugin/commentary.vim'))
 	xmap <C-_>  <Plug>Commentary
