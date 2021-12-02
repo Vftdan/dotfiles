@@ -271,6 +271,8 @@ nmap     <C-W>_ <cmd>wincmd _<cr><Plug>(wincmdmode-break)
 nmap     <C-W>z <C-W><bar><C-W>_
 nmap     <C-W>gd <cmd>sp<cr>gd
 nmap     <C-W>GD <cmd>wincmd z \| sp \| set previewwindow<cr>gd
+nmap     <C-W>g<C-D> <cmd>tab sp<cr>gd
+nmap     <C-W><C-G><C-D> <C-W>g<C-D>
 " Why doesn't it work without filenames by default?
 nnoremap <C-W>^ :sp <cr><C-^>
 nnoremap <C-W><C-^> :vsp <cr><C-^>
