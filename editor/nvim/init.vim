@@ -674,6 +674,13 @@ map <S-F10> <F22>
 nmap <silent> <F22> :w \| wincmd z \| noswapfile bo new \| set previewwindow \| term make run<CR>
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
+function! s:format_date(fmt, descr)
+	if a:descr == v:null
+		return ''
+	endif
+	return system("date +" . shellescape(a:fmt) . " -d " . shellescape(a:descr))[:-2]
+endfunction
+map! <expr> <A-d>o <SID>format_date('%Y-%m-%d %a', input({'prompt': 'Which date: ', 'cancelreturn': v:null}))
 " Matchup
 if !empty(globpath(&rtp, 'autoload/matchup.vim'))
 	let g:matchup_matchparen_offscreen = {'method': 'popup'}
