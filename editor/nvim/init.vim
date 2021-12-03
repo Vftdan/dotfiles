@@ -616,6 +616,8 @@ nnoremap <A-r> :%s///g<Left><Left><Left>
 vnoremap <A-r> y<esc>:%s/\V<C-R>=escape(@", '/\')<CR>//g<Left><Left>
 " Remove tabulation
 inoremap <S-Tab> <C-D>
+snoremap <S-Tab> <C-O><lt>gv<C-G>
+snoremap <C-T> <C-O>>gv<C-G>
 " Make <S-Tab> work in Windows
 set t_kB=[Z
 " Esc alias
