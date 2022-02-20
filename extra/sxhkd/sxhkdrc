@@ -256,6 +256,10 @@ super + alt + shift + {Up,Down}
 super + {grave,Tab}
 	bspc {node,desktop} -f last.local
 
+# move to the last desktop
+super + shift + Tab
+	bspc node -d last.local
+
 # focus the older or newer node in the focus history
 super + {o,i}
 	bspc wm -h off; \
