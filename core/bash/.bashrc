@@ -216,7 +216,10 @@ __copyfile() {
 	done | xclip -selection clipboard -i -t text/uri-list
 }
 __to_data_url() {
-	echo "data:$1;base64,$(base64 $2)"
+	echo "data:$1;base64,$(base64 -w 0 $2)"
+}
+__to_data_url_file() {
+	__to_data_url "$(file --mime-type "$1" | cut -d ' ' -f 2)" "$1"
 }
 Man() {
 	nvim "man://man" "++Man $*"
