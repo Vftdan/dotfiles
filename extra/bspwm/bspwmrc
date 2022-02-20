@@ -25,7 +25,7 @@ nm-applet &
 feh --bg-scale /usr/share/backgrounds/linuxmint/bookwood_linuxmint.jpg
 setxkbmap -layout us,ru
 xkbcomp $HOME/.config/xkb/my $DISPLAY
-xdotool key Num_Lock
+numlockx on
 xsetroot -cursor_name left_ptr
 
 run_desktop=$(which exo-open || echo pcmanfm)
