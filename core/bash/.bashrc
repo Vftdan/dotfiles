@@ -154,6 +154,8 @@ alias ytdla='youtube-dl -f 140'
 alias ytdlapl='youtube-dl -f 140 -o "%(playlist_index)s. %(title)s.%(ext)s"'
 alias ytdlmkv='youtube-dl -f 22+bestaudio --merge-output-format mkv --all-subs --write-sub --write-auto-sub --embed-subs --convert-subtitles ass'
 alias ff-show-info='ffprobe -v error -show_entries format -of default=noprint_wrappers=1:nokey=0'
+alias ffmpeg='ffmpeg -hide_banner'
+alias ffprobe='ffprobe -hide_banner'
 alias md-read="nvim +'set notgc' +'term python3 -m rich.markdown -c % ; sleep infinity'"
 alias sag='eval $(ssh-agent)'
 alias sa="ssh-add"
