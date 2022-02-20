@@ -526,6 +526,7 @@ if !empty(globpath(&rtp, 'plugin/visual-multi.vim'))
 	vmap <Plug>(vftdan-visual-to-VM-insert-a) <esc><Plug>(vftdan-visual-to-VM-insert-a)
 	vmap I <Plug>(vftdan-visual-to-VM-insert-i)
 	vmap A <Plug>(vftdan-visual-to-VM-insert-a)
+	inoremap <Plug>(VM-Hls) <C-O>:set hls<CR>
 endif
 " EasyMotion
 if !empty(globpath(&rtp, 'autoload/EasyMotion.vim'))
