@@ -28,6 +28,7 @@ fi
 
 #User-defined
 
+export EDITOR=nvim
 LC_TIME=C
 # set PATH so it includes user's private go bin if it exists
 if [ -d "$HOME/go/bin" ] ; then
