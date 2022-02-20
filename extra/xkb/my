@@ -225,6 +225,14 @@ xkb_keymap {
 			            RedirectKey(keycode=<END>, clearmodifiers=Control+LevelThree),
 			            RedirectKey(keycode=<END>, clearmodifiers=Control+LevelThree) ]
 		};
+		key <AB02> {
+			actions[Group1] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<DELE>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<BKSP>,  clearmodifiers=Shift+LevelThree) ],
+			actions[Group2] = [ NoAction(), NoAction(),
+			            RedirectKey(keycode=<DELE>, clearmodifiers=LevelThree),
+			            RedirectKey(keycode=<BKSP>,  clearmodifiers=Shift+LevelThree) ]
+		};
 		key <AB05> {
 			type="PC_CONTROL_LEVEL3_LEVEL5_ALPHABETIC",
 			actions[Group1] = [ NoAction(), NoAction(),
