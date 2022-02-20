@@ -784,7 +784,7 @@ function! TogListQL()
 	let w:list_is_location = !get(w:, 'list_is_location', v:false)
 	echo w:list_is_location ? 'Location' : 'QuickFix'
 endfunction
-command! -nargs=0 TogListQL call TogListQL()
+command! -nargs=0 -bar TogListQL call TogListQL()
 nnoremap <silent> [n :if get(w:, 'list_is_location', v:false) <bar> call ExecuteNoSwitchbuf('lnext') <bar> else <bar> cn <bar> endif<CR>
 nnoremap <silent> [N :if get(w:, 'list_is_location', v:false) <bar> call ExecuteNoSwitchbuf('lNext') <bar> else <bar> cN <bar> endif<CR>
 aug loclistnoswb
@@ -794,6 +794,13 @@ aug loclistnoswb
 	au BufReadPost quickfix 	nnoremap <silent> <buffer> <C-W><CR> :call ExecuteNoSwitchbuf("normal! \<lt>c-w>\<lt>cr>")<CR>
 	au BufReadPost quickfix endif
 aug END
+" Populating quickfix and loclist with files
+" ':enew | ClearLlist | PopulateLlist pattern' can be used as window-local ':args pattern'
+command! -nargs=* -complete=file PopulateQlist  vimgrepadd /\v%^/ <args>
+command! -nargs=* -complete=file PopulateLlist lvimgrepadd /\v%^/ <args>
+command! -nargs=0 -bar ClearQlist call  setqflist(   [])
+command! -nargs=0 -bar ClearLlist call setloclist(0, [])
+Calias wargs enew \| ClearLlist \| PopulateLlist
 " Fix vulnerability
 if !has("patch-8.1.1365") && !has("patch8.1.1365")
 	set nomodeline
