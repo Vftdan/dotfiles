@@ -74,6 +74,9 @@
     (map! :map evil-window-map "C-z" (cmd! (+popup-close-on-escape-h)))
 ))) 'append)
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+(after! evil-org
+    (evil-org-set-key-theme '(textobjects insert additional shift heading))
+)
 
 (defun split-and-lookup-definition (identifier &optional arg)
     (interactive (list (doom-thing-at-point-or-region) current-prefix-arg))
