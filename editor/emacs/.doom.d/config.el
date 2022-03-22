@@ -222,3 +222,13 @@
         :n "C-a"           #'org-shiftup
     )
 )
+
+(map! :after company :map company-active-map
+    "<tab>"                nil
+    "<return>"             nil
+    "TAB"                  nil
+    "RET"                  nil
+    "C-y"                  #'company-complete-selection
+    "C-e"                  #'company-abort
+    "C-l"                  #'company-complete-common
+)
