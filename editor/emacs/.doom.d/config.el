@@ -64,6 +64,10 @@
 (after! undo-tree
     (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
 )
+(after! company
+    (setq company-idle-delay 2.5)
+    (setq company-selection-wrap-around t)
+)
 
 (setq evil-split-window-below t)
 (setq evil-vsplit-window-right t)
