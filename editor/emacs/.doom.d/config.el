@@ -130,6 +130,11 @@
     )
 )
 
+;; (setq evil-complete-next-func (lambda (count) (company-complete) (dotimes (_ (- count 1)) (company-select-next))))
+;; (setq evil-complete-previous-func (lambda (count) (company-complete) (company-select-last) (dotimes (_ (- count 1)) (company-select-previous))))
+(setq evil-complete-next-func (lambda (count) (+company/dabbrev) (dotimes (_ (- count 1)) (company-select-next))))
+(setq evil-complete-previous-func (lambda (count) (+company/dabbrev-code-previous) (dotimes (_ (- count 1)) (company-select-previous))))
+
 (evil-define-command duplicate-selected-visual (count beg end &optional type)
     (interactive "p<R>")
     (if (eq count 0) (setq count 1))
