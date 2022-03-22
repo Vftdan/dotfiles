@@ -60,6 +60,7 @@
           (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
           (sequence "DECD(q)" "|" "OKAY(o)" "YES(y)" "NO(n)")))
 )
+(setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
 (after! undo-tree
     (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
 )
