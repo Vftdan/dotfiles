@@ -217,4 +217,8 @@
     :i "<backtab>"         #'org-metaleft
     :i "C-d"               #'duplicate-selected-normal
     :i "C-h"               #'backward-delete-char
+    (:prefix "g"
+        :n "C-x"           #'org-shiftdown
+        :n "C-a"           #'org-shiftup
+    )
 )
