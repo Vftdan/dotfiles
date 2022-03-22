@@ -75,7 +75,7 @@
 ))) 'append)
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 (after! evil-org
-    (evil-org-set-key-theme '(textobjects insert additional shift heading))
+    (evil-org-set-key-theme '(textobjects insert additional shift))
 )
 
 (defun split-and-lookup-definition (identifier &optional arg)
