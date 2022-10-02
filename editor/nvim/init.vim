@@ -405,6 +405,7 @@ let g:markdown_fenced_languages = [
 			\ 'cs',
 			\ 'yaml',
 			\ 'sql',
+			\ 'json',
 			\ ]
 if !empty(globpath(&rtp, 'syntax/lambda.vim'))
 	call insert(g:markdown_fenced_languages, 'lambda')
