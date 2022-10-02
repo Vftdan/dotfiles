@@ -63,6 +63,12 @@ exe 'syn cluster pseudocodeStringEscape contains=' . join(s:pseudocodeStringEsca
 syn match pseudocodeStringEscapeBackslash '\\' contained nextgroup=pseudocodeStringEscapeBackslashAfter
 syn match pseudocodeStringEscapeBackslashAfter /\v./ contained transparent contains=NONE
 
+syn cluster pseudocodeREQuantifier contains=pseudocodeREQuantifierStar,pseudocodeREQuantifierPlus,pseudocodeREQuantifierQuestion,pseudocodeREQuantifierExplicit
+syn match pseudocodeREQuantifierStar /\V*?\?/ contained
+syn match pseudocodeREQuantifierPlus /\V+?\?/ contained
+syn match pseudocodeREQuantifierQuestion /\V??\?/ contained
+syn match pseudocodeREQuantifierExplicit /\v\{\}/ contained
+
 PseudocodeHiLink pseudocodeLogicOp Operator
 PseudocodeHiLink pseudocodeCmpOp Operator
 PseudocodeHiLink pseudocodeString String
