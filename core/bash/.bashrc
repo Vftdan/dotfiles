@@ -229,6 +229,9 @@ ietfrfc() {
 	# nvim "https://tools.ietf.org/rfc/rfc$1.txt"
 	nvim "https://www.rfc-editor.org/rfc/rfc$1.txt"
 }
+xprop-no-icon() {
+	xprop "$@" | sed -e '/\tIcon/,/^$/d'
+}
 if [ "$TERM" = xterm-256color ]; then \
 	if ( toe -a | grep ^xterm-24bit -q; ); then \
 		export TERM=xterm-24bit
