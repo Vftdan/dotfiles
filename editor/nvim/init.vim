@@ -11,6 +11,8 @@ set switchbuf=useopen,usetab,vsplit
 set scrolloff=4
 set sidescrolloff=4
 set shiftwidth=0
+set cinoptions=:0t0+10
+set formatoptions=jroqnl
 set hlsearch
 set splitbelow
 set splitright
