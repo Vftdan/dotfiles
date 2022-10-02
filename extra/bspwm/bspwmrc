@@ -5,8 +5,8 @@ export XDG_CURRENT_DESKTOP='bspwm:X-Cinnamon:XFCE'
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.metacitythemename=Mint-Y-Dark-Custom"
 dunst &
-sxhkd &
-tint2 &
+sxhkd 2>&1 | egrep -v 'nemo.*connect\(\) failed' | grep -v '\(audio_device_pulse_linux\|device_info_linux\).cc' &
+tint2 2>&1 | grep -v '^tint2: Executing:' &
 xsettingsd &
 compton --invert-color-include '_COMPTON_INVERT:8c > 0' &
 if which xfce4-screensaver; then \
@@ -23,7 +23,7 @@ bspwm-tint2-compton-transparecy.sh 80 &
 bspwm-focused-child-bigger.sh daemon &
 xfce4-power-manager &
 lxpolkit &
-nm-applet &
+nm-applet 2>&1 | grep -v 'widget' &
 feh --bg-scale /usr/share/backgrounds/linuxmint/bookwood_linuxmint.jpg
 setxkbmap -layout us,ru
 xkbcomp $HOME/.config/xkb/my $DISPLAY
