@@ -69,6 +69,8 @@ if g:loaded_plug
 		Plug 'Vftdan/vim-translator'
 		Plug 'baskerville/vim-sxhkdrc'
 		Plug 'cespare/vim-toml'
+		Plug 'vftdan/vim-mcfunction', { 'branch': 'custom-highlight' }
+		Plug 'vftdan/vim-synstackwin'
 
 		Plug 'https://gitlab.com/HiPhish/info.vim'
 		Plug 'Vftdan/vim-hcl'
@@ -141,6 +143,7 @@ if g:loaded_plug
 		Plug 'https://tildegit.org/sloum/gemini-vim-syntax'
 		Plug 'vftdan/vim-gemini-protocol', { 'do': 'make' }
 		Plug 'vftdan/vim-netfind'
+		Plug 'vftdan/vim-termescape'
 
 		Plug 'lifepillar/pgsql.vim'
 		let g:sql_type_default = 'pgsql'
