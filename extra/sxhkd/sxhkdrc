@@ -31,7 +31,7 @@ alt + F2
 
 # program launcher (root)
 ctrl + super + {_, alt + }@space
-	SHLVL=0 tmux -c 'rofi -dmenu -p "password for $USER: " -password -lines 0 | sudo -S rofi -show {drun,run} & disown'
+	SHLVL=0 tmux -c 'rofi -dmenu -p "password for $USER: " -password -lines 0 | sudo -S --preserve-env=HOME rofi -show {drun,run} & disown'
 
 # make sxhkd reload its configuration files:
 super + Escape
