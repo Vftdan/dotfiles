@@ -161,6 +161,7 @@ alias sag='eval $(ssh-agent)'
 alias sa="ssh-add"
 # Pre Ubuntu 19 behavior:
 alias sudo="sudo --preserve-env=HOME,SHLVL"
+alias pdf2jpg="pdftoppm -jpeg -r 300"
 _tna() {
 	[[ "$COMP_CWORD" -eq 1 ]] && COMPREPLY=($( compgen -W "$(tmux start\; list-sessions | cut -d: -f1)" -- "${COMP_WORDS[1]}" ))
 }
