@@ -195,6 +195,20 @@ super + {_,ctrl + }shift + F6
 		bspc node -f $w; \
 	fi
 
+# show desktop
+super + {_,alt + }d
+	bspc query -N -n .\!hidden.local.window{_,.\!focused} | while read w; do \
+		bspc node $w.tiled -t fullscreen; \
+		bspc node $w -l below; \
+		bspc node $w -g hidden=on; \
+	done
+super + shift + d
+	bspc query -N -n .hidden.local.below | while read w; do \
+		bspc node "$w" -g hidden=off; \
+		bspc node $w.fullscreen -t tiled; \
+		bspc node $w -l normal; \
+	done
+
 # hide background windows
 super + F7
 	for i in $(bspc query -N -n .below.local); do \
