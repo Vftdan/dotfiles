@@ -651,15 +651,29 @@ vnoremap <expr> <Plug>(vftdan-extract) <sid>extract_var_sequence(v:register)
 vmap g<A-e> <Plug>(vftdan-extract)
 function! s:extract_var_sequence(reg)
 	let l:prefix = get(b:, 'lang_var_decl_prefix', '')
+	let l:equals = get(b:, 'lang_var_decl_assign_infix', ' = ')
+	let l:var_prefix = get(b:, 'lang_var_prefix', '')
 	let l:postfix = get(b:, 'lang_statement_postfix', ';')
 	call inputsave()
 	let l:varname = input('Variable name: ')
 	call inputrestore()
-	return '"' . a:reg . 'c' . l:varname . "\<ESC>O" . l:prefix . l:varname
-			\ . " = \<C-R>\<C-R>" . a:reg . l:postfix
+	return '"' . a:reg . 'c' . l:var_prefix . l:varname . "\<ESC>O" . l:prefix . l:varname
+			\ . l:equals . "\<C-R>\<C-R>" . a:reg . l:postfix
 			\ . "\<ESC>:let @" . a:reg . ' = "'
 			\ . escape(l:varname, '"\') . "\"\<CR>"
 endfunction
+aug ExtractToVarLangs
+	au!
+	au Filetype javascript let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['var ', ';']
+	au Filetype typescript let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['const ', ';']
+	au Filetype python let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['', '']
+	au Filetype c let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['int ', ';']
+	au Filetype cpp let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['auto ', ';']
+	au Filetype java let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['var ', ';']
+	au Filetype vim let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['let ', '']
+	au Filetype sh let [b:lang_var_decl_prefix, b:lang_statement_postfix, b:lang_var_prefix, b:lang_var_decl_assign_infix] = ['', '', '$', '=']
+	au Filetype tex let [b:lang_var_decl_prefix, b:lang_statement_postfix, b:lang_var_prefix, b:lang_var_decl_assign_infix] = ['\def\', '}', '\', '{']
+aug END
 " Natural language
 set keymap=russian-jcukenwin
 lmap \| /
