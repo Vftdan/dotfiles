@@ -7,3 +7,7 @@ fi
 if [ "$2" = zoom ]; then \
 	exec "$0-zoom" "$@"
 fi
+
+if [ "$2" = Firefox ]; then \
+	exec "$0-firefox" "$@"
+fi

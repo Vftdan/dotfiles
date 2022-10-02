@@ -71,6 +71,7 @@ bspc rule -a Soffice state=tiled
 bspc rule -a Skype state=floating
 bspc rule -a Skype -o state=tiled
 bspc rule -a Firefox:Picture-in-Picture state=floating
+bspc rule -a xmessage state=floating center=on
 bspc rule -a "Acme SAC" -o state=pseudo_tiled
 bspc rule -a "Zathura" state=tiled
 bspc rule -a "Emacs" state=tiled

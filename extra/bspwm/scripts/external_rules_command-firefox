@@ -1,0 +1,8 @@
+#! /bin/sh
+
+xprop -id "$1" | egrep '^(WM_NAME\()' | LC_ALL=C sort | {
+	read title
+	echo "$title" | if grep -q 'Picture-in-Picture'; then \
+		echo state=floating layer=normal rectangle=720x480+600+300
+	fi
+}
