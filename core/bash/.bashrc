@@ -148,6 +148,7 @@ alias __copy="xclip -selection c"
 alias __paste="xclip -selection c -o"
 alias mv="mv -i"
 alias cp="cp -i"
+# Use yt-dlp instead if possible
 alias ytdl='youtube-dl -f 22'
 alias ytdlpl='youtube-dl -f 22 -o "%(playlist_index)s. %(title)s.%(ext)s"'
 alias ytdla='youtube-dl -f 140'
