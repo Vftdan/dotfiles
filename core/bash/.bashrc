@@ -226,7 +226,8 @@ Man() {
 	nvim "man://man" "++Man $*"
 }
 ietfrfc() {
-	nvim "https://tools.ietf.org/rfc/rfc$1.txt"
+	# nvim "https://tools.ietf.org/rfc/rfc$1.txt"
+	nvim "https://www.rfc-editor.org/rfc/rfc$1.txt"
 }
 if [ "$TERM" = xterm-256color ]; then \
 	if ( toe -a | grep ^xterm-24bit -q; ); then \
