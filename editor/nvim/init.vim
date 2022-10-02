@@ -483,6 +483,7 @@ if !empty(globpath(&rtp, 'autoload/LanguageClient.vim'))
 	nnoremap <A-u>f :call LanguageClient_textDocument_references()<CR>
 	nnoremap <F2> :call LanguageClient_textDocument_rename()<CR>
 	nmap gK <plug>(lcn-hover)
+	nmap g<A-CR> <plug>(lcn-menu)
 	aug LCNfex
 		au!
 		au User LanguageClientTextDocumentDidOpenPost setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
