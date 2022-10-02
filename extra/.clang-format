@@ -1,0 +1,55 @@
+---
+BasedOnStyle: LLVM
+IndentWidth: 8
+TabWidth: 8
+UseTab: ForIndentation
+
+AlignAfterOpenBracket: DontAlign
+# AlignConsecutiveAssignments:
+#   Enabled: true
+#   AcrossEmptyLines: false
+#   AcrossComments: false
+#   AlignCompound: true
+#   PadOperators: true
+# AlignConsecutiveDeclarations:
+#   Enabled: true
+#   AcrossEmptyLines: false
+#   AcrossComments: false
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignEscapedNewlines: Left
+# AlignOperands: AlignAfterOperator
+AlignOperands: true
+AllowShortBlocksOnASingleLine: Empty
+AlwaysBreakAfterDefinitionReturnType: TopLevel
+AlwaysBreakAfterReturnType: TopLevelDefinitions
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: true
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+BreakBeforeBraces: Custom
+BreakStringLiterals: false
+ConstructorInitializerIndentWidth: 8
+ContinuationIndentWidth: 10
+MaxEmptyLinesToKeep: 2
+ObjCBlockIndentWidth: 8
+PenaltyExcessCharacter: 100
+PointerAlignment: Left  # Except Right for multiple pointer declaration
+ReflowComments: false
+SpacesBeforeTrailingComments: 2
+SpacesInContainerLiterals: false
+Standard: Cpp03
+...
+# vim: ft=yaml
