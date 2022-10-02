@@ -177,6 +177,8 @@
     :n "M-r"               #'query-replace-regexp
     :n "C-S-d"             #'evil-scroll-down
     :n "C-d"               #'duplicate-selected-normal
+    :n "<C-wheel-up>"      #'text-scale-increase
+    :n "<C-wheel-down>"    #'text-scale-decrease
 )
 
 (map!
