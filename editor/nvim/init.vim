@@ -713,6 +713,10 @@ if !empty(globpath(&rtp, 'plugin/commentary.vim'))
 	nmap <C-_>u <Plug>Commentary<Plug>Commentary
 endif
 set commentstring=//%s
+aug filetypecommentstring
+	au!
+	au Filetype debsources set commentstring=#%s
+aug END
 " Text objects
 if !empty(globpath(&rtp, 'autoload/textobj/comment.vim'))
 	let g:textobj_comment_no_default_key_mappings = 1
