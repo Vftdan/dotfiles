@@ -18,6 +18,10 @@ super + e
 super + apostrophe
 	SHLVL=0 gnome-terminal -- nvim
 
+# calculator
+super + KP_0
+	SHLVL=0 gnome-calculator
+
 # program launcher
 super + {_, alt + }@space
 	SHLVL=0 rofi -show {drun,run}
