@@ -633,6 +633,8 @@ imap <A-;><A-;> <esc>
 imap <A-;><A-o> <esc>o
 vmap <A-;><A-;> <esc>
 vmap <A-;><A-o> <esc>o
+inoremap jkk <Esc>
+inoremap jkj jk
 " Select word
 nnoremap <A-'><A-'> viw
 " Clear search highlight
