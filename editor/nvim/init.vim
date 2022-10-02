@@ -788,6 +788,16 @@ au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> ]] ]]zt
 au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> [[ [[zt
 
 au BufNewFile,BufRead,Bufenter *.hs setlocal ts=4 sw=4 et makeprg=stack\ build
+au BufNewFile,BufRead,Bufenter yggdrasil.conf setlocal ft=hjson
+aug modpacker
+	au!
+	au BufNewFile,BufRead *.pack setlocal ft=modpacker
+	au Filetype modpacker let b:hcl_no_root_keywords=v:true
+	au Filetype modpacker let b:hcl_no_aws_resource_keywords=v:true
+	au Filetype modpacker let b:hcl_custom_keywords={'type': ['mod']}
+	au Filetype modpacker runtime! syntax/hcl.vim
+aug end
+au BufNewFile,BufRead *.mcmeta setlocal ft=json
 function! ExecuteNoSwitchbuf(cmd)
 	let l:swb = &switchbuf
 	try
