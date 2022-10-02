@@ -65,6 +65,9 @@ hi Question     ctermfg=83 gui=bold guifg=#53ff55
 hi ModeMsg      cterm=bold gui=bold ctermfg=15 guifg=#deffff
 
 hi Noise        ctermfg=109 guifg=#859794
+hi Strike       cterm=underline gui=underline ctermfg=249 guifg=#b1bab9
+
+hi link htmlStrike Strike
 
 let g:terminal_color_0  = '#000042'
 let g:terminal_color_1  = '#bd0000'
