@@ -1,5 +1,23 @@
-#! /bin/bash
-xclip -o -selection clipboard -t TARGETS | grep image/png >> /dev/null || exit
-text=$(xclip -o -selection clipboard -t image/png | pngtopnm -alpha | gocr -i - | tr -d '\n')
-[ -z $text ] && notify-send "No text recognized" && exit
-echo $text | xclip -i -selection clipboard
+#! /bin/sh
+
+die() {
+	echo "$*" >&2
+	notify-send "$*"
+	exit 1
+}
+
+xclip -o -selection clipboard -t TARGETS | grep image/png >> /dev/null || die "No PNG picture in the clipboard"
+
+attempt() {
+	# xclip -o -selection clipboard -t image/png | pngtopnm "$@" | gocr -i - | tr '\n' ' '
+	xclip -o -selection clipboard -t image/png | pngtopnm "$@" | gocr -i -
+}
+
+text="$(attempt -alpha)"
+if [ -z "$text" ]; then \
+	text="$(attempt)"
+fi
+
+[ -z "$text" ] && die "No text recognized"
+printf "%s" "$text" | xclip -i -selection clipboard
+notify-send "Recognized text copied:" "$text" 
