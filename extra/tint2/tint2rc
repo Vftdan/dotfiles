@@ -214,7 +214,7 @@ ac_disconnected_cmd =
 # Executor 1
 execp = new
 execp_command = echo 🎤$(amixer -D pulse get Capture | gawk 'match($0, /(Front Left|Mono).*\[(.*)\]/, a) {print a[2]}')
-execp_interval = 2
+execp_interval = 1
 execp_has_icon = 0
 execp_cache_icon = 1
 execp_continuous = 0
