@@ -73,7 +73,7 @@ super + shift + KP_{Add,Subtract}
 	values=$(amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*\)%\].*$/\1/'); \
 	s=$(echo "$values" | sort -rn | head -n 1); \
 	ns=$((s {+,-} 5)); \
-	[ "$ns" -gt 120 ] && ns=120; \
+	[ "$ns" -gt 150 ] && ns=150; \
 	[ "$ns" -lt 0 ] && ns=0; \
 	nvalues=$(for i in $values; do [ "$s" -gt 0 ] \
 		&& echo $(( $i * $ns / $s ))% || echo $ns%; done); \
@@ -84,7 +84,7 @@ super + shift + KP_{Add,Subtract}
 	values=$(amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*\)%\].*$/\1/'); \
 	s=$(echo "$values" | sort -rn | head -n 1); \
 	ns=$((s {+,-} 5)); \
-	[ "$ns" -gt 120 ] && ns=120; \
+	[ "$ns" -gt 150 ] && ns=150; \
 	[ "$ns" -lt 0 ] && ns=0; \
 	nvalues=$(for i in $values; do [ "$s" -gt 0 ] \
 		&& echo $(( $i * $ns / $s ))% || echo $ns%; done); \
