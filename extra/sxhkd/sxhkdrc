@@ -221,14 +221,16 @@ super + shift + F7
 		bspc node "$i" -g hidden=off; \
 	done
 
-# toggle above
-super + F5
-	bspc node focused.normal -l above || \
-	bspc node focused.above -l normal
+# toggle above/below
+super + {_,alt + }F5
+	above={above,below}; \
+	bspc node focused.normal -l $above || \
+	bspc node focused.$above -l normal
 
-# revert above for this desktop
-super + shift + F5
-	for w in $(bspc query -N -n .above.local); do \
+# revert above/below for this desktop
+super + shift + {_,alt + }F5
+	above={above,below}; \
+	for w in $(bspc query -N -n .$above.local); do \
 		bspc node "$w" -l normal; \
 	done
 
