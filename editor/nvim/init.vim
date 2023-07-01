@@ -962,6 +962,10 @@ command! -nargs=0 -bar MarkQlist call  setqflist(   [{'bufnr': bufnr(), 'lnum': 
 command! -nargs=0 -bar MarkLlist call setloclist(0, [{'bufnr': bufnr(), 'lnum': line('.'), 'col': col('.'), 'text': getline('.')}], 'a')
 command! -nargs=0 -bar ClearQlist call  setqflist(   [])
 command! -nargs=0 -bar ClearLlist call setloclist(0, [])
+command! -nargs=0 -bar CopyQlistToLlist call setloclist(0, getqflist( ))
+command! -nargs=0 -bar CopyLlistToQlist call  setqflist(  getloclist(0))
+command! -nargs=0 -bar OnlyCurbufQlist call  setqflist(   filter( getqflist( ), 'v:val.bufnr == bufnr()'))
+command! -nargs=0 -bar OnlyCurbufLlist call setloclist(0, filter(getloclist(0), 'v:val.bufnr == bufnr()'))
 Calias wargs enew \| ClearLlist \| PopulateLlist
 " Fix vulnerability
 if !has("patch-8.1.1365") && !has("patch8.1.1365")
