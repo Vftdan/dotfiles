@@ -499,6 +499,7 @@ inoremap <expr> <C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-P>"
 imap <expr> <C-space> pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
 if !empty(globpath(&rtp, 'autoload/LanguageClient.vim'))
 	let g:LanguageClient_hoverPreview = 'Always'
+	let g:LanguageClient_useFloatingHover = 0
 	let g:LanguageClient_serverCommands = {
 		\ 'c': ['clangd'],
 		\ 'cpp': ['clangd'],
