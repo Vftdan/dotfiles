@@ -12,7 +12,8 @@ set scrolloff=4
 set sidescrolloff=4
 set shiftwidth=0
 set cinoptions=:0t0+10
-set formatoptions=jroqnl
+" Even without 't' it is broken when inserting at window border
+set formatoptions=jroqn
 set hlsearch
 set splitbelow
 set splitright
