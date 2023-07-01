@@ -517,6 +517,17 @@ if !empty(globpath(&rtp, 'autoload/LanguageClient.vim'))
 		let g:LanguageClient_serverCommands['javascript'] = ['typescript-language-server', '--stdio']
 		let g:LanguageClient_serverCommands['html'] = ['typescript-language-server', '--stdio']
 	endif
+	if system('which jdtls') != ''
+		let s:jdt_workspace = system('get-java-workspace.sh')
+		if s:jdt_workspace == ''
+			let s:jdt_workspace = getcwd() . '/../workspace'
+		endif
+		if s:jdt_workspace[-1:] == "\n"
+			let s:jdt_workspace = s:jdt_workspace[:-2]
+		endif
+		let g:LanguageClient_serverCommands['java'] = ['jdtls', '-data', s:jdt_workspace]
+		unlet s:jdt_workspace
+	endif
 	nnoremap <expr> gd LanguageClient_isServerRunning() ? ':call LanguageClient_textDocument_definition()<CR>' : 'gd'
 	nnoremap <A-u>f :call LanguageClient_textDocument_references()<CR>
 	nnoremap <F2> :call LanguageClient_textDocument_rename()<CR>
