@@ -214,6 +214,8 @@ command! -bar LcdHere exe 'lcd ' . expand('%:h')
 command! -bar GcdHere exe 'cd ' . expand('%:h')
 Calias wcd lcd
 Calias WcdHere LcdHere
+" Rename current buffer in vim and filesystem (PROBLEM: '-n' flag for mv(1) doesn't add non-zero exit conditions)
+command! -nargs=? -bar -complete=file RenameBuf if len(<q-args>) | exe '!mv -n ' . shellescape(@%) . ' ' . shellescape(<q-args>) | file <args> | e | else | call feedkeys(":RenameBuf \<C-r>%", 'ni') | endif
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
 " Home/End
