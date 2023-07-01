@@ -74,6 +74,7 @@ if g:loaded_plug
 		Plug 'cespare/vim-toml'
 		Plug 'vftdan/vim-mcfunction', { 'branch': 'custom-highlight' }
 		Plug 'vftdan/vim-synstackwin'
+		Plug 'yuratomo/w3m.vim'
 
 		Plug 'https://gitlab.com/HiPhish/info.vim'
 		Plug 'Vftdan/vim-hcl'
@@ -158,6 +159,9 @@ endif
 " END
 
 hi def link Quote Delimiter
+hi     link w3mUrl Comment
+hi     link w3mLink Comment
+hi     link w3mLinkHover Underlined
 " Highlight current line
 set cursorline
 
