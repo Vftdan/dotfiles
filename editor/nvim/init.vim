@@ -958,6 +958,8 @@ aug END
 " ':enew | ClearLlist | PopulateLlist pattern' can be used as window-local ':args pattern'
 command! -nargs=* -bar -complete=file PopulateQlist  vimgrepadd /\v%^/ <args>
 command! -nargs=* -bar -complete=file PopulateLlist lvimgrepadd /\v%^/ <args>
+command! -nargs=0 -bar MarkQlist call  setqflist(   [{'bufnr': bufnr(), 'lnum': line('.'), 'col': col('.'), 'text': getline('.')}], 'a')
+command! -nargs=0 -bar MarkLlist call setloclist(0, [{'bufnr': bufnr(), 'lnum': line('.'), 'col': col('.'), 'text': getline('.')}], 'a')
 command! -nargs=0 -bar ClearQlist call  setqflist(   [])
 command! -nargs=0 -bar ClearLlist call setloclist(0, [])
 Calias wargs enew \| ClearLlist \| PopulateLlist
