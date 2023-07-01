@@ -204,9 +204,9 @@ Calias open view
 " Override shortest version of :oldfiles
 Calias o view
 " Make parent directories for the current file
-command! Mkdirs call mkdir(expand('%:h'), 'p')
-command! TcdHere exe 'tcd ' . expand('%:h')
-command! GcdHere exe 'cd ' . expand('%:h')
+command! -bar Mkdirs call mkdir(expand('%:h'), 'p')
+command! -bar TcdHere exe 'tcd ' . expand('%:h')
+command! -bar GcdHere exe 'cd ' . expand('%:h')
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
 " Home/End
@@ -222,7 +222,7 @@ function! DiffFiles(file1, ...)
 		wincmd l
 	endfor
 endfunction
-command! -nargs=+ -complete=file TabDiff tabnew | call DiffFiles(<f-args>)
+command! -nargs=+ -bar -complete=file TabDiff tabnew | call DiffFiles(<f-args>)
 " Buffers
 nnoremap g<C-I>   @=":setlocal bl <bar> bn\r"<cr>
 nnoremap g<C-O>   @=":setlocal bl <bar> bp\r"<cr>
@@ -360,14 +360,14 @@ function! s:togMouse()
 		set mouse=a
 	endif
 endfunction
-command! TogMouse call <SID>togMouse()
+command! -bar TogMouse call <SID>togMouse()
 inoremap <Plug>(ctrl-l-prefix)m <esc>:TogMouse<cr>a
 nnoremap <C-L>m :TogMouse<cr>
 " Word count
-command! Wc w !wc
+command! -bar Wc w !wc
 " ASCII art helpers
-command! -range AARev <line1>,<line2>!rev | tr '`./(qd<\[{'"'"',\\)pb>\]}' ''"'"',\\)pb>\]}`./(qd<\[{'
-command! -range AATac <line1>,<line2>!tac | tr '`'"'"'/^qpwWn\!,.\\vdbmMui' ',.\\vdbmMui`'"'"'/^qpwWn\!'
+command! -range -bar AARev <line1>,<line2>!rev | tr '`./(qd<\[{'"'"',\\)pb>\]}' ''"'"',\\)pb>\]}`./(qd<\[{'
+command! -range -bar AATac <line1>,<line2>!tac | tr '`'"'"'/^qpwWn\!,.\\vdbmMui' ',.\\vdbmMui`'"'"'/^qpwWn\!'
 " New column
 function! s:newcol(cmd)
 	if a:cmd == ''
@@ -376,7 +376,7 @@ function! s:newcol(cmd)
 		exe 'vertical bo ' . a:cmd
 	endif
 endfunction
-command! -nargs=* Newcol call <SID>newcol(<q-args>)
+command! -nargs=* -bar Newcol call <SID>newcol(<q-args>)
 " Preview window
 function! s:preview(cmd)
 	try
@@ -397,7 +397,7 @@ function! s:forceSyntax(lang)
 	unlet! b:current_syntax
 	execute "runtime syntax/" . a:lang . ".vim"
 endfunction
-command! -nargs=1 ForceSyntax call <SID>forceSyntax("<args>")
+command! -nargs=1 -bar ForceSyntax call <SID>forceSyntax("<args>")
 " Markdown <url:https://github.com/mathdown/mathdown>
 let g:markdown_folding = v:true
 " TODO: mathup
@@ -844,8 +844,8 @@ aug loclistnoswb
 aug END
 " Populating quickfix and loclist with files
 " ':enew | ClearLlist | PopulateLlist pattern' can be used as window-local ':args pattern'
-command! -nargs=* -complete=file PopulateQlist  vimgrepadd /\v%^/ <args>
-command! -nargs=* -complete=file PopulateLlist lvimgrepadd /\v%^/ <args>
+command! -nargs=* -bar -complete=file PopulateQlist  vimgrepadd /\v%^/ <args>
+command! -nargs=* -bar -complete=file PopulateLlist lvimgrepadd /\v%^/ <args>
 command! -nargs=0 -bar ClearQlist call  setqflist(   [])
 command! -nargs=0 -bar ClearLlist call setloclist(0, [])
 Calias wargs enew \| ClearLlist \| PopulateLlist
