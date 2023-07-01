@@ -918,6 +918,7 @@ aug vftdan_custom
 	au BufNewFile,BufRead,Bufenter *.ass setlocal commentstring=;%s
 	au BufNewFile,BufRead,Bufenter yggdrasil.conf setlocal ft=hjson
 	au BufNewFile,BufRead *.mcmeta setlocal ft=json
+	au FileType sh call setbufvar('', '&path', execute('setg path?')[8:] . ',' . substitute(escape($PATH, ' ,\'), '[:;]', ',', 'g'))
 aug END
 aug modpacker
 	au!
