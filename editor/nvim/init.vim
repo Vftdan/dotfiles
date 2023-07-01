@@ -751,9 +751,9 @@ endif
 " Populate :edit with the current file path/url
 nnoremap <F6> :e <C-R>=@%<CR>
 " Shortcut for make
-nmap <F10> :w \| make<CR>
+nmap <F10> :update \| make<CR>
 map <S-F10> <F22>
-nmap <silent> <F22> :w \| wincmd z \| noswapfile bo new \| set previewwindow \| term make run<CR>
+nmap <silent> <F22> :update \| wincmd z \| noswapfile bo new \| set previewwindow \| term make run<CR>
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
 function! s:format_date(fmt, descr)
