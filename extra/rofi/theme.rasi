@@ -27,7 +27,7 @@ prompt {
 	text-color:	@var-prompt-fg;
 	margin:	0px 8px 0px 0px;
 }
-inputbar, message, sidebar {
+inputbar, message, sidebar, error-message {
 	background-color:	@var-top-bg;
 	padding:	6px 4px;
 }
