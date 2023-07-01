@@ -537,6 +537,9 @@ if !empty(globpath(&rtp, 'autoload/LanguageClient.vim'))
 		au!
 		au User LanguageClientTextDocumentDidOpenPost setlocal formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 	aug END
+	" For some reason gq doesn't work properly with pyls
+	command! -range LSPFormat call LanguageClient#textDocument_formatting_sync({'range_start_line': <line1> - 1, 'range_end_line': <line2>})
+	command! -range LSPFormatAsync call LanguageClient#textDocument_formatting({'range_start_line': <line1> - 1, 'range_end_line': <line2>})
 endif
 " Translator
 if !empty(globpath(&rtp, 'autoload/translator.vim'))
