@@ -4,26 +4,32 @@
 
 # terminal emulator
 super + r
+	renice 0 $$; \
 	SHLVL=0 gnome-terminal
 
 # terminal emulator (git)
 super + g
+	renice 0 $$; \
 	SHLVL=0 gnome-terminal -x bash --rcfile ~/bin/git-preload
 
 # file manager
 super + e
+	renice 0 $$; \
 	SHLVL=0 nemo
 
 # editor
 super + apostrophe
+	renice 0 $$; \
 	SHLVL=0 gnome-terminal -- nvim
 
 # calculator
 super + KP_0
+	renice 0 $$; \
 	SHLVL=0 gnome-calculator
 
 # program launcher
 super + {_, alt + }@space
+	renice 0 $$; \
 	SHLVL=0 rofi -show {drun,run}
 
 alt + F2
@@ -31,6 +37,7 @@ alt + F2
 
 # program launcher (root)
 ctrl + super + {_, alt + }@space
+	renice 0 $$; \
 	SHLVL=0 tmux -c 'rofi -dmenu -p "password for $USER: " -password -lines 0 | sudo -S --preserve-env=HOME rofi -show {drun,run} & disown'
 
 # make sxhkd reload its configuration files:
@@ -45,14 +52,17 @@ super + {_,alt + , shift + } {_,ctrl + }Print
 
 # text to image
 super + x
+	renice 0 $$; \
 	xctxt2png
 
 # image to text
 super + shift + x
+	renice 0 $$; \
 	xcpng2txt
 
 # translate
 super + Insert
+	renice 0 $$; \
 	python3 ~/.config/nvim/plugged/vim-translator/script/translator.py --engines google --target_lang ru --source_lang auto "$(xclip -o | tr $'\n' ' ')" | jq -r '.text, (.results[] | .paraphrase, .explain[])' | sed 's/.\\\{70\\\}/\0\n/g' | rofi -p 'Translation:' -dmenu
 
 # rotate monitor
@@ -114,6 +124,7 @@ super + shift {_,+ ctrl} + {Left,Right}
 
 # launch player
 super + m
+	renice 0 $$; \
 	SHLVL=0 clementine
 
 # toggle mic
