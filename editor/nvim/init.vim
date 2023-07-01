@@ -292,6 +292,19 @@ nmap     <C-W><ESC> <Plug>(wincmdmode-break)
 nmap     <C-W><CR> <cmd>exe "wincmd \<lt>cr>"<cr><Plug>(wincmdmode-break)
 nmap     <C-W><LF> <Plug>(wincmdmode-break)
 nmap     <C-W><space> <Plug>(wincmdmode-break)
+
+" Last focused tab page
+let s:last_focused_tab_page = get(s:, 'last_focused_tab_page', tabpagenr())
+aug LastFocusedTabPage
+	au!
+	au TabLeave * let s:last_focused_tab_page = tabpagenr()
+aug END
+function! s:last_focused_tab_page_get()
+	return s:last_focused_tab_page
+endfunction
+nnoremap <expr> <Plug>(last-focused-tab-page-switch) <SID>last_focused_tab_page_get() . 'gt'
+nmap     <C-W>gp <Plug>(last-focused-tab-page-switch)
+
 " Window splitting
 nnoremap <C-W>% :vsp<cr>
 nnoremap <C-W>" :sp<cr>
