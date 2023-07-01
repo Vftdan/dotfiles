@@ -177,7 +177,7 @@ xkb_keymap {
 		};
 		key <AC02> {
 			overlay1=<MBT2>,
-			symbols[Group1] = [	  s,	S, ssharp, ssharp	]
+			symbols[Group1] = [	  s,	S, ssharp, U1E9E	]
 		};
 		key <AC03> {
 			overlay1=<MBT3>
