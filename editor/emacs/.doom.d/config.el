@@ -183,6 +183,17 @@
     (duplicate-selected count (point) (+ (point) 1) nil)
 )
 
+(hercules-def
+    :show-funs #'evil-wincmd-mode
+    :hide-funs #'evil-wincmd-mode-break
+    :keymap 'evil-window-map
+    :transient t
+)
+(map!
+    (:prefix "g"
+        :n "C-w"        #'evil-wincmd-mode
+    )
+)
 ;; If using tabs inside workspaces like desktops inside X displays
 ;; or tmux windows inside tmux sessions, map "C-t", "gt", "gT", "m>", "m<"
 ;; to the corresponding tab functions
@@ -232,6 +243,8 @@
         "k"             #'+evil/window-move-up
         "l"             #'+evil/window-move-right
     )
+    ;; FIXME doesn't seem to actually disable non-transient hercules mode
+    "ESC"               #'evil-wincmd-mode-break
 )
 
 (map!
