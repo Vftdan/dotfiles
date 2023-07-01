@@ -691,6 +691,8 @@ inoremap jkj jk
 nnoremap <A-'><A-'> viw
 " Clear search highlight
 nnoremap <A-'>/ :nohlsearch<CR>
+" Automatically wake up if there is no shell
+nnoremap <C-z> :call system('( sleep .5; kill -CONT ' . getpid() . ';) &') <bar> suspend<cr>
 " Select line without <EOL>
 onoremap il :<C-U>normal! 0v$h<CR>
 vnoremap il 0o$h
