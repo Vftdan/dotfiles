@@ -751,9 +751,67 @@ endif
 " Populate :edit with the current file path/url
 nnoremap <F6> :e <C-R>=@%<CR>
 " Shortcut for make
-nmap <F10> :update \| make<CR>
+function! s:get_last_from_dict_chain(chain, key, default)
+	let l:res = a:default
+	for l:d in a:chain
+		let l:res = get(l:d, a:key, l:res)
+	endfor
+	return l:res
+endfunction
+function! s:run_make(cmd, ...)
+	let l:layout = winrestcmd()
+	let l:prevwin = win_getid()
+	let l:new = 'new'
+	if a:0
+		let l:new = a:1
+	endif
+	exe l:new
+	let l:buf = bufnr()
+	let l:newwin = win_getid()
+	exe 'lcd ' . fnameescape(s:get_last_from_dict_chain([g:, t:, b:, w:], 'makefile_dir', '.'))
+	exe a:cmd
+	if bufexists(l:buf) && getbufvar(l:buf, '&buflisted') && getbufvar(l:buf, '&buftype') == '' && !getbufvar(l:buf, '&modified')
+		if bufnr() == l:buf
+			q
+		else
+			exe l:buf . 'bd'
+		endif
+	endif
+	if l:prevwin == win_getid()
+		exe l:layout
+	elseif l:newwin == win_getid()
+		function! s:run_make_delayed_teardown_handler(...) closure
+			aug run_make_delayed_teardown | au! | aug END
+			noau if win_gotoid(l:newwin)
+				noau wincmd p
+				if a:0 == 0
+					call timer_start(0, funcref("s:run_make_delayed_teardown_handler"))
+				endif
+				return
+			endif
+			if win_gotoid(l:prevwin)
+				exe l:layout
+			endif
+		endfunction
+		aug run_make_delayed_teardown
+			au!
+			au WinLeave * call <sid>run_make_delayed_teardown_handler() | call timer_start(0, {-> execute('delfunction! <sid>run_make_delayed_teardown_handler')})
+		aug END
+	endif
+endfunction
+function! ListToStringShellescape(arr)
+	if type(a:arr) != type([])
+		return a:arr
+	endif
+	return join(map(a:arr, {el -> shellescape(el)}))
+endfunction
+nmap <F10> :update \| call <sid>run_make(<sid>get_last_from_dict_chain([g:, t:, b:, w:], 'make_current_window', v:false) ? 'ExecuteNoSwitchbuf lmake' : 'make')<CR>
 map <S-F10> <F22>
-nmap <silent> <F22> :update \| wincmd z \| noswapfile bo new \| set previewwindow \| term make run<CR>
+" Sometimes nvim breaks with 'E317: pointer block id wrong' when running Maven from Makefile
+nmap <silent> <F22> :update \| wincmd z \| call <sid>run_make('term ' . &makeprg . ' ' . ListToStringShellescape(<sid>get_last_from_dict_chain([g:, t:, b:, w:], 'make_run_target', 'run')), 'noswapfile bo new \| set previewwindow')<CR>
+command! -nargs=0 -bar WindowMakeLocal let w:make_current_window = v:true | let w:list_is_location = v:true
+command! -nargs=0 -bar SetMakefileHere    let g:makefile_dir = getcwd()
+command! -nargs=0 -bar SetMakefileHereTab let t:makefile_dir = getcwd()
 " Insert current date with seconds
 map! <expr> <A-d>s system("date -Iseconds")[:-2]
 function! s:format_date(fmt, descr)
