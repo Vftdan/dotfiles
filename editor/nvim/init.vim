@@ -744,6 +744,48 @@ aug END
 set keymap=russian-jcukenwin
 lmap \| /
 lmap <A-\> \|
+lmap ḃ і
+lmap Ḃ І
+" " Cannot use unicode in lhs
+" dig ьи 1110
+" dig Ьи 1030
+" dig ЬИ 1030
+lmap <C-k>mb і
+lmap <C-k>Mb І
+lmap <C-k>MB І
+lmap q̈ ї
+lmap Q̈ Ї
+" dig йи 1111
+" dig Йи 1031
+" dig ЙИ 1031
+lmap <C-k>qb ї
+lmap <C-k>Qb Ї
+lmap <C-k>QB Ї
+" dig йе 1108
+" dig Йе 1028
+" dig ЙЕ 1028
+lmap <C-k>qt є
+lmap <C-k>Qt Є
+lmap <C-k>QT Є
+lmap ù ґ
+lmap Ù Ґ
+" dig ёг 1169
+" dig Ёг 1168
+" dig ЁГ 1168
+lmap <C-k>`u ґ
+lmap <C-k>~u Ґ
+lmap <C-k>~U Ґ
+" lmap <C-k>qt є
+" lmap <C-k>Qt Є
+" lmap <C-k>QT Є
+lmap ʉ ғ
+lmap Ʉ Ғ
+" dig гх 1171
+" dig Гх 1170
+" dig ГХ 1170
+lmap <C-k>u[ ғ
+lmap <C-k>U[ Ғ
+lmap <C-k>U{ Ғ
 set iminsert=0
 set imsearch=0
 set spelllang=en,ru

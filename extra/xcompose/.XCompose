@@ -61,3 +61,73 @@ include "%L"
 <Multi_key> <colon> <m> <o> <o> <n> <colon> : "🌚" U1f31a
 <Multi_key> <0> <greater> : "♂" U2642
 <Multi_key> <0> <plus> : "♀" U2640
+
+# Cyrillic:
+<Multi_key> <Cyrillic_softsign> <Cyrillic_i> : "і" Ukrainian_i
+<Multi_key> <Cyrillic_SOFTSIGN> <Cyrillic_i> : "І" Ukrainian_I
+<Multi_key> <Cyrillic_SOFTSIGN> <Cyrillic_I> : "І" Ukrainian_I
+# dead_abovedot = level3 (<CAPS>) + ctrl + <LSGT>
+<dead_abovedot> <Cyrillic_i> : "і" Ukrainian_i
+<dead_abovedot> <Cyrillic_I> : "І" Ukrainian_I
+<Multi_key> <period> <Cyrillic_i> : "і" Ukrainian_i
+<Multi_key> <period> <Cyrillic_I> : "І" Ukrainian_I
+
+<Multi_key> <Cyrillic_shorti> <Cyrillic_i> : "ї" Ukrainian_yi
+<Multi_key> <Cyrillic_SHORTI> <Cyrillic_i> : "Ї" Ukrainian_YI
+<Multi_key> <Cyrillic_SHORTI> <Cyrillic_I> : "Ї" Ukrainian_YI
+# dead_diaeresis = <LSGT>
+# Preserving ӥ
+<dead_diaeresis> <dead_abovedot> <Cyrillic_i> : "ї" Ukrainian_yi
+<dead_diaeresis> <dead_abovedot> <Cyrillic_I> : "Ї" Ukrainian_YI
+<Multi_key> <quotedbl> <dead_abovedot> <Cyrillic_i> : "ї" Ukrainian_yi
+<Multi_key> <quotedbl> <dead_abovedot> <Cyrillic_I> : "Ї" Ukrainian_YI
+<dead_diaeresis> <Cyrillic_yeru> : "ї" Ukrainian_yi
+<dead_diaeresis> <Cyrillic_YERU> : "Ї" Ukrainian_YI
+<Multi_key> <quotedbl> <Cyrillic_yeru> : "ї" Ukrainian_yi
+<Multi_key> <quotedbl> <Cyrillic_YERU> : "Ї" Ukrainian_YI
+# For vim lmap:
+<dead_diaeresis> <q> : "q̈"
+<Multi_key> <quotedbl> <q> : "q̈"
+
+<Multi_key> <Cyrillic_shorti> <Cyrillic_ie> : "є" Ukrainian_ie
+<Multi_key> <Cyrillic_SHORTI> <Cyrillic_ie> : "Є" Ukrainian_IE
+<Multi_key> <Cyrillic_SHORTI> <Cyrillic_IE> : "Є" Ukrainian_IE
+
+<dead_grave> <Cyrillic_ghe> : "ґ" Ukrainian_ghe_with_upturn
+<dead_grave> <Cyrillic_GHE> : "Ґ" Ukrainian_GHE_WITH_UPTURN
+
+<Multi_key> <Cyrillic_ghe> <Cyrillic_ha> : "ғ" Cyrillic_ghe_bar
+<Multi_key> <Cyrillic_GHE> <Cyrillic_ha> : "Ғ" Cyrillic_GHE_bar
+<Multi_key> <Cyrillic_GHE> <Cyrillic_HA> : "Ғ" Cyrillic_GHE_bar
+# dead_stroke = ctrl + <LSGT>
+<dead_stroke> <Cyrillic_ghe> : "ғ" Cyrillic_ghe_bar
+<dead_stroke> <Cyrillic_GHE> : "Ғ" Cyrillic_GHE_bar
+<Multi_key> <slash> <Cyrillic_ghe> : "ғ" Cyrillic_ghe_bar
+<Multi_key> <slash> <Cyrillic_GHE> : "Ғ" Cyrillic_GHE_bar
+
+<Multi_key> <Cyrillic_ka> <Cyrillic_hardsign> : "қ" Cyrillic_ka_descender
+<Multi_key> <Cyrillic_KA> <Cyrillic_hardsign> : "Қ" Cyrillic_KA_descender
+<Multi_key> <Cyrillic_KA> <Cyrillic_HARDSIGN> : "Қ" Cyrillic_KA_descender
+# dead_cedilla = alt + shift + <LSGT>
+<dead_cedilla> <Cyrillic_ka> : "қ" Cyrillic_ka_descender
+<dead_cedilla> <Cyrillic_KA> : "Қ" Cyrillic_KA_descender
+<Multi_key> <comma> <Cyrillic_ka> : "қ" Cyrillic_ka_descender
+<Multi_key> <comma> <Cyrillic_KA> : "Қ" Cyrillic_KA_descender
+
+<Multi_key> <Cyrillic_en> <Cyrillic_ghe> : "ң" Cyrillic_en_descender
+<Multi_key> <Cyrillic_EN> <Cyrillic_ghe> : "Ң" Cyrillic_EN_descender
+<Multi_key> <Cyrillic_EN> <Cyrillic_GHE> : "Ң" Cyrillic_EN_descender
+# dead_cedilla = alt + shift + <LSGT>
+<dead_cedilla> <Cyrillic_en> : "ң" Cyrillic_en_descender
+<dead_cedilla> <Cyrillic_EN> : "Ң" Cyrillic_EN_descender
+<Multi_key> <comma> <Cyrillic_en> : "ң" Cyrillic_en_descender
+<Multi_key> <comma> <Cyrillic_EN> : "Ң" Cyrillic_EN_descender
+
+<Multi_key> <Cyrillic_softsign> <Cyrillic_o> : "ө" Cyrillic_o_bar
+<Multi_key> <Cyrillic_SOFTSIGN> <Cyrillic_O> : "Ө" Cyrillic_O_bar
+<Multi_key> <Cyrillic_SOFTSIGN> <Cyrillic_O> : "Ө" Cyrillic_O_bar
+# dead_stroke = ctrl + <LSGT>
+<dead_stroke> <Cyrillic_o> : "ө" Cyrillic_o_bar
+<dead_stroke> <Cyrillic_O> : "Ө" Cyrillic_O_bar
+<Multi_key> <slash> <Cyrillic_o> : "ө" Cyrillic_o_bar
+<Multi_key> <slash> <Cyrillic_O> : "Ө" Cyrillic_O_bar
