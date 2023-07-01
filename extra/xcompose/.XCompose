@@ -7,6 +7,24 @@ include "%L"
 # <dead_acute> <dead_diaeresis> : dead_doubleacute
 # <dead_diaeresis> <dead_grave> : dead_doublegrave
 # <dead_grave> <dead_diaeresis> : dead_doublegrave
+<dead_currency> <Cyrillic_er> : "₽" U20BD
+<dead_currency> <semicolon> <r> : "₽" U20BD
+# For questions in the middle of sentences (unfortunatelly, cannot typewriter-style overlap most of graphemes, and there doesn't seem to be dotless punctuation marks)
+<Multi_key> <comma> <question> : "?̦"
+<Multi_key> <question> <comma> : "?̦"
+# For completeness
+<Multi_key> <comma> <exclam> : "!̦"
+<Multi_key> <exclam> <comma> : "!̦"
+# For unambiguously nested clauses
+<Multi_key> <comma> <braceleft> : "{̦"
+<Multi_key> <comma> <braceright> : "}̦"
+<Multi_key> <braceleft> <comma> : "{̦"
+<Multi_key> <braceright> <comma> : "}̦"
+<Multi_key> <comma> <parenleft> : ",͑"
+<Multi_key> <comma> <parenright> : ",͗"
+<Multi_key> <parenleft> <comma> : ",͑"
+<Multi_key> <parenright> <comma> : ",͗"
+# Maths
 <Multi_key> <s> <h> : "ʃ" U0283
 <Multi_key> <asciitilde> <equal> : "≈" approxeq
 <Multi_key> <exclam> <equal> : "≠" U2260
@@ -58,6 +76,7 @@ include "%L"
 <Multi_key> <o> <backslash> <slash> : "⊗" U2297
 <Multi_key> <colon> <h> <m> <m> <colon> : "🤔" U1f914
 <Multi_key> <colon> <s> <h> <r> <u> <g> <colon> : "🤷" U1f937
+<Multi_key> <colon> <s> <h> <r> <u> <g> <k> <colon> : "¯\\_(ツ)_/¯"
 <Multi_key> <colon> <m> <o> <o> <n> <colon> : "🌚" U1f31a
 <Multi_key> <0> <greater> : "♂" U2642
 <Multi_key> <0> <plus> : "♀" U2640
