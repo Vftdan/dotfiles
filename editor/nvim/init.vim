@@ -81,6 +81,7 @@ if g:loaded_plug
 		Plug 'jidn/vim-dbml'
 		Plug 'hjson/vim-hjson'
 		Plug 'aklt/plantuml-syntax'
+		Plug 'tikhomirov/vim-glsl'
 
 		Plug 'kana/vim-textobj-user'
 		Plug 'kana/vim-operator-user'
