@@ -120,6 +120,8 @@ fi
 shopt -s expand_aliases
 shopt -s progcomp_alias
 shopt -s nullglob
+HISTSIZE=100000
+HISTFILESIZE=200000
 set -o vi
 stty werase undef
 bind -m vi-insert -r '"\C-a"'
