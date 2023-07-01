@@ -75,10 +75,10 @@ super + alt + l
 	which xscreensaver-command && xscreensaver-command -lock
 
 #
-# volume
+# audio
 #
 
-# audio
+# volume
 super + shift + KP_{Add,Subtract}
 	values=$(amixer -D pulse get Master | grep --line-buffered "\(Mono\:\|Front \(Left\|Right\)\:\) Playback" | sed -e 's/^.*\[\(.*\)%\].*$/\1/'); \
 	s=$(echo "$values" | sort -rn | head -n 1); \
@@ -165,7 +165,7 @@ super + shift + F10
 
 # swap the current node and the biggest node
 super + F9
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 #
 # state/flags
@@ -302,12 +302,17 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 # choose window to focus
-super + F3
-	w=$(bspc query -N -n .local.window | while read i; \ 
+super + {_,alt + } + F3
+	w=$(bspc query -N -n {.local.,.}window | while read i; \ 
 		do echo $i $(xprop -id $i | fgrep NET_WM_NAME | \
 		sed 's/^[^=]* = //'); done | rofi -dmenu); \
 	if [ -n "$w" ]; then \
 		w=$(echo $w | cut -d ' ' -s -f 1); \
+		if [ -n $(bspc query -N -n "$w".hidden) ]; then \
+			bspc node "$w" -g hidden=off; \
+			bspc node $w.fullscreen -t tiled; \
+			bspc node $w -l normal; \
+		fi; \
 		bspc node -f $w; \
 	fi
 
@@ -346,6 +351,12 @@ super + ctrl + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 alt + F8: shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# expand/contract a window while preserving aspect ratio
+alt + F8: KP_{Add,Subtract}
+	deltas="$(bspc query -n -T | jq -c '[(.client.floatingRectangle | (.width / .height) | sqrt) as $rar | (10 * $rar, 10 / $rar) | round]')"; \
+	sign="{+,-}"; \
+	bspc node -z bottom_right $(printf '%s' "$deltas" | jq -r 'map((. * (0 '$sign' 1)) | tostring) | .[]') -z top_left $(printf '%s' "$deltas" | jq -r 'map((. * (0 '$sign' 1) * -1) | tostring) | .[]')
 
 # move a floating window
 super + {Left,Down,Up,Right}
