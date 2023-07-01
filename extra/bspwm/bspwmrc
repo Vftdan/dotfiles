@@ -5,11 +5,11 @@ export XDG_CURRENT_DESKTOP='bspwm:X-Cinnamon:XFCE'
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.metacitythemename=Mint-Y-Dark-Custom"
 dunst &
-sxhkd 2>&1 | egrep -v 'nemo.*connect\(\) failed' | grep -v '\(audio_device_pulse_linux\|device_info_linux\).cc' &
+( while true; do sxhkd; echo "sxhkd exited with code $?; restarting..."; done ) 2>&1 | egrep -v 'nemo.*connect\(\) failed' | grep -v '\(audio_device_pulse_linux\|device_info_linux\).cc' &
 renice 0 $$
 tint2 2>&1 | grep -v '^tint2: Executing:' &
 xsettingsd &
-compton --invert-color-include '_COMPTON_INVERT:8c > 0' &
+( while true; do compton --invert-color-include '_COMPTON_INVERT:8c > 0'; echo "compton exited with code $?; restarting..."; done ) &
 if which xfce4-screensaver; then \
 	xfce4-screensaver &
 else
