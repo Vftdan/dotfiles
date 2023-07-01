@@ -80,6 +80,7 @@ if g:loaded_plug
 		Plug 'Vftdan/vim-hcl'
 		Plug 'jidn/vim-dbml'
 		Plug 'hjson/vim-hjson'
+		Plug 'aklt/plantuml-syntax'
 
 		Plug 'kana/vim-textobj-user'
 		Plug 'kana/vim-operator-user'
@@ -162,6 +163,8 @@ hi def link Quote Delimiter
 hi     link w3mUrl Comment
 hi     link w3mLink Comment
 hi     link w3mLinkHover Underlined
+hi     link plantumlColonLine String
+hi     link plantumlSequenceDivider Title
 " Highlight current line
 set cursorline
 
