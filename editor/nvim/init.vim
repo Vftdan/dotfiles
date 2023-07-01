@@ -340,8 +340,9 @@ nnoremap <C-W>m< @=":tabmove -\r"<cr>
 nnoremap <C-W>m^ :tabmove 0<cr>
 nnoremap <C-W>m$ :tabmove $<cr>
 nnoremap <C-W>mm @=":tabmove " . v:count . "\r"<cr>
-nnoremap <C-W>g> gt
-nnoremap <C-W>g< gT
+" Throws E474 instead of wrapping!
+nnoremap <C-W>g> :<C-U>exe "tabnext +" . v:count1<cr>
+nnoremap <C-W>g< :<C-U>exe "tabnext -" . v:count1<cr>
 nnoremap <C-W>g^ :tabrewind<cr>
 nnoremap <C-W>g$ :tablast<cr>
 nnoremap <C-W>gg @=":tabnext " . v:count1 . "\r"<cr>
