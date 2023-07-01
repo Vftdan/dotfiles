@@ -821,6 +821,8 @@ function! s:format_date(fmt, descr)
 	return system("date +" . shellescape(a:fmt) . " -d " . shellescape(a:descr))[:-2]
 endfunction
 map! <expr> <A-d>o <SID>format_date('%Y-%m-%d %a', input({'prompt': 'Which date: ', 'cancelreturn': v:null}))
+" Lorem ipsum
+command! -nargs=* -bar LipsumParagraph :python3 (lambda current: current.buffer.append(__import__('lipsum').generate_paragraphs((1, <args>)[-1]).split('\n'), current.window.cursor[0]))(__import__('vim').current)
 " Matchup
 if !empty(globpath(&rtp, 'autoload/matchup.vim'))
 	let g:matchup_matchparen_offscreen = {'method': 'popup'}
