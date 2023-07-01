@@ -895,26 +895,29 @@ nnoremap <A-'> <Nop>
 nnoremap <A-x> <Nop>
 imap <A-;> <Nop>
 vmap <A-;> <Nop>
-" C# indentation
-au BufNewFile,BufRead,Bufenter *.cs set ts=4 sw=4 et
-" Open help about selection in VimScript
-au BufNewFile,BufRead,Bufenter *.vim vmap <F1> y:help <C-R>"<CR>
-" (La)TeX shortcuts
-au BufNewFile,BufRead,Bufenter *.tex vnoremap <buffer> <A-l>tt <esc>`>a}<esc>`<i\texttt{<esc>
-au BufNewFile,BufRead,Bufenter *.tex vnoremap <buffer> <A-l>bf <esc>`>a}<esc>`<i\textbf{<esc>
-au BufNewFile,BufRead,Bufenter *.tex vnoremap <buffer> <A-l>sl <esc>`>a}<esc>`<i\textsl{<esc>
-au BufNewFile,BufRead,Bufenter *.tex vnoremap <buffer> <A-l>sc <esc>`>a}<esc>`<i\textsc{<esc>
-au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>#<space> \section{}<Left>
-au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>##<space> \subsection{}<Left>
-au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>###<space> \subsubsection{}<Left>
-au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>ul<space> \begin{enumerate}<CR>\end{enumerate}<esc>O
-au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>li<space> \item<space>
-" Jumping to form feed
-au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> ]] ]]zt
-au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> [[ [[zt
+aug vftdan_custom
+	" C# indentation
+	au BufNewFile,BufRead,Bufenter *.cs set ts=4 sw=4 et
+	" Open help about selection in VimScript
+	au BufNewFile,BufRead,Bufenter *.vim vmap <F1> y:help <C-R>"<CR>
+	" (La)TeX shortcuts
+	au BufNewFile,BufRead,Bufenter *.tex vnoremap <buffer> <A-l>tt <esc>`>a}<esc>`<i\texttt{<esc>
+	au BufNewFile,BufRead,Bufenter *.tex vnoremap <buffer> <A-l>bf <esc>`>a}<esc>`<i\textbf{<esc>
+	au BufNewFile,BufRead,Bufenter *.tex vnoremap <buffer> <A-l>sl <esc>`>a}<esc>`<i\textsl{<esc>
+	au BufNewFile,BufRead,Bufenter *.tex vnoremap <buffer> <A-l>sc <esc>`>a}<esc>`<i\textsc{<esc>
+	au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>#<space> \section{}<Left>
+	au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>##<space> \subsection{}<Left>
+	au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>###<space> \subsubsection{}<Left>
+	au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>ul<space> \begin{enumerate}<CR>\end{enumerate}<esc>O
+	au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>li<space> \item<space>
+	" Jumping to form feed
+	au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> ]] ]]zt
+	au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> [[ [[zt
 
-au BufNewFile,BufRead,Bufenter *.hs setlocal ts=4 sw=4 et makeprg=stack\ build
-au BufNewFile,BufRead,Bufenter yggdrasil.conf setlocal ft=hjson
+	au BufNewFile,BufRead,Bufenter *.hs setlocal ts=4 sw=4 et makeprg=stack\ build
+	au BufNewFile,BufRead,Bufenter yggdrasil.conf setlocal ft=hjson
+	au BufNewFile,BufRead *.mcmeta setlocal ft=json
+aug END
 aug modpacker
 	au!
 	au BufNewFile,BufRead *.pack setlocal ft=modpacker
@@ -922,8 +925,7 @@ aug modpacker
 	au Filetype modpacker let b:hcl_no_aws_resource_keywords=v:true
 	au Filetype modpacker let b:hcl_custom_keywords={'type': ['mod']}
 	au Filetype modpacker runtime! syntax/hcl.vim
-aug end
-au BufNewFile,BufRead *.mcmeta setlocal ft=json
+aug END
 function! ExecuteNoSwitchbuf(cmd)
 	let l:swb = &switchbuf
 	try
