@@ -134,6 +134,21 @@
     )
 )
 
+;;; Do we need this? Should it be put inside "after!"? Will "load-file-name" work as intended there?
+(autoload '+workspace:switch-next load-file-name nil t)
+(autoload '+workspace:switch-previous load-file-name nil t)
+
+;;; autoload-able package functions don't seem to override functions from config.el, so we don't need "after!"
+(evil-define-command +workspace:switch-next (&optional count)
+   "Switch to next workspace. If COUNT, switch to COUNT-th workspace (1-indexed)."
+   (interactive "<c>")
+   (if count (+workspace/switch-to (- count 1)) (+workspace/cycle +1)))
+
+(evil-define-command +workspace:switch-previous (&optional count)
+   "Switch to previous workspace. If COUNT, switch to COUNT-th workspace (1-indexed)."
+   (interactive "<c>")
+   (if count (+workspace/switch-to (- count 1)) (+workspace/cycle -1)))
+
 ;; (setq evil-complete-next-func (lambda (count) (company-complete) (dotimes (_ (- count 1)) (company-select-next))))
 ;; (setq evil-complete-previous-func (lambda (count) (company-complete) (company-select-last) (dotimes (_ (- count 1)) (company-select-previous))))
 (setq evil-complete-next-func (lambda (count) (+company/dabbrev) (dotimes (_ (- count 1)) (company-select-next))))
