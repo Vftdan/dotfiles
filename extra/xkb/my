@@ -323,8 +323,26 @@ xkb_keymap {
 		key <AE06> { [ 6, asciicircum, dead_circumflex ] };
 		key <LSGT> {
 			type="PC_LEVEL3_ALT_CONTROL_16LEVELS",
-			symbols[Group1] = [ dead_diaeresis, dead_acute, dead_grave, dead_circumflex, dead_greek, dead_cedilla, dead_caron, dead_macron, dead_stroke, dead_tilde, dead_abovering, dead_doubleacute, dead_currency, dead_breve ],
-			symbols[Group2] = [ dead_diaeresis, dead_acute, dead_grave, dead_circumflex, dead_greek, dead_cedilla, dead_caron, dead_macron, dead_stroke, dead_tilde, dead_abovering, dead_doubleacute, dead_currency, dead_breve ]
+			symbols[Group1] = [
+				// None       | Shift       | Lvl3          | Shift+Lvl3
+				dead_diaeresis, dead_acute,   dead_grave,     dead_circumflex,
+				// Alt:
+				dead_greek,     dead_cedilla, dead_caron,     dead_macron,
+				// Ctrl:
+				dead_stroke,    dead_breve,   dead_abovedot,  dead_doubleacute,
+				// Ctrl+Alt:
+				dead_currency,  dead_tilde,   dead_abovering, dead_doublegrave
+			],
+			symbols[Group2] = [
+				// None       | Shift       | Lvl3          | Shift+Lvl3
+				dead_diaeresis, dead_acute,   dead_grave,     dead_circumflex,
+				// Alt:
+				dead_greek,     dead_cedilla, dead_caron,     dead_macron,
+				// Ctrl:
+				dead_stroke,    dead_breve,   dead_abovedot,  dead_doubleacute,
+				// Ctrl+Alt:
+				dead_currency,  dead_tilde,   dead_abovering, dead_doublegrave
+			]
 		};
 
 		key <AB07> {
