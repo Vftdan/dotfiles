@@ -703,7 +703,8 @@ nnoremap yY y:<C-U>normal! 0v$h<CR>
 nnoremap D d$
 nnoremap Y y$
 " i_CTRL-W but forward
-inoremap <C-Del> <C-O>"_d:<C-U>normal! wgel<CR>
+" Warning: deletes immediately following punctuation
+inoremap <C-Del> <Right><C-O>"_d:<C-U>normal! vwgeoh<CR>
 " Extract to variable
 vnoremap <expr> <Plug>(vftdan-extract) <sid>extract_var_sequence(v:register)
 vmap g<A-e> <Plug>(vftdan-extract)
