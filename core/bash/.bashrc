@@ -160,8 +160,10 @@ alias ytdlmkv='youtube-dl -f "22+bestaudio/720p+bestaudio/bestvideo+bestaudio" -
 alias ff-show-info='ffprobe -v error -show_entries format -of default=noprint_wrappers=1:nokey=0'
 alias ffmpeg='ffmpeg -hide_banner'
 alias ffprobe='ffprobe -hide_banner'
+alias ffplay='ffplay -hide_banner'
 alias md-read="nvim +'set notgc' +'term python3 -m rich.markdown -c % ; sleep infinity'"
 alias sag='eval $(ssh-agent)'
+alias sag-k='eval $(ssh-agent -k)'
 alias sa="ssh-add"
 # Pre Ubuntu 19 behavior:
 alias sudo="sudo --preserve-env=HOME,SHLVL"
@@ -217,7 +219,7 @@ ssh-add-key() {
 }
 __copyfile() {
 	for i in "$@"; do \
-		echo file://$(realpath "$i") | sed -e 's/\%/%25/g; s/ /%20/g; s/\?/%3F/g; s/\&/%26/g'
+		printf '%s\n' "file://$(realpath "$i")" | sed -e 's/\%/%25/g; s/ /%20/g; s/\?/%3F/g; s/\&/%26/g'
 	done | xclip -selection clipboard -i -t text/uri-list
 }
 __to_data_url() {
@@ -225,6 +227,18 @@ __to_data_url() {
 }
 __to_data_url_file() {
 	__to_data_url "$(file --mime-type "$1" | cut -d ' ' -f 2)" "$1"
+}
+shellescape() {
+	while [ "$#" -gt 0 ]; do \
+		printf "'"
+		printf '%s' "$1" | sed -e "s/'/'\\\\''/g"
+		printf "'"
+		shift
+		if [ "$#" -gt 0 ]
+		then printf ' '
+		fi
+	done
+	echo
 }
 Man() {
 	nvim "man://man" "++Man $*"
@@ -235,6 +249,15 @@ ietfrfc() {
 }
 xprop-no-icon() {
 	xprop "$@" | sed -e '/\tIcon/,/^$/d'
+}
+pdf-concat-to() {
+	if [ "$#" -lt 2 ]; then \
+		echo "Usage: pdf-concat-to <output-file> <input-files...>" >&2
+		return 1
+	fi
+	local out="$1"
+	shift
+	pdftk "$@" cat output "$out"
 }
 if [ "$TERM" = xterm-256color ]; then \
 	if ( toe -a | grep ^xterm-24bit -q; ); then \
