@@ -1,0 +1,9 @@
+#! /bin/sh
+
+xprop -id "$1" | egrep '^(WM_NAME\()' | LC_ALL=C sort | {
+	read title
+	echo "$title" | if grep -q '"video. - mpv"'; then \
+		# Webcam (/dev/video0)
+		echo state=floating layer=above rectangle=640x480+1280+600
+	fi
+}

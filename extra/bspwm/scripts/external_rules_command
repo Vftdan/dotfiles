@@ -11,3 +11,7 @@ fi
 if [ "$2" = Firefox ]; then \
 	exec "$0-firefox" "$@"
 fi
+
+if [ "$2" = mpv ]; then \
+	exec "$0-mpv" "$@"
+fi
