@@ -208,9 +208,12 @@ Calias open view
 Calias o view
 " Make parent directories for the current file
 command! -bar Mkdirs call mkdir(expand('%:h'), 'p')
+Calias mkdirs Mkdirs
 command! -bar TcdHere exe 'tcd ' . expand('%:h')
 command! -bar LcdHere exe 'lcd ' . expand('%:h')
 command! -bar GcdHere exe 'cd ' . expand('%:h')
+Calias wcd lcd
+Calias WcdHere LcdHere
 " Disable removing tabs on skipped empty lines
 inoremap <cr> <space><bs><cr>
 " Home/End
