@@ -147,6 +147,7 @@ if g:loaded_plug
 		Plug 'iamcco/fzf-source.vim'
 
 		Plug 'flazz/vim-colorschemes'
+		Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 		Plug 'https://tildegit.org/sloum/gemini-vim-syntax'
 		Plug 'vftdan/vim-gemini-protocol', { 'do': 'make' }
 		Plug 'vftdan/vim-netfind'
