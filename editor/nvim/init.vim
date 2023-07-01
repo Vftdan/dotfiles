@@ -97,6 +97,7 @@ if g:loaded_plug
 		Plug 'saaguero/vim-textobj-pastedtext'
 		Plug 'machakann/vim-textobj-delimited'
 		Plug 'mattn/vim-textobj-url'
+		Plug 'rbonvall/vim-textobj-latex'
 		Plug 'junegunn/vim-easy-align'
 		Plug 'kana/vim-submode'
 		Plug 'dyng/ctrlsf.vim'
@@ -552,6 +553,7 @@ endif
 " Surround
 if !empty(globpath(&rtp, 'plugin/surround.vim'))
 	nmap <A-u><A-u> viw<Plug>VSurround_
+	let g:surround_{char2nr('e')} = "\\begin{\1environment: \1}\r\\end{\1\r}.*\r\1}"
 endif
 " Visual multi
 if !empty(globpath(&rtp, 'plugin/visual-multi.vim'))
@@ -847,6 +849,13 @@ if !empty(globpath(&rtp, 'autoload/textobj/comment.vim'))
 endif
 if !empty(globpath(&rtp, 'autoload/textobj/pastedtext.vim'))
 	let g:pastedtext_select_key = 'iP'
+endif
+if !empty(globpath(&rtp, 'autoload/textobj/entire.vim'))
+	let g:textobj_entire_no_default_key_mappings = 1
+	xmap aE <Plug>(textobj-entire-a)
+	omap aE <Plug>(textobj-entire-a)
+	xmap iE <Plug>(textobj-entire-i)
+	omap iE <Plug>(textobj-entire-i)
 endif
 " Execute macro
 nmap <A-.> @q
