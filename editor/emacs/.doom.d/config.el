@@ -149,6 +149,22 @@
    (interactive "<c>")
    (if count (+workspace/switch-to (- count 1)) (+workspace/cycle -1)))
 
+(defun workspace-move-to (&optional idx)
+    "Move current workspace after the IDXth workspace (1-indexed, 0 means before the first)"
+    (interactive "p")
+    ;;; Despite its name, +workspace/swap-left moves left by, not swaps
+    (funcall-interactively #'+workspace/swap-left (- (cl-position (+workspace-current-name) persp-names-cache :test #'equal) (or idx 0) -1)))
+
+(defun workspace-move-to-0 ()
+    (interactive)
+    (funcall-interactively #'workspace-move-to 1))
+(defun workspace-move-to-final ()
+    (interactive)
+    (funcall-interactively #'workspace-move-to (length persp-names-cache)))
+(defun workspace-move-after-other ()
+    (interactive)
+    (funcall-interactively #'workspace-move-to (+ (cl-position +workspace--last persp-names-cache :test #'equal) 1)))
+
 ;; (setq evil-complete-next-func (lambda (count) (company-complete) (dotimes (_ (- count 1)) (company-select-next))))
 ;; (setq evil-complete-previous-func (lambda (count) (company-complete) (company-select-last) (dotimes (_ (- count 1)) (company-select-previous))))
 (setq evil-complete-next-func (lambda (count) (+company/dabbrev) (dotimes (_ (- count 1)) (company-select-next))))
@@ -167,18 +183,54 @@
     (duplicate-selected count (point) (+ (point) 1) nil)
 )
 
+;; If using tabs inside workspaces like desktops inside X displays
+;; or tmux windows inside tmux sessions, map "C-t", "gt", "gT", "m>", "m<"
+;; to the corresponding tab functions
 (map! :map evil-window-map
     "C-t"               #'+workspace:new
+    "C-n"               #'+workspace:new
     "z"                 #'doom/window-enlargen
     "<C-tab>"           #'+workspace:switch-next
     "<C-S-tab>"         #'+workspace:switch-previous
     "<C-S-iso-lefttab>" #'+workspace:switch-previous
     "%"                 #'evil-window-vsplit
     "\""                #'evil-window-split
+    "H"                 #'evil-window-move-far-left
+    "J"                 #'evil-window-move-very-bottom
+    "K"                 #'evil-window-move-very-top
+    "L"                 #'evil-window-move-far-right
+    "`"                 #'evil-window-mru
     (:prefix "g"
         "d"             #'split-and-lookup-definition
         "t"             #'+workspace:switch-next
         "T"             #'+workspace:switch-previous
+        ")"             #'+workspace:switch-next
+        "("             #'+workspace:switch-previous
+        ">"             #'+workspace/switch-next
+        "<"             #'+workspace/switch-previous
+        "^"             #'+workspace/switch-to-0
+        "$"             #'+workspace/switch-to-final
+        "g"             #'+workspace/switch-to
+        "s"             #'+workspace/switch-to
+        "p"             #'+workspace/other
+    )
+    ")"                 #'+workspace/switch-right
+    "("                 #'+workspace/switch-left
+    (:prefix "m"
+        "t"             #'+workspace/swap-right
+        "T"             #'+workspace/swap-left
+        ")"             #'+workspace/swap-right
+        "("             #'+workspace/swap-left
+        ">"             #'+workspace/swap-right
+        "<"             #'+workspace/swap-left
+        "^"             #'workspace-move-to-0
+        "$"             #'workspace-move-to-final
+        "m"             #'workspace-move-to
+        "p"             #'workspace-move-after-other
+        "h"             #'+evil/window-move-left
+        "j"             #'+evil/window-move-down
+        "k"             #'+evil/window-move-up
+        "l"             #'+evil/window-move-right
     )
 )
 
