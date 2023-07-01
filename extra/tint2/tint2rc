@@ -72,7 +72,7 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = PLTEEEEESEBC
+panel_items = PLTEEEEESEBEC
 panel_size = 100% 40
 panel_margin = 0 0
 panel_padding = 6 2 2
@@ -336,6 +336,29 @@ execp_cache_icon = 1
 execp_continuous = 1
 execp_markup = 0
 execp_tooltip = Battery status
+execp_lclick_command = 
+execp_rclick_command = 
+execp_mclick_command = 
+execp_uwheel_command = 
+execp_dwheel_command = 
+execp_font = Noto Sans Bold 16
+execp_font_color = #ffffff 100
+execp_padding = 4 2
+execp_background_id = 0
+execp_centered = 0
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 7
+execp = new
+execp_command = printf '🖴'; df -h --output=avail ~ | tail -n 1 | tr -d ' '
+execp_interval = 5
+execp_has_icon = 0
+execp_cache_icon = 1
+execp_continuous = 1
+execp_markup = 0
+execp_tooltip = Disk avaliable
 execp_lclick_command = 
 execp_rclick_command = 
 execp_mclick_command = 
