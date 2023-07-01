@@ -459,6 +459,7 @@ function! MarkdownMatchMore()
 	let l:concealends = has('conceal') ? ' concealends' : ''
 	exe 'syn region markdownStrike matchgroup=markdownStrikeDelimiter start="\S\@<=\~\~\|\~\~\S\@=" end="\S\@<=\~\~\|\~\~\S\@=" keepend contains=markdownLineStart' . l:concealends
 	syn region markdownPandocHeader matchgroup=markdownCodeDelimiter start=/\v%^---$/ end=/\v^---$/ contains=@markdownHighlightyaml
+	syn spell toplevel
 
 	hi def link markdownTableHbar PreProc
 	hi def link markdownTableVbar PreProc 
