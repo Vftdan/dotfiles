@@ -200,6 +200,9 @@ Calias Q q
 Calias Qall qall
 Calias tsp tab sp
 Calias tsplit tab split
+Calias open view
+" Override shortest version of :oldfiles
+Calias o view
 " Make parent directories for the current file
 command! Mkdirs call mkdir(expand('%:h'), 'p')
 command! TcdHere exe 'tcd ' . expand('%:h')
