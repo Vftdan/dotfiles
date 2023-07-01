@@ -443,6 +443,9 @@ let g:markdown_fenced_languages = [
 if !empty(globpath(&rtp, 'syntax/lambda.vim'))
 	call insert(g:markdown_fenced_languages, 'lambda')
 endif
+if !empty(globpath(&rtp, 'syntax/pseudocode.vim'))
+	call insert(g:markdown_fenced_languages, 'pseudocode')
+endif
 function! MarkdownMatchMore()
 	unlet b:current_syntax
 	syn include @Tex syntax/tex.vim
