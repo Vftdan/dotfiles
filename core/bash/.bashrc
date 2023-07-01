@@ -151,11 +151,12 @@ alias __paste="xclip -selection c -o"
 alias mv="mv -i"
 alias cp="cp -i"
 # Use yt-dlp instead if possible
-alias ytdl='youtube-dl -f 22'
-alias ytdlpl='youtube-dl -f 22 -o "%(playlist_index)s. %(title)s.%(ext)s"'
-alias ytdla='youtube-dl -f 140'
-alias ytdlapl='youtube-dl -f 140 -o "%(playlist_index)s. %(title)s.%(ext)s"'
-alias ytdlmkv='youtube-dl -f 22+bestaudio --merge-output-format mkv --all-subs --write-sub --write-auto-sub --embed-subs --convert-subtitles ass'
+alias ytdl='youtube-dl -f "22/720p/bestvideo[ext=mp4][height<=720]+bestaudio[ext=m4a]/best[ext=mp4][height<=720]/best[height<=720]/best"'
+alias ytdlpl='youtube-dl -f "22/720p/bestvideo[ext=mp4][height<=720]+bestaudio[ext=m4a]/best[ext=mp4][height<=720]/best[height<=720]/best" -o "%(playlist_index)s. %(title)s.%(ext)s"'
+alias ytdla='youtube-dl -f "140/bestaudio[ext=m4a]/bestaudio"'
+alias ytdlapl='youtube-dl -f "140/bestaudio[ext=m4a]/bestaudio" -o "%(playlist_index)s. %(title)s.%(ext)s"'
+# --write-auto-sub causes to download (all languages) * (all countries) subtitles, even if the given combination doesn't make much sense
+alias ytdlmkv='youtube-dl -f "22+bestaudio/720p+bestaudio/bestvideo+bestaudio" --merge-output-format mkv --remux-video mkv --all-subs --write-sub --write-auto-sub --embed-subs --convert-subtitles ass --embed-chapters --video-multistreams --audio-multistreams --embed-metadata --embed-thumbnail'
 alias ff-show-info='ffprobe -v error -show_entries format -of default=noprint_wrappers=1:nokey=0'
 alias ffmpeg='ffmpeg -hide_banner'
 alias ffprobe='ffprobe -hide_banner'
