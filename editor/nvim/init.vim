@@ -761,7 +761,7 @@ command! -nargs=0 -bar CopyClipBufferFile call system('xclip -i -selection clipb
 " Replace
 nnoremap <A-r> :%s///g<Left><Left><Left>
 " Replace selection
-vnoremap <A-r> y<esc>:%s/\V<C-R>=escape(@", '/\')<CR>//g<Left><Left>
+vnoremap <A-r> y<esc>:%s/\V<C-R>=join(map(getreg('"', 1, 1), {i,x->escape(x, '/\')}), '\n')<CR>//g<Left><Left>
 " Remove tabulation
 inoremap <S-Tab> <C-D>
 snoremap <S-Tab> <C-O><lt>gv<C-G>
