@@ -1,0 +1,35 @@
+.include /etc/pulse/default.pa
+
+# Comment out if it is already loaded somewhere else:
+load-module module-combine-sink
+
+# Never treat bluez source as mic!
+unload-module module-switch-on-connect
+# Change to the audio card of your host that handles preferred mic:
+set-default-source alsa_input.pci-0000_00_1f.3.analog-stereo
+set-default-sink combined
+
+load-module module-remap-sink master=combined sink_name=recordable_sink sink_properties=device.description=Recordable
+
+load-module module-remap-source master=combined.monitor source_name=share_all source_properties=device.description=Share-all-if-unmuted
+set-source-mute share_all true
+
+load-module module-null-sink sink_name=shareable sink_properties=device.description=Shareable
+load-module module-loopback source=share_all sink=shareable
+load-module module-remap-source master=shareable.monitor source_name=shared_source source_properties=device.description=Shared
+
+load-module module-remap-sink master=combined sink_name=shareable_and_combined sink_properties=device.description=Shareable-and-output
+load-module module-loopback source=shareable_and_combined.monitor sink=shareable
+
+load-module module-null-sink sink_name=shared_and_mic_sink sink_properties=device.description=Shared-and-mic-mixed-sink
+load-module module-loopback source=shareable.monitor sink=shared_and_mic_sink
+load-module module-loopback sink=shared_and_mic_sink
+load-module module-remap-source master=shared_and_mic_sink.monitor source_name=shared_and_mic_source source_properties=device.description=Shared-and-mic-mixed
+
+load-module module-null-sink sink_name=recordable_and_shareable sink_properties=device.description=Recordable-and-Shareable
+load-module module-loopback source=recordable_and_shareable.monitor sink=recordable_sink
+load-module module-loopback source=recordable_and_shareable.monitor sink=shareable
+# Should also be possible:
+# load-module module-combine-sink sink_name=recordable_and_shareable slaves=recordable_sink,shareable sink_properties=device.description=Recordable-and-Shareable
+
+# vim ft=conf

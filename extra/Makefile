@@ -1,4 +1,4 @@
-all: bspwm terminfo
+all: bspwm terminfo pulse
 
 bspwm: themes/Mint-Y-Dark-Custom
 	for i in bspwm xkb sxhkd rofi dunst tint2; do\
@@ -19,4 +19,8 @@ terminfo: ${HOME}/.terminfo
 ${HOME}/.terminfo: xterm-24bit.ti tmux-24bit.ti st-24bit.ti termux-24bit.ti
 	cat $^ | tic -x -o "$@" -
 
-.PHONY: bspwm terminfo all
+pulse:
+	mkdir -p ${HOME}/.config/pulse
+	cp ./pulse/* ${HOME}/.config/pulse/
+
+.PHONY: bspwm terminfo pulse all
