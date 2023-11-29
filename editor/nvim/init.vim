@@ -440,6 +440,11 @@ endfunction
 command! -bar TogMouse call <SID>togMouse()
 inoremap <Plug>(ctrl-l-prefix)m <esc>:TogMouse<cr>a
 nnoremap <C-L>m :TogMouse<cr>
+" Paste from tmux
+noremap "<C-T> "=system('tmux show-buffer')<cr>
+sunmap "<C-T>
+map! <C-R><C-T> <C-R>=system('tmux show-buffer')<cr>
+map! <C-R><C-R><C-T> <C-R><C-R>=system('tmux show-buffer')<cr>
 " Word count
 command! -bar Wc w !wc
 " ASCII art helpers
