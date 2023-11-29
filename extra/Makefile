@@ -1,4 +1,4 @@
-all: bspwm terminfo pulse
+all: bspwm terminfo pulse applications
 
 bspwm: themes/Mint-Y-Dark-Custom
 	for i in bspwm xkb sxhkd rofi dunst tint2; do\
@@ -23,4 +23,8 @@ pulse:
 	mkdir -p ${HOME}/.config/pulse
 	cp ./pulse/* ${HOME}/.config/pulse/
 
-.PHONY: bspwm terminfo pulse all
+applications:
+	mkdir -p ${HOME}/.local/share/applications/
+	cp ./applications/* ${HOME}/.local/share/applications/
+
+.PHONY: bspwm terminfo pulse applications all

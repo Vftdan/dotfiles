@@ -1,0 +1,27 @@
+[Desktop Entry]
+Version=1.0
+Name=url-open-proxy.sh
+Exec=url-open-proxy.sh %u
+Terminal=false
+Icon=web-browser
+X-MultipleArgs=false
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome
+Actions=enable;disable;toggle;select;
+
+[Desktop Action enable]
+Name=Enable manual
+Exec=url-open-proxy.sh -e
+
+[Desktop Action disable]
+Name=Disable manual
+Exec=url-open-proxy.sh -d
+
+[Desktop Action toggle]
+Name=Toggle manual
+Exec=url-open-proxy.sh -t
+
+[Desktop Action select]
+Name=Select handler
+Exec=url-open-proxy.sh -S
