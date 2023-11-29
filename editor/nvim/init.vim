@@ -265,7 +265,7 @@ function! s:wincmdmode_wrapper(sid)
 	if s:wincmdmode_running
 		return "\<C-W>"
 	endif
-	return "\<cmd>call " . a:sid . "wincmdmode_loop()\<cr>"
+	return "\<C-\>\<C-N>:call " . a:sid . "wincmdmode_loop()\<cr>"
 endfunction
 
 function! s:wincmdmode_loop()
@@ -308,8 +308,8 @@ nnoremap <expr> <Plug>(wincmdmode-loop) <SID>wincmdmode_wrapper('<SID>')
 nnoremap <expr> <Plug>(wincmdmode-break) <SID>wincmdmode_break_loop()
 nmap     g<C-W> <Plug>(wincmdmode-loop)
 nmap     <C-W><ESC> <Plug>(wincmdmode-break)
-nmap     <C-W><CR> <cmd>exe "wincmd \<lt>cr>"<cr><Plug>(wincmdmode-break)
 nmap     <C-W><LF> <Plug>(wincmdmode-break)
+nmap     <C-W><CR> <Plug>(noremap-colon)exe "wincmd \<lt>cr>"<cr><Plug>(wincmdmode-break)
 nmap     <C-W><space> <Plug>(wincmdmode-break)
 
 " Last focused tab page
@@ -325,15 +325,16 @@ nnoremap <expr> <Plug>(last-focused-tab-page-switch) <SID>last_focused_tab_page_
 nmap     <C-W>gp <Plug>(last-focused-tab-page-switch)
 
 " Window splitting
+nnoremap <Plug>(noremap-colon) :
 nnoremap <C-W>% :vsp<cr>
 nnoremap <C-W>" :sp<cr>
-nmap     <C-W><bar> <cmd>wincmd <bar><cr><Plug>(wincmdmode-break)
-nmap     <C-W>_ <cmd>wincmd _<cr><Plug>(wincmdmode-break)
+nmap     <C-W><bar> <Plug>(noremap-colon)wincmd <bar><cr><Plug>(wincmdmode-break)
+nmap     <C-W>_ <Plug>(noremap-colon)wincmd _<cr><Plug>(wincmdmode-break)
 nmap     <C-W>z <C-W><bar><C-W>_
-nmap     <C-W>gd <cmd>sp<cr>gd
-nmap     <C-W>GD <cmd>wincmd z \| sp \| set previewwindow<cr>gd
-nmap     <C-W>g<C-D> <cmd>tab sp<cr>gd
-nmap     <C-W><C-G><C-D> <C-W>g<C-D>
+nmap     <C-W>gd <Plug>(noremap-colon)sp<cr>gd
+nmap     <C-W>GD <Plug>(noremap-colon)wincmd z \| sp \| set previewwindow<cr>gd
+nmap     <C-W>g<C-D> <Plug>(noremap-colon)tab sp<cr>gd
+nmap     <C-W><C-G><C-D> <Plug>(noremap-colon)tab sp<cr>gd
 nnoremap <C-W>` <C-W>p
 nnoremap <C-W><C-Space> <C-W>p
 " Why doesn't it work without filenames by default?
@@ -341,10 +342,10 @@ nnoremap <C-W>^ :sp <cr><C-^>
 nnoremap <C-W><C-^> :vsp <cr><C-^>
 " Move window (it seems impossible to use it in mixed split directions)
 " Expr-ception
-nnoremap <C-W>mh @="@=winnr('h')\r\<lt>c-w>x\<lt>cmd>call win_gotoid(" . win_getid() . ")\r"<cr><cmd>mode<cr>
-nnoremap <C-W>mj @="@=winnr('j')\r\<lt>c-w>x\<lt>cmd>call win_gotoid(" . win_getid() . ")\r"<cr><cmd>mode<cr>
-nnoremap <C-W>mk @="@=winnr('k')\r\<lt>c-w>x\<lt>cmd>call win_gotoid(" . win_getid() . ")\r"<cr><cmd>mode<cr>
-nnoremap <C-W>ml @="@=winnr('l')\r\<lt>c-w>x\<lt>cmd>call win_gotoid(" . win_getid() . ")\r"<cr><cmd>mode<cr>
+nnoremap <C-W>mh @="@=winnr('h')\r\<lt>c-w>x\<lt><Plug>(noremap-colon)call win_gotoid(" . win_getid() . ")\r"<cr><Plug>(noremap-colon)mode<cr>
+nnoremap <C-W>mj @="@=winnr('j')\r\<lt>c-w>x\<lt><Plug>(noremap-colon)call win_gotoid(" . win_getid() . ")\r"<cr><Plug>(noremap-colon)mode<cr>
+nnoremap <C-W>mk @="@=winnr('k')\r\<lt>c-w>x\<lt><Plug>(noremap-colon)call win_gotoid(" . win_getid() . ")\r"<cr><Plug>(noremap-colon)mode<cr>
+nnoremap <C-W>ml @="@=winnr('l')\r\<lt>c-w>x\<lt><Plug>(noremap-colon)call win_gotoid(" . win_getid() . ")\r"<cr><Plug>(noremap-colon)mode<cr>
 " Tabs
 nnoremap <C-W><C-T> :tabnew<cr>
 " This should exist, but doesn't
@@ -497,7 +498,7 @@ function! GetSelectedText()
 	return l:text
 endfunction
 if !empty(globpath(&rtp, 'plugin/utl.vim'))
-	nnoremap gl <cmd>Utl<cr>
+	nnoremap gl :Utl<cr>
 	xnoremap gl :<C-u>call Utl('openLink', GetSelectedText())<cr>
 endif 
 " gemini
