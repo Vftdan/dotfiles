@@ -662,10 +662,10 @@ if !empty(globpath(&rtp, 'autoload/EasyMotion.vim'))
 endif
 " Duplicate line
 " NOTE: repeatable with @@ , not with .
-nnoremap <C-D> @="m':t.\<lt>cr>\<lt>c-o>j"<cr>
+nnoremap g<C-D> @="m':t.\<lt>cr>\<lt>c-o>j"<cr>
 inoremap <C-D> <esc>m':t.<cr><c-o>ja
 " Duplicate selection
-xnoremap <C-D> yg`<Pg`>@={'V':'','v':(count(@","\n")?'':len(@").'l'),"\<lt>c-v>":len(split(@","\n")[-1]).'l'}[visualmode()]<cr>m`
+xnoremap g<C-D> yg`<Pg`>@={'V':'','v':(count(@","\n")?'':len(@").'l'),"\<lt>c-v>":len(split(@","\n")[-1]).'l'}[visualmode()]<cr>m`
 " Find selection
 xnoremap // y/\V<C-R>=escape(@", '/\')<CR><CR>
 xnoremap /<Right> y/\V<C-R>=escape(@", '/\')<CR>
