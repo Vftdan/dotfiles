@@ -32,6 +32,9 @@ set tabpagemax=50
 set isfname+=:,;,?,&
 " Force recompilation
 " set makeprg=make\ -B
+" Make sure that live logs are the same inode after writing!
+set backupskip=/tmp/*,/home/vftdan/.xsession-errors,*.log,system.journal,user-????.journal
+set backupcopy=yes
 " For gvim
 if has("gui_running")
 	if has("win32")
