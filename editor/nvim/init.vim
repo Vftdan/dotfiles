@@ -744,6 +744,20 @@ inoremap <C-U> <C-G>u<C-U>
 " Copy between Vim and X clipboards
 nnoremap <A-x>p :let @"=@+<CR>
 nnoremap <A-x>y :let @+=@"<CR>
+" Copy buffer file to X clipboard
+function! GetBufferFileUrl(...)
+	let l:bnr = 0
+	if a:0
+		let l:bnr = a:1
+	endif
+	if type(l:bnr) != 0
+		let l:bnr = bufnr(l:bnr)
+	endif
+	let l:fname = expand((l:bnr ? '#' . l:bnr : '%') . ':p')
+	let l:urlencoded = substitute(l:fname, '[^[:alnum:]\/_-]', {->join(map(range(len(submatch(0))), {->printf('%%%02x', char2nr(strpart(submatch(0), v:val, 1)))}), '')}, 'g')
+	return 'file://' . l:urlencoded
+endfunction
+command! -nargs=0 -bar CopyClipBufferFile call system('xclip -i -selection clipboard -t text/uri-list', GetBufferFileUrl())
 " Replace
 nnoremap <A-r> :%s///g<Left><Left><Left>
 " Replace selection
