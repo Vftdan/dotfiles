@@ -170,6 +170,9 @@ if g:loaded_plug
 		Plug 'lifepillar/pgsql.vim'
 		let g:sql_type_default = 'pgsql'
 
+		Plug 'SirVer/ultisnips'
+		Plug 'honza/vim-snippets'
+		Plug 'ncm2/ncm2-ultisnips'
 		" For doc
 		Plug 'junegunn/vim-plug'
 	call plug#end()
@@ -552,13 +555,36 @@ if !empty(globpath(&rtp, 'plugin/gemini_protocol.vim'))
 		let g:Gemini_redirect_function = function('netfind#resolve')
 	endif 
 endif 
-" Snippets key
-let g:snippetsEmu_key = "<A-space>"
+if !empty(globpath(&rtp, 'autoload/UltiSnips.vim'))
+	let g:UltiSnipsJumpForwardTrigger = '<tab>'
+	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+	let g:UltiSnipsRemoveSelectModeMappings = 0
+	inoremap <plug>(vftdan-ultisnips-expand-always) <c-r>=UltiSnips#ExpandSnippet()<cr>
+	imap <plug>(vftdan-ultisnips-expand) <plug>(vftdan-ultisnips-expand-always)
+	let g:UltiSnipsExpandTrigger = '<plug>(vftdan-ultisnips-expand)'
+	let g:UltiSnipsListSnippets = '<plug>(vftdan-ultisnips)'
+	inoremap <plug>(vftdan-ultisnips-expand) <nop>
+	inoremap <plug>(vftdan-ultisnips-list) <nop>
+	if !empty(globpath(&rtp, 'autoload/ncm2.vim')) && !empty(globpath(&rtp, 'autoload/ncm2_ultisnips.vim'))
+		call timer_start(30, {-> get(b:, 'ncm2_enable', 0) || [ncm2#enable_for_buffer(), ncm2#disable_for_buffer(), 1][-1]})  " Force fully initialize ncm2, because the completions fails the first time if it is not
+		function! init#ncm2_ultisnips_on_complete_resolve(ctx, item)
+			call UltiSnips#ExpandSnippet()
+		endfunction
+		runtime! autoload/ncm2_ultisnips.vim
+		let g:ncm2_ultisnips#source.on_complete_resolve = 'init#ncm2_ultisnips_on_complete_resolve'  " This field seems to be undocumented in ncm2
+		inoremap <plug>(vftdan-ultisnips-complete) <c-r>=[ncm2#enable_for_buffer(), ncm2#force_trigger('ultisnips')][1]<cr>
+	else
+		inoremap <plug>(vftdan-ultisnips-complete) <c-r>=UltiSnips#ListSnippets()<cr>
+	endif
+	imap <c-x>s <plug>(vftdan-ultisnips-complete)
+	imap <c-x>S <plug>(vftdan-ultisnips-expand-always)
+endif
 " Language client and ncm2
 set completeopt=menuone,noselect
 " I actually don't want noselect
 inoremap <expr> <C-N> pumvisible() ? "\<C-N>" : "\<C-N>\<C-N>"
 inoremap <expr> <C-P> pumvisible() ? "\<C-P>" : "\<C-P>\<C-P>"
+let g:ncm2#auto_popup = 0
 imap <expr> <C-space> pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
 if !empty(globpath(&rtp, 'autoload/LanguageClient.vim'))
 	let g:LanguageClient_hoverPreview = 'Always'
