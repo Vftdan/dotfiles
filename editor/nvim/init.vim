@@ -1021,6 +1021,6 @@ command! -nargs=0 -bar OnlyCurbufQlist call  setqflist(   filter( getqflist( ), 
 command! -nargs=0 -bar OnlyCurbufLlist call setloclist(0, filter(getloclist(0), 'v:val.bufnr == bufnr()'))
 Calias wargs enew \| ClearLlist \| PopulateLlist
 " Fix vulnerability
-if !has("patch-8.1.1365") && !has("patch8.1.1365")
+if !has("patch-8.1.1365") && !has("nvim-0.3.8")
 	set nomodeline
 endif
