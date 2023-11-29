@@ -890,6 +890,20 @@ function! s:get_last_from_dict_chain(chain, key, default)
 	endfor
 	return l:res
 endfunction
+function! s:run_make_delayed_teardown_body(newwin, prevwin, layout)
+	let l:tab = win_id2tabwin(a:prevwin)[0]
+	if l:tab != 0 && tabpagenr() != l:tab
+		return
+	end
+	aug run_make_delayed_teardown | au! | aug END
+	noau if win_gotoid(a:newwin)
+		noau wincmd p
+		return
+	endif
+	if win_gotoid(a:prevwin)
+		exe a:layout
+	endif
+endfunction
 function! s:run_make(cmd, ...)
 	let l:layout = winrestcmd()
 	let l:prevwin = win_getid()
@@ -925,22 +939,9 @@ function! s:run_make(cmd, ...)
 	if l:prevwin == win_getid()
 		exe l:layout
 	elseif l:newwin == win_getid()
-		function! s:run_make_delayed_teardown_handler(...) closure
-			aug run_make_delayed_teardown | au! | aug END
-			noau if win_gotoid(l:newwin)
-				noau wincmd p
-				if a:0 == 0
-					call timer_start(0, funcref("s:run_make_delayed_teardown_handler"))
-				endif
-				return
-			endif
-			if win_gotoid(l:prevwin)
-				exe l:layout
-			endif
-		endfunction
 		aug run_make_delayed_teardown
 			au!
-			au WinLeave * call <sid>run_make_delayed_teardown_handler() | call timer_start(0, {-> execute('delfunction! <sid>run_make_delayed_teardown_handler')})
+			exe 'au WinLeave * call timer_start(0, {-> <sid>run_make_delayed_teardown_body(' . l:newwin . ', ' . l:prevwin . ", '" . l:layout . "')})"
 		aug END
 	endif
 endfunction
