@@ -323,8 +323,8 @@ nnoremap <expr> <Plug>(wincmdmode-loop) <SID>wincmdmode_wrapper('<SID>')
 nnoremap <expr> <Plug>(wincmdmode-break) <SID>wincmdmode_break_loop()
 nmap     g<C-W> <Plug>(wincmdmode-loop)
 nmap     <C-W><ESC> <Plug>(wincmdmode-break)
-nmap     <C-W><LF> <Plug>(wincmdmode-break)
 nmap     <C-W><CR> <Plug>(noremap-colon)exe "wincmd \<lt>cr>"<cr><Plug>(wincmdmode-break)
+" "<LF>" = "<C-J>"!
 nmap     <C-W><space> <Plug>(wincmdmode-break)
 
 " Last focused tab page
