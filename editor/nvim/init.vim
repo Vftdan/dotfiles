@@ -1072,6 +1072,12 @@ aug vftdan_custom
 	au BufNewFile,BufRead,Bufenter yggdrasil.conf setlocal ft=hjson
 	au BufNewFile,BufRead *.mcmeta setlocal ft=json
 	au FileType sh call setbufvar('', '&path', execute('setg path?')[8:] . ',' . substitute(escape($PATH, ' ,\'), '[:;]', ',', 'g'))
+	" Signcolumn
+	if has('nvim')
+		au TermOpen     * setlocal signcolumn=yes
+	else
+		au TerminalOpen * setlocal signcolumn=yes
+	endif
 aug END
 aug modpacker
 	au!
