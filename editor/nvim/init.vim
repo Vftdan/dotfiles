@@ -1,22 +1,33 @@
 " For classic vim
 set encoding=utf-8
 set fileencoding=utf-8
+set nocompatible
 set number
 " set relativenumber
 set autoindent
 set incsearch
 set laststatus=2
 set ruler
+set showcmd
+set wildmenu
+set wildoptions+=tagfile
+if has("patch-8.2.4325") || has("nvim-0.4.0")
+	set wildoptions+=pum
+endif
 set switchbuf=useopen,usetab,vsplit
 set scrolloff=4
 set sidescrolloff=4
+set sidescroll=1
 set shiftwidth=0
+set smarttab
 set cinoptions=:0t0+10
 " Even without 't' it is broken when inserting at window border
 set formatoptions=jroqn
+set nrformats=bin,hex
 set hlsearch
 set splitbelow
 set splitright
+set tabpagemax=50
 " For urls
 set isfname+=:,;,?,&
 " Force recompilation
@@ -182,6 +193,8 @@ set title
 set list
 set listchars=tab:┊\ 
 set timeoutlen=2500
+set ttimeout
+set ttimeoutlen=50
 if !empty(globpath(&rtp, 'autoload/fugitive.vim'))
 	set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 endif
@@ -788,6 +801,7 @@ lmap <C-k>U[ Ғ
 lmap <C-k>U{ Ғ
 set iminsert=0
 set imsearch=0
+set nolangremap
 set spelllang=en,ru
 " Color column
 set colorcolumn=81
