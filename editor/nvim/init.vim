@@ -272,8 +272,11 @@ function! s:wincmdmode_loop()
 	let l:chord = ''
 	let s:wincmdmode_running = v:true
 	let l:vimsize = [&lines, &columns]
+	let l:saved_cursor = &guicursor
+	hi def link CursorWincmdMode StatusLine
 	try
 		while s:wincmdmode_running
+			set guicursor=a:hor80-CursorWincmdMode
 			mode
 			echo '-- WINDOW --'
 			while getchar(1) == 0
@@ -294,7 +297,9 @@ function! s:wincmdmode_loop()
 			endif
 			call inputsave()
 			try
+				let &guicursor = l:saved_cursor
 				call feedkeys(substitute(l:chord, g:wincmdmode_split_number_pattern, "\<C-W>", ''), 'x')
+				let l:saved_cursor = &guicursor
 				redraw
 			finally
 				call inputrestore()
@@ -303,6 +308,7 @@ function! s:wincmdmode_loop()
 		endwhile
 	finally
 		let s:wincmdmode_running = v:false
+		let &guicursor = l:saved_cursor
 	endtry
 	mode
 	return ''
