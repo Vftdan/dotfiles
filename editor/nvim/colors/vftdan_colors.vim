@@ -21,6 +21,7 @@ hi Underlined   cterm=underline ctermfg=81 gui=underline guifg=#80a0ff
 hi SpecialKey   ctermfg=117 guifg=#87dae8
 hi NonText      ctermfg=12 guifg=#42bdff
 
+hi Cursor       guibg=#a28c87 guifg=#001017
 hi CursorLine   cterm=NONE ctermbg=239 guibg=#364b51
 hi CursorColumn ctermbg=240 guibg=#1b3b43
 hi ColorColumn  ctermbg=DarkGrey guibg=#a58888
