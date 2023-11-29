@@ -447,6 +447,10 @@ map! <C-R><C-T> <C-R>=system('tmux show-buffer')<cr>
 map! <C-R><C-R><C-T> <C-R><C-R>=system('tmux show-buffer')<cr>
 " Word count
 command! -bar Wc w !wc
+" Tabs <-> spaces (only at the start of each line)
+command! -range=% -nargs=? -bar ExpandTabs <line1>,<line2>s/\v%(^\t*)@<=\t/\=repeat(' ', str2nr([&ts, <f-args>][-1]))/g
+command! -range=% -nargs=? -bar UnexpandTabs exe '<line1>,<line2>s/\v%(^ *)@<= {' . [&ts, <f-args>][-1] . '}/\t/g'
+Calias UnExpandTabs UnexpandTabs
 " ASCII art helpers
 command! -range -bar AARev <line1>,<line2>!rev | tr '`./(qd<\[{'"'"',\\)pb>\]}' ''"'"',\\)pb>\]}`./(qd<\[{'
 command! -range -bar AATac <line1>,<line2>!tac | tr '`'"'"'/^qpwWn\!,.\\vdbmMui' ',.\\vdbmMui`'"'"'/^qpwWn\!'
