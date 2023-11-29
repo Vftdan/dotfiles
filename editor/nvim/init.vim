@@ -600,8 +600,8 @@ if !empty(globpath(&rtp, 'plugin/visual-multi.vim'))
 	nnoremap <expr> <Plug>(vftdan-visual-to-VM-insert-a) <SID>visual_to_vm_insert_sequence('a', 1)
 	vmap <Plug>(vftdan-visual-to-VM-insert-i) <esc><Plug>(vftdan-visual-to-VM-insert-i)
 	vmap <Plug>(vftdan-visual-to-VM-insert-a) <esc><Plug>(vftdan-visual-to-VM-insert-a)
-	vmap I <Plug>(vftdan-visual-to-VM-insert-i)
-	vmap A <Plug>(vftdan-visual-to-VM-insert-a)
+	xmap I <Plug>(vftdan-visual-to-VM-insert-i)
+	xmap A <Plug>(vftdan-visual-to-VM-insert-a)
 	inoremap <Plug>(VM-Hls) <C-O>:set hls<CR>
 endif
 " EasyMotion
@@ -610,22 +610,25 @@ if !empty(globpath(&rtp, 'autoload/EasyMotion.vim'))
 	let g:EasyMotion_keys = 'ASDFGHJKL;ZXCVBNQWERTYUIOP'
 	map '; <Plug>(easymotion-prefix)
 	map ';; <Plug>(easymotion-next)
+	sunmap ';
+	sunmap ';;
 endif
 " Duplicate line
 " NOTE: repeatable with @@ , not with .
 nnoremap <C-D> @="m':t.\<lt>cr>\<lt>c-o>j"<cr>
 inoremap <C-D> <esc>m':t.<cr><c-o>ja
 " Duplicate selection
-vnoremap <C-D> yg`<Pg`>@={'V':'','v':(count(@","\n")?'':len(@").'l'),"\<lt>c-v>":len(split(@","\n")[-1]).'l'}[visualmode()]<cr>m`
+xnoremap <C-D> yg`<Pg`>@={'V':'','v':(count(@","\n")?'':len(@").'l'),"\<lt>c-v>":len(split(@","\n")[-1]).'l'}[visualmode()]<cr>m`
 " Find selection
-vnoremap // y/\V<C-R>=escape(@", '/\')<CR><CR>
-vnoremap /<Right> y/\V<C-R>=escape(@", '/\')<CR>
+xnoremap // y/\V<C-R>=escape(@", '/\')<CR><CR>
+xnoremap /<Right> y/\V<C-R>=escape(@", '/\')<CR>
 " Same for very magic
-vnoremap /v/ y/\v<C-R>"<CR>
-vnoremap /v<Right> y/\v<C-R>"
+xnoremap /v/ y/\v<C-R>"<CR>
+xnoremap /v<Right> y/\v<C-R>"
 " Atomatic very magic
 nnoremap / /\v
-vnoremap /g /\v
+xnoremap /g /\v
+onoremap /g /\v
 " FZF
 if !empty(globpath(&rtp, 'autoload/fzf/vim.vim'))
 	nmap <silent> <A-/><A-/> :call ColoredBLines({'options': '+s -e'})<CR>
@@ -712,7 +715,7 @@ nnoremap <A-'>/ :nohlsearch<CR>
 nnoremap <C-z> :call system('( sleep .5; kill -CONT ' . getpid() . ';) &') <bar> suspend<cr>
 " Select line without <EOL>
 onoremap il :<C-U>normal! 0v$h<CR>
-vnoremap il 0o$h
+xnoremap il 0o$h
 " Delete/yank line without <EOL>
 nnoremap dD d:<C-U>normal! 0v$h<CR>
 nnoremap yY y:<C-U>normal! 0v$h<CR>
@@ -724,7 +727,7 @@ nnoremap Y y$
 inoremap <C-Del> <Right><C-O>"_d:<C-U>normal! vwgeoh<CR>
 " Extract to variable
 vnoremap <expr> <Plug>(vftdan-extract) <sid>extract_var_sequence(v:register)
-vmap g<A-e> <Plug>(vftdan-extract)
+xmap g<A-e> <Plug>(vftdan-extract)
 function! s:extract_var_sequence(reg)
 	let l:prefix = get(b:, 'lang_var_decl_prefix', '')
 	let l:equals = get(b:, 'lang_var_decl_assign_infix', ' = ')
@@ -978,8 +981,8 @@ aug vftdan_custom
 	au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>ul<space> \begin{enumerate}<CR>\end{enumerate}<esc>O
 	au BufNewFile,BufRead,Bufenter *.tex inoremap <buffer> <A-l>li<space> \item<space>
 	" Jumping to form feed
-	au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> ]] ]]zt
-	au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> [[ [[zt
+	au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> ]] ]]zt | sunmap <buffer> ]]
+	au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> [[ [[zt | sunmap <buffer> [[
 
 	au BufNewFile,BufRead,Bufenter *.hs setlocal ts=4 sw=4 et makeprg=stack\ build
 	au BufNewFile,BufRead,Bufenter *.ass setlocal commentstring=;%s
