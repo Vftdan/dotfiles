@@ -24,6 +24,16 @@ bspc subscribe all | \
 	# consider using awk
 	miny=$(wmctrl -lG | onlyvisible | sed -e 's/ \+/\t/g' | cut -f 2,4 | \
 			egrep "^$d\\s" | cut -f 2 | sort -n | head -n 1)
+	if [ -z "$miny" ]; then \
+		# X Error of failed request:  BadWindow (invalid Window parameter)
+		#   Major opcode of failed request:  20 (X_GetProperty)
+		#   Resource id in failed request:  <killed window id>
+		#   Serial number of failed request:  59
+		#   Current serial number in output stream:  59
+		which bspwm-forget-killed.sh >/dev/null && bspwm-forget-killed.sh
+		sleep 2
+		continue
+	fi
 	if [ "$miny" -lt "$panelheight" ]; then \
 		compton-trans -w "$w" -o 35
 	else
