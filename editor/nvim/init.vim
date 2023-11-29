@@ -670,8 +670,8 @@ xnoremap g<C-D> yg`<Pg`>@={'V':'','v':(count(@","\n")?'':len(@").'l'),"\<lt>c-v>
 xnoremap // y/\V<C-R>=escape(@", '/\')<CR><CR>
 xnoremap /<Right> y/\V<C-R>=escape(@", '/\')<CR>
 " Same for very magic
-xnoremap /v/ y/\v<C-R>"<CR>
-xnoremap /v<Right> y/\v<C-R>"
+xnoremap /? y/\v<C-R>"<CR>
+xnoremap /<S-Right> y/\v<C-R>"
 " Atomatic very magic
 nnoremap / /\v
 xnoremap /g /\v
