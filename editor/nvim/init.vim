@@ -271,10 +271,19 @@ endfunction
 function! s:wincmdmode_loop()
 	let l:chord = ''
 	let s:wincmdmode_running = v:true
+	let l:vimsize = [&lines, &columns]
 	try
 		while s:wincmdmode_running
 			mode
 			echo '-- WINDOW --'
+			while getchar(1) == 0
+				if l:vimsize != [&lines, &columns] || !has('nvim')
+					redraw
+					echo '-- WINDOW --'
+					let l:vimsize = [&lines, &columns]
+				endif
+				sleep 20m
+			endwhile
 			let l:key = getchar()
 			if type(l:key) == 0
 				let l:key = nr2char(l:key)
