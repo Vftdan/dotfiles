@@ -680,6 +680,13 @@ onoremap /g /\v
 if !empty(globpath(&rtp, 'autoload/fzf/vim.vim'))
 	nmap <silent> <A-/><A-/> :call ColoredBLines({'options': '+s -e'})<CR>
 	nmap <silent> <A-/><A-q> :call ColoredBLines({'options': '+s -e -m', 'after': {-> setqflist([{'bufnr': bufnr(), 'lnum': getcurpos()[1]}], 'a')}})<CR>
+	command! -bar -bang MapsV  call fzf#vim#maps("v", <bang>0)
+	command! -bar -bang MapsX  call fzf#vim#maps("x", <bang>0)
+	command! -bar -bang MapsO  call fzf#vim#maps("o", <bang>0)
+	command! -bar -bang MapsI  call fzf#vim#maps("i", <bang>0)
+	command! -bar -bang MapsC  call fzf#vim#maps("c", <bang>0)
+	command! -bar -bang MapsII call fzf#vim#maps("!", <bang>0)
+	command! -bar -bang MapsNN call fzf#vim#maps("", <bang>0)
 endif
 " Easy Align
 if !empty(globpath(&rtp, 'autoload/easy_align.vim'))
