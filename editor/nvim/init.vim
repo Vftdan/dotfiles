@@ -65,6 +65,8 @@ if g:loaded_plug
 		endif
 
 		Plug 'vftdan/vim-hexbuffer'
+		let g:polyglot_disabled = ['sensible', 'autoindent']
+		Plug 'sheerun/vim-polyglot'
 		Plug 'vftdan/vim-source-buffer'
 		Plug 'idris-hackers/idris-vim', { 'for': 'idris' } 
 		Plug 'tpope/vim-fugitive'
@@ -185,6 +187,10 @@ hi     link w3mLink Comment
 hi     link w3mLinkHover Underlined
 hi     link plantumlColonLine String
 hi     link plantumlSequenceDivider Title
+hi     link luaFuncParens Special
+hi     link luaParens Special
+hi     link luaBrackets Special
+hi     link luaFuncArgName Normal
 " Highlight current line
 set cursorline
 
