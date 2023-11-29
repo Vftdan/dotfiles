@@ -897,9 +897,22 @@ function! s:run_make(cmd, ...)
 	if a:0
 		let l:new = a:1
 	endif
+	let l:inherit_vars = {}
+	for l:i in ['&makeprg', '&errorformat']
+		let l:var_value = getbufvar(bufnr(), l:i, v:null)
+		if l:var_value != v:null
+			let l:inherit_vars[l:i] = l:var_value
+		else
+			echoerr l:i . ' is not set'
+		endif
+	endfor
 	exe l:new
 	let l:buf = bufnr()
 	let l:newwin = win_getid()
+	for l:i in keys(l:inherit_vars)
+		call setbufvar(bufnr(), l:i, l:inherit_vars[l:i])
+	endfor
+	let &l:makeprg = substitute(&makeprg, '%', '#', 'g')
 	exe 'lcd ' . fnameescape(s:get_last_from_dict_chain([g:, t:, b:, w:], 'makefile_dir', '.'))
 	exe a:cmd
 	if bufexists(l:buf) && getbufvar(l:buf, '&buflisted') && getbufvar(l:buf, '&buftype') == '' && !getbufvar(l:buf, '&modified')
