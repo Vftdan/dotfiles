@@ -319,6 +319,10 @@ function! s:wincmdmode_break_loop()
 	return ''
 endfunction
 
+function! s:wincmdmode_is_running()
+	return s:wincmdmode_running
+endfunction
+
 nnoremap <expr> <Plug>(wincmdmode-loop) <SID>wincmdmode_wrapper('<SID>')
 nnoremap <expr> <Plug>(wincmdmode-break) <SID>wincmdmode_break_loop()
 nmap     g<C-W> <Plug>(wincmdmode-loop)
@@ -395,6 +399,21 @@ if has("gui_running")
 	noremap  <8f> <C-PageUp>
 	noremap  <C-W><8f> <C-PageUp>
 	noremap! <8f> <C-PageUp>
+endif
+" Tmux integration
+if $TMUX != '' && $TMUX_PANE != ''
+	if has('nvim')
+		" We can avoid launching shell in nvim
+		nnoremap <silent> <C-W>h @=winnr() == winnr('h') ? [system(['tmux', 'select-pane', '-L'] + (<sid>wincmdmode_is_running() ? [ ';', 'switch-client', '-Tprefix'] : [])), ''][1] : "\<lt>C-W>h"<CR>
+		nnoremap <silent> <C-W>j @=winnr() == winnr('j') ? [system(['tmux', 'select-pane', '-D'] + (<sid>wincmdmode_is_running() ? [ ';', 'switch-client', '-Tprefix'] : [])), ''][1] : "\<lt>C-W>j"<CR>
+		nnoremap <silent> <C-W>k @=winnr() == winnr('k') ? [system(['tmux', 'select-pane', '-U'] + (<sid>wincmdmode_is_running() ? [ ';', 'switch-client', '-Tprefix'] : [])), ''][1] : "\<lt>C-W>k"<CR>
+		nnoremap <silent> <C-W>l @=winnr() == winnr('l') ? [system(['tmux', 'select-pane', '-R'] + (<sid>wincmdmode_is_running() ? [ ';', 'switch-client', '-Tprefix'] : [])), ''][1] : "\<lt>C-W>l"<CR>
+	else
+		nnoremap <silent> <C-W>h @=winnr() == winnr('h') ? [system('tmux select-pane -L' . (<sid>wincmdmode_is_running() ? ' \; switch-client -Tprefix' : '')), ''][1] : "\<lt>C-W>h"<CR>
+		nnoremap <silent> <C-W>j @=winnr() == winnr('j') ? [system('tmux select-pane -D' . (<sid>wincmdmode_is_running() ? ' \; switch-client -Tprefix' : '')), ''][1] : "\<lt>C-W>j"<CR>
+		nnoremap <silent> <C-W>k @=winnr() == winnr('k') ? [system('tmux select-pane -U' . (<sid>wincmdmode_is_running() ? ' \; switch-client -Tprefix' : '')), ''][1] : "\<lt>C-W>k"<CR>
+		nnoremap <silent> <C-W>l @=winnr() == winnr('l') ? [system('tmux select-pane -R' . (<sid>wincmdmode_is_running() ? ' \; switch-client -Tprefix' : '')), ''][1] : "\<lt>C-W>l"<CR>
+	endif
 endif
 " Org
 let g:org_agenda_files = ["~/org/todo.org", "~/org/schedules.org", "~/org/projects.org", "~/org/resources.org"]
