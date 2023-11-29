@@ -13,7 +13,7 @@ if [ $# -gt 0 ]; then \
 	panelheight=$1
 fi
 bspc subscribe all | \
-		egrep --line-buffered '^desktop_focus|^node_state.*(fullscreen|floating)|^node_flag.*hidden|^node_remove|^pointer_action|^node_geometry' | \
+		egrep --line-buffered '^desktop_focus|^node_state.*(fullscreen|floating)|^node_flag.*hidden|^node_remove|^pointer_action|^node_geometry|^node_transfer' | \
 		while read line; do \
 	# "compton-trans -n ..." doesn't terminate 
 	w=$(lsw | grep tint2 | cut -f 1 -d' ')
