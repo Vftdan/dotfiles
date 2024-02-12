@@ -1140,7 +1140,7 @@ aug vftdan_custom
 	au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> ]] ]]zt | sunmap <buffer> ]]
 	au BufNewFile,BufRead,Bufenter *.txt noremap <buffer> [[ [[zt | sunmap <buffer> [[
 
-	au BufNewFile,BufRead,Bufenter *.hs setlocal ts=4 sw=4 et makeprg=stack\ build
+	au BufNewFile,BufRead,Bufenter *.hs setlocal ts=4 sw=4 et | compiler! ghc
 	au BufNewFile,BufRead,Bufenter *.ass setlocal commentstring=;%s
 	au BufNewFile,BufRead,Bufenter yggdrasil.conf setlocal ft=hjson
 	au BufNewFile,BufRead *.mcmeta setlocal ft=json
