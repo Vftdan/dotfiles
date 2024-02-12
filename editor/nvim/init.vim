@@ -984,16 +984,50 @@ function! s:run_make(cmd, ...)
 		aug END
 	endif
 endfunction
+let s:exe_ext = has('win32') ? '.exe' : ''
+" TODO ability to erase, and not only append command parts
+let g:compiler_default_targets = {
+	\ 'make': {'build': '', 'run': 'run'},
+	\ 'cargo': {'build': 'build', 'run': 'run'},
+	\ 'mvn': {'build': 'compile', 'run': 'exec:java'},
+	\ 'cc': {'build': '-o %:r' . s:exe_ext, 'run': '-o %:r' . s:exe_ext . ' && %:p:r' . s:exe_ext},
+	\ 'tsc': {'build': '', 'run': '&& node %:r.js'},
+	\ }
+" FIXME mvn run???
+let g:compiler_default_targets.ghc = copy(g:compiler_default_targets.cc)
+let g:compiler_default_targets.gcc = g:compiler_default_targets.cc
+let g:compiler_default_targets.clang = g:compiler_default_targets.cc
+unlet s:exe_ext
+let g:system_wrapper_commands = {'valgrind': 1, 'scan-build': 1}
+function! s:get_compiler_target(target)
+	let l:makeprg_components = split(&makeprg)
+	while 1
+		let l:compiler = get(l:makeprg_components, 0, 'make')
+		if get(g:system_wrapper_commands, l:compiler, 0)
+			call assert_true(len(l:makeprg_components), 'default compiler is also a wrapper command')
+			call remove(l:makeprg_components, 0)
+			while len(l:makeprg_components) && l:makeprg_components[0][0] == '-'
+				" Consider handling options with arguments
+				call remove(l:makeprg_components, 0)
+			endwhile
+			continue
+		endif
+		break
+	endwhile
+	let l:default_targets = get(g:compiler_default_targets, l:compiler, {})
+	let l:default = get(l:default_targets, a:target, a:target)
+	return s:get_last_from_dict_chain([g:, t:, b:, w:], 'make_' . a:target . '_target', l:default)
+endfunction
 function! ListToStringShellescape(arr)
 	if type(a:arr) != type([])
 		return a:arr
 	endif
 	return join(map(copy(a:arr), {_, el -> shellescape(el)}))
 endfunction
-nmap <F10> :update \| call <sid>run_make(<sid>get_last_from_dict_chain([g:, t:, b:, w:], 'make_current_window', v:false) ? 'ExecuteNoSwitchbuf lmake' : 'make')<CR>
+nmap <F10> :update \| call <sid>run_make((<sid>get_last_from_dict_chain([g:, t:, b:, w:], 'make_current_window', v:false) ? 'ExecuteNoSwitchbuf lmake' : 'make') . ' ' . ListToStringShellescape(<sid>get_compiler_target('build')))<CR>
 map <S-F10> <F22>
 " Sometimes nvim breaks with 'E317: pointer block id wrong' when running Maven from Makefile
-nmap <silent> <F22> :update \| wincmd z \| call <sid>run_make('term ' . &makeprg . ' ' . ListToStringShellescape(<sid>get_last_from_dict_chain([g:, t:, b:, w:], 'make_run_target', 'run')), 'noswapfile bo new \| set previewwindow')<CR>
+nmap <silent> <F22> :update \| wincmd z \| call <sid>run_make('term ' . &makeprg . ' ' . ListToStringShellescape(<sid>get_compiler_target('run')), 'noswapfile bo new \| set previewwindow')<CR>
 command! -nargs=0 -bar WindowMakeLocal let w:make_current_window = v:true | let w:list_is_location = v:true
 command! -nargs=0 -bar SetMakefileHere    let g:makefile_dir = getcwd()
 command! -nargs=0 -bar SetMakefileHereTab let t:makefile_dir = getcwd()
