@@ -965,8 +965,9 @@ function! s:run_make(cmd, ...)
 		call setbufvar(bufnr(), l:i, l:inherit_vars[l:i])
 	endfor
 	let &l:makeprg = substitute(&makeprg, '%', '#', 'g')
+	let l:cmd = substitute(a:cmd, '%', '#', 'g')
 	exe 'lcd ' . fnameescape(s:get_last_from_dict_chain([g:, t:, b:, w:], 'makefile_dir', '.'))
-	exe a:cmd
+	exe l:cmd
 	if bufexists(l:buf) && getbufvar(l:buf, '&buflisted') && getbufvar(l:buf, '&buftype') == '' && !getbufvar(l:buf, '&modified')
 		if bufnr() == l:buf
 			q
