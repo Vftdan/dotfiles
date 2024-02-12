@@ -604,7 +604,9 @@ if !empty(globpath(&rtp, 'autoload/LanguageClient.vim'))
 		\ 'python': ['pyls'],
 		\ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
 	\ }
-	if system('which rls') != ''
+	if system('which rust-analyzer') != ''
+		let g:LanguageClient_serverCommands['rust'] = ['rust-analyzer']
+	elseif system('which rls') != ''
 		let g:LanguageClient_serverCommands['rust'] = ['rls']
 	endif
 	if system('which pyright-langserver') != ''
