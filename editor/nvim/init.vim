@@ -861,6 +861,7 @@ aug ExtractToVarLangs
 	au Filetype tex let [b:lang_var_decl_prefix, b:lang_statement_postfix, b:lang_var_prefix, b:lang_var_decl_assign_infix] = ['\def\', '}', '\', '{']
 	au Filetype lua let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['local ', '']
 	au Filetype haskell let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['', '']
+	au Filetype rust let [b:lang_var_decl_prefix, b:lang_statement_postfix] = ['let ', ';']
 aug END
 " Natural language
 set keymap=russian-jcukenwin
