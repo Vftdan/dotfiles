@@ -454,6 +454,9 @@ noremap "<C-T> "=system('tmux show-buffer')<cr>
 sunmap "<C-T>
 map! <C-R><C-T> <C-R>=system('tmux show-buffer')<cr>
 map! <C-R><C-R><C-T> <C-R><C-R>=system('tmux show-buffer')<cr>
+" Cursor word
+cnoremap <C-R><C-W> <C-R>=expand('<cword>')<cr>
+cnoremap <C-R><C-R><C-W> <C-R><C-R>=expand('<cword>')<cr>
 " Word count
 command! -bar Wc w !wc
 " Tabs <-> spaces (only at the start of each line)
