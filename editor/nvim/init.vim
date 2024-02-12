@@ -988,7 +988,7 @@ function! ListToStringShellescape(arr)
 	if type(a:arr) != type([])
 		return a:arr
 	endif
-	return join(map(a:arr, {el -> shellescape(el)}))
+	return join(map(copy(a:arr), {_, el -> shellescape(el)}))
 endfunction
 nmap <F10> :update \| call <sid>run_make(<sid>get_last_from_dict_chain([g:, t:, b:, w:], 'make_current_window', v:false) ? 'ExecuteNoSwitchbuf lmake' : 'make')<CR>
 map <S-F10> <F22>
